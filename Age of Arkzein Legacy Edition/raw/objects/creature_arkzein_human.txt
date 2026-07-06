@@ -1,4 +1,4 @@
-creature_standard
+creature_arkzein_human
 
 [OBJECT:CREATURE]
 
