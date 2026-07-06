@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>burrows &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cannibalism" href="cannibalism.html" />
+    <link rel="prev" title="burial" href="burial.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="burial.html" title="previous chapter">burial</a></li>
+      <li>Next: <a href="cannibalism.html" title="next chapter">cannibalism</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">burrows</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="burrows">
+<span id="id1"></span><h1>burrows<a class="headerlink" href="#burrows" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../auto-tag-index.html"><span class="std std-ref">auto</span></a><span> | </span><a class="reference internal" href="../../design-tag-index.html"><span class="std std-ref">design</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../map-tag-index.html"><span class="std std-ref">map</span></a><span> | </span><a class="reference internal" href="../../units-tag-index.html"><span class="std std-ref">units</span></a></p>
+<p><span>Auto-expand burrows as you dig.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">burrow</span></code></p>
+<p><span>Quickly add units/tiles to burrows.</span></p>
+</aside>
+<p>When a wall inside a burrow with a name ending in <code class="docutils literal notranslate"><span class="pre">+</span></code> is dug out, the burrow
+will be extended to newly-revealed adjacent walls.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">enable</span> <span class="pre">auto-grow</span></code></dt><dd><p>When a wall inside a burrow with a name ending in ‘+’ is dug out, the burrow
+will be extended to newly-revealed adjacent walls. This final ‘+’ may be
+omitted in burrow name args of other <code class="docutils literal notranslate"><span class="pre">burrow</span></code> commands. Note that digging
+1-wide corridors with the miner inside the burrow is SLOW.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">disable</span> <span class="pre">auto-grow</span></code></dt><dd><p>Disables auto-grow processing.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">clear-unit</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Remove all units from the named burrows.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">clear-tiles</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Remove all tiles from the named burrows.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">set-units</span> <span class="pre">target-burrow</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Clear all units from the target burrow, then add units from the named source
+burrows.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">add-units</span> <span class="pre">target-burrow</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Add units from the source burrows to the target.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">remove-units</span> <span class="pre">target-burrow</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Remove units in source burrows from the target.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">set-tiles</span> <span class="pre">target-burrow</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Clear target burrow tiles and add tiles from the names source burrows.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">add-tiles</span> <span class="pre">target-burrow</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Add tiles from the source burrows to the target.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow</span> <span class="pre">remove-tiles</span> <span class="pre">target-burrow</span> <span class="pre">&lt;burrow&gt;</span> <span class="pre">[&lt;burrow&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Remove tiles in source burrows from the target.</p>
+</dd>
+</dl>
+<p>In place of a source burrow, you can use one of the following keywords:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ABOVE_GROUND</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUBTERRANEAN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSIDE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTSIDE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIGHT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DARK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDDEN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REVEALED</span></code></p></li>
+</ul>
+<p>to add tiles with the given properties.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

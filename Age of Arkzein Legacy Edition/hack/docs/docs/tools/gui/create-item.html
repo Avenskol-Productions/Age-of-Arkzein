@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>gui/create-item &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="gui/create-tree" href="create-tree.html" />
+    <link rel="prev" title="gui/cp437-table" href="cp437-table.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="cp437-table.html" title="previous chapter">gui/cp437-table</a></li>
+      <li>Next: <a href="create-tree.html" title="next chapter">gui/create-tree</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">gui/create-item</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-create-item">
+<span id="id1"></span><h1>gui/create-item<a class="headerlink" href="#gui-create-item" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../../items-tag-index.html"><span class="std std-ref">items</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">gui/create-item</span></code></p>
+<p><span>Magically summon any item.</span></p>
+</aside>
+<p>This tool provides a graphical interface for creating items of your choice. It
+walks you through the creation process with a series of prompts, asking you
+for the type of item, the material, the quality, and (if <code class="docutils literal notranslate"><span class="pre">--multi</span></code> is passed
+on the commandline) the quantity.</p>
+<p>Be sure to select a unit before running this tool so the created item can have
+a valid “creator” assigned.</p>
+<p>See also <a class="reference internal" href="../createitem.html#createitem"><span class="std std-ref">createitem</span></a> or <a class="reference internal" href="../modtools/create-item.html#modtools-create-item"><span class="std std-ref">modtools/create-item</span></a> for different interfaces for
+creating items.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>gui/create-item [&lt;options&gt;]
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gui/create-item</span> <span class="pre">--multi</span></code></dt><dd><p>Only provide options for creating items that normally exist in the game.
+Also include the prompt for quantity so you can create more than just one
+item at a time.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gui/create-item</span> <span class="pre">--unrestricted</span></code></dt><dd><p>Create one item made of anything in the game. For example, you can create
+a bar of vomit, if you please.</p>
+</dd>
+</dl>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--multi</span></code></dt><dd><p>Also prompt for the quantity of items to create.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--unit</span> <span class="pre">&lt;id&gt;</span></code></dt><dd><p>Use the specified unit as the “creator” of the generated item instead of the
+selected unit.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--unrestricted</span></code></dt><dd><p>Don’t restrict the material options to only those that are normally
+appropriate for the selected item type.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--startup</span></code></dt><dd><p>Instead of showing the item creation interface, start monitoring reactions
+for a modded reaction with a code of <code class="docutils literal notranslate"><span class="pre">DFHACK_WISH</span></code>. When a reaction with
+that code is completed, show the item creation gui. This allows you to mod
+in “wands of wishing” that can let your adventurer make wishes for items.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

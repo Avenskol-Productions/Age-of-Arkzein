@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>channel-safely &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cleanconst" href="cleanconst.html" />
+    <link rel="prev" title="changevein" href="changevein.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="changevein.html" title="previous chapter">changevein</a></li>
+      <li>Next: <a href="cleanconst.html" title="next chapter">cleanconst</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">channel-safely</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#commands">Commands</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="channel-safely">
+<span id="id1"></span><h1>channel-safely<a class="headerlink" href="#channel-safely" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../auto-tag-index.html"><span class="std std-ref">auto</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">channel-safely</span></code></p>
+<p><span>Auto-manage channel designations to keep dwarves safe.</span></p>
+</aside>
+<p>Multi-level channel projects can be dangerous, and managing the safety of your
+dwarves throughout the completion of such projects can be difficult and time
+consuming. This plugin keeps your dwarves safe (at least while channeling) so you don’t
+have to. Now you can focus on designing your dwarven cities with the deep chasms
+they were meant to have.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>enable channel-safely
+channel-safely set &lt;setting&gt; &lt;value&gt;
+channel-safely enable|disable &lt;feature&gt;
+channel-safely &lt;command&gt;
+</pre></div>
+</div>
+<p>When enabled the map will be scanned for channel designations which will be grouped
+together based on adjacency and z-level. These groups will then be analyzed for safety
+and designations deemed unsafe will be put into <a class="reference external" href="https://dwarffortresswiki.org/Designations_menu#Marker_Mode">Marker Mode</a>.
+Each time a channel designation is completed its group status is checked, and if the group
+is complete pending groups below are made active again.</p>
+<p>Features and settings once set will persist until you change them, even if you save and reload your game.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">channel-safely</span></code></dt><dd><p>The plugin reports its configured status.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">channel-safely</span> <span class="pre">runonce</span></code></dt><dd><p>Runs the safety procedures once. You can use this if you prefer initiating scans manually.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">channel-safely</span> <span class="pre">disable</span> <span class="pre">require-vision</span></code></dt><dd><p>Allows the plugin to read all tiles, including the ones your dwarves know nothing about.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">channel-safely</span> <span class="pre">enable</span> <span class="pre">monitor</span></code></dt><dd><p>Enables monitoring active channel digging jobs. Meaning that if another unit it present
+or the tile below becomes open space the job will be paused or canceled (respectively).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">channel-safely</span> <span class="pre">set</span> <span class="pre">ignore-threshold</span> <span class="pre">3</span></code></dt><dd><p>Configures the plugin to ignore designations equal to or above priority 3 designations.</p>
+</dd>
+</dl>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">runonce<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Run the safety procedures once to set the marker mode of designations.</p>
+</dd>
+<dt class="field-even">rebuild<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rebuild the designation group data. Intended for to be used in the event
+the marker mode isn’t being set correctly (mostly for debugging).</p>
+</dd>
+</dl>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">require-vision<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Toggle whether the dwarves need vision of a tile before channeling to it can be deemed unsafe. (default: enabled)</p>
+</dd>
+<dt class="field-even">monitor<span class="colon">:</span></dt>
+<dd class="field-even"><p>Toggle whether to monitor the conditions of active digs. (default: disabled)</p>
+</dd>
+<dt class="field-odd">resurrect<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Toggle whether to resurrect units involved in cave-ins, and if monitor is enabled
+units who die while digging. (default: disabled)</p>
+</dd>
+<dt class="field-even">insta-dig<span class="colon">:</span></dt>
+<dd class="field-even"><p>Toggle whether to use insta-digging on unreachable designations.
+Runs on the refresh cycles. (default: disabled)</p>
+</dd>
+</dl>
+</section>
+<section id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">refresh-freq<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The rate at which full refreshes are performed.
+This can be expensive if you’re undertaking many mega projects. (default:600, twice a day)</p>
+</dd>
+<dt class="field-even">monitor-freq<span class="colon">:</span></dt>
+<dd class="field-even"><p>The rate at which active jobs are monitored. (default:1)</p>
+</dd>
+<dt class="field-odd">ignore-threshold<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sets the priority threshold below which designations are processed. You can set to 1 or 0 to
+effectively disable the scanning. (default: 5)</p>
+</dd>
+<dt class="field-even">fall-threshold<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sets the fall threshold beyond which is considered unsafe. (default: 1)</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

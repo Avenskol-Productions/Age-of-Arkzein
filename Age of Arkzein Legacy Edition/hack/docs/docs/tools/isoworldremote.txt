@@ -1,0 +1,8 @@
+isoworldremote
+==============
+
+Tags: dev | graphics
+
+  Provides a remote API used by Isoworld.
+
+See DFHack remote interface for related remote APIs.

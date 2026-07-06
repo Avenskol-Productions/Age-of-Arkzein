@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>workorder &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="workorder-recheck" href="workorder-recheck.html" />
+    <link rel="prev" title="workflow" href="workflow.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="workflow.html" title="previous chapter">workflow</a></li>
+      <li>Next: <a href="workorder-recheck.html" title="next chapter">workorder-recheck</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">workorder</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#json-string-specification">JSON string specification</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="workorder">
+<span id="id1"></span><h1>workorder<a class="headerlink" href="#workorder" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../workorders-tag-index.html"><span class="std std-ref">workorders</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">workorder</span></code></p>
+<p><span>Create manager workorders.</span></p>
+</aside>
+<p>This tool can enqueue work orders as if you were using the <code class="docutils literal notranslate"><span class="pre">j-m-q</span></code> interface.
+It also has some convenience functions, such as automatically counting how many
+creatures can be milked or sheared for <code class="docutils literal notranslate"><span class="pre">MilkCreature</span></code> or <code class="docutils literal notranslate"><span class="pre">ShearCreature</span></code>
+jobs. It can also take existing orders into account to ensure that the quantity
+produced by <em>all</em> enqueued workorders for a specified job type totals to a
+specified amount.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">-l</span> <span class="pre">&lt;filter&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">--listtypes</span> <span class="pre">&lt;filter&gt;</span></code></dt><dd><p>Print all values for relevant DF types (<code class="docutils literal notranslate"><span class="pre">job_type</span></code>, <code class="docutils literal notranslate"><span class="pre">item_type</span></code> etc.)
+that will be useful for assembling the workorder json. You can pass a filter
+to only print types that match a pattern.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">&lt;jobtype&gt;</span> <span class="pre">[&lt;amount&gt;]</span></code></dt><dd><p>The job type is the number or name from <code class="docutils literal notranslate"><span class="pre">df.job_type</span></code> and the amount is
+the quantity for the generated workorder. The amount can be omitted for
+<code class="docutils literal notranslate"><span class="pre">MilkCreature</span></code> and <code class="docutils literal notranslate"><span class="pre">ShearCreature</span></code> jobs, and <code class="docutils literal notranslate"><span class="pre">workorder</span></code> will scan
+your pets for milkable or shearable creatures and fill the correct number
+in. Note that this syntax cannot specify the material of the item produced
+by the job. If you need more specificity, you can describe the job in JSON
+format (see the next two command forms).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">&lt;json&gt;</span></code></dt><dd><p>Create a workorder whose properties are specified in the given JSON. See
+below for examples and the complete format specification.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">--file</span> <span class="pre">&lt;filename&gt;</span></code></dt><dd><p>Loads the json representation of a workorder from the specified file in
+<code class="docutils literal notranslate"><span class="pre">dfhack-config/workorder/</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">MakeCharcoal</span> <span class="pre">100</span></code></dt><dd><p>Enqueue a workorder to make 100 bars of charcoal.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">MakeTable</span> <span class="pre">10</span></code></dt><dd><p>Enqueue a workorder to make 10 tables of unspecified material. The material
+will be determined by which workshop ends up picking up the job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--name</span> <span class="pre">autoShearCreature</span> <span class="pre">--time</span> <span class="pre">14</span> <span class="pre">--timeUnits</span> <span class="pre">days</span> <span class="pre">--command</span> <span class="pre">[</span> <span class="pre">workorder</span> <span class="pre">ShearCreature</span> <span class="pre">]</span></code></dt><dd><p>Automatically shear any pets that are ready to be sheared.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--name</span> <span class="pre">autoMilkCreature</span> <span class="pre">--time</span> <span class="pre">14</span> <span class="pre">--timeUnits</span> <span class="pre">days</span> <span class="pre">--command</span> <span class="pre">[</span> <span class="pre">workorder</span> <span class="pre">&quot;{\&quot;job\&quot;:\&quot;MilkCreature\&quot;,\&quot;item_conditions\&quot;:[{\&quot;condition\&quot;:\&quot;AtLeast\&quot;,\&quot;value\&quot;:5,\&quot;flags\&quot;:[\&quot;empty\&quot;],\&quot;item_type\&quot;:\&quot;BUCKET\&quot;}]}&quot;</span> <span class="pre">]</span></code></dt><dd><p>Automatically milk any pets that are ready to be milked (but only if there
+are at least 5 empty buckets available to receive the milk).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workorder</span> <span class="pre">&quot;{\&quot;job\&quot;:\&quot;EncrustWithGems\&quot;,\&quot;item_category\&quot;:[\&quot;finished_goods\&quot;],\&quot;amount_total\&quot;:5}&quot;</span></code></dt><dd><p>Add an order to <code class="docutils literal notranslate"><span class="pre">EncrustWithGems</span></code> five <code class="docutils literal notranslate"><span class="pre">finished_goods</span></code> using any
+material (since a material is not specified).</p>
+</dd>
+</dl>
+</section>
+<section id="json-string-specification">
+<h2>JSON string specification<a class="headerlink" href="#json-string-specification" title="Permalink to this heading">¶</a></h2>
+<p>The JSON representation of a workorder must be a valid Lua string literal (note
+usage of <kbd class="kbd docutils literal notranslate">\</kbd> in the JSON examples above). You can export existing manager
+orders with the <a class="reference internal" href="orders.html#orders"><span class="std std-ref">orders</span></a> command and look at the created <code class="docutils literal notranslate"><span class="pre">.json</span></code> file in
+<code class="docutils literal notranslate"><span class="pre">dfhack-config/orders</span></code> to see how a particular order can be represented.</p>
+<p>Note that, unlike <a class="reference internal" href="orders.html#orders"><span class="std std-ref">orders</span></a>, <code class="docutils literal notranslate"><span class="pre">workorder</span></code> is meant for dynamically creating new
+orders, so even if fields like <code class="docutils literal notranslate"><span class="pre">amount_left</span></code>, <code class="docutils literal notranslate"><span class="pre">is_active</span></code> or
+<code class="docutils literal notranslate"><span class="pre">is_validated</span></code> are specified in the JSON, they will be ignored in the
+generated orders.</p>
+<p>Also:</p>
+<ul class="simple">
+<li><p>You only need to fill in <code class="docutils literal notranslate"><span class="pre">id</span></code> if it is used for order conditions</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">frequency</span></code> is unspecified, it defaults to <code class="docutils literal notranslate"><span class="pre">OneTime</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">amount_total</span></code> field can be missing (only valid for <code class="docutils literal notranslate"><span class="pre">MilkCreature</span></code> or
+<code class="docutils literal notranslate"><span class="pre">ShearCreature</span></code> jobs) or it can be raw Lua code called as
+<code class="docutils literal notranslate"><span class="pre">load(code)(order,</span> <span class="pre">orders)</span></code> that must return an integer.</p></li>
+</ul>
+<p>A custom field <code class="docutils literal notranslate"><span class="pre">__reduce_amount</span></code> can be set if existing open orders should be
+taken into account, reducing the new order’s <code class="docutils literal notranslate"><span class="pre">total_amount</span></code> (possibly all the
+way to <code class="docutils literal notranslate"><span class="pre">0</span></code>). An empty <code class="docutils literal notranslate"><span class="pre">amount_total</span></code> implies <code class="docutils literal notranslate"><span class="pre">&quot;__reduce_amount&quot;:</span> <span class="pre">true</span></code>.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>hotkeys &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="infiniteSky" href="infiniteSky.html" />
+    <link rel="prev" title="hotkey-notes" href="hotkey-notes.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="hotkey-notes.html" title="previous chapter">hotkey-notes</a></li>
+      <li>Next: <a href="infiniteSky.html" title="next chapter">infiniteSky</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">hotkeys</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#menu-overlay-widget">Menu overlay widget</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="hotkeys">
+<span id="id1"></span><h1>hotkeys<a class="headerlink" href="#hotkeys" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../dfhack-tag-index.html"><span class="std std-ref">dfhack</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">hotkeys</span></code></p>
+<p><span>Show all DFHack keybindings for the current context.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Ctrl</span><span class="kbd">Shift</span><span class="kbd">C</span></p>
+</aside>
+<p>The command opens an in-game screen showing which DFHack keybindings are active
+in the current context. See also <a class="reference internal" href="hotkey-notes.html#hotkey-notes"><span class="std std-ref">hotkey-notes</span></a>.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">hotkeys</span></code></dt><dd><p>Show the list of keybindings for the current context in an in-game menu.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hotkeys</span> <span class="pre">list</span></code></dt><dd><p>List the keybindings to the console.</p>
+</dd>
+</dl>
+</section>
+<section id="menu-overlay-widget">
+<h2>Menu overlay widget<a class="headerlink" href="#menu-overlay-widget" title="Permalink to this heading">¶</a></h2>
+<p>The in-game hotkeys menu is registered with the <a class="reference internal" href="overlay.html#overlay"><span class="std std-ref">overlay</span></a> framework and can be
+enabled as a hotspot in the upper-left corner of the screen. You can bring up
+the menu by hovering the mouse cursor over the hotspot and can select a command
+to run from the list by clicking on it with the mouse or by using the keyboard
+to select a command with the arrow keys and hitting <kbd class="kbd docutils literal notranslate">Enter</kbd>.</p>
+<p>A short description of the command will appear in a nearby textbox. If you’d
+like to see the full help text for the command or edit the command before
+running, you can open it for editing in <a class="reference internal" href="gui/launcher.html#gui-launcher"><span class="std std-ref">gui/launcher</span></a> by right clicking on the
+command, left clicking on the arrow to the left of the command, or by pressing
+the right arrow key while the command is selected.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

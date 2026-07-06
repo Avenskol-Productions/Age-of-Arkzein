@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>devel/luacov &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="devel/modstate-monitor" href="modstate-monitor.html" />
+    <link rel="prev" title="devel/lua-example" href="lua-example.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="lua-example.html" title="previous chapter">devel/lua-example</a></li>
+      <li>Next: <a href="modstate-monitor.html" title="next chapter">devel/modstate-monitor</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">devel/luacov</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="devel-luacov">
+<span id="id1"></span><h1>devel/luacov<a class="headerlink" href="#devel-luacov" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dev-tag-index.html"><span class="std std-ref">dev</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">devel/luacov</span></code></p>
+<p><span>Lua script coverage report generator.</span></p>
+</aside>
+<p>This script generates a coverage report from collected statistics. By default it
+reports on every Lua file in all of DFHack. To filter filenames, specify one or
+more Lua patterns matching files or directories to be included. Alternately, you
+can configure reporting parameters in the .luacov file in your DF directory. See
+<a class="reference external" href="https://keplerproject.github.io/luacov/doc/modules/luacov.defaults.html">https://keplerproject.github.io/luacov/doc/modules/luacov.defaults.html</a> for
+details.</p>
+<p>Statistics are cumulative across reports. That is, if you run a report, run a
+lua script, and then run another report, the report will include all activity
+from the first report plus the recently run lua script. Restarting DFHack will
+clear the statistics. You can also clear statistics after running a report by
+passing the –clear flag to this script.</p>
+<p>Note that the coverage report will be empty unless you have started DFHack with
+the “DFHACK_ENABLE_LUACOV=1” environment variable defined, which enables the
+coverage monitoring.</p>
+<p>Also note that enabling both coverage monitoring and lua profiling via the
+“profiler” module can produce strange results. Their interceptor hooks override
+each other. Usage of the “kill-lua” command will likewise override the luacov
+interceptor hook and may prevent coverage statistics from being collected.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>luacov [options] [pattern...]
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">devel/luacov</span></code></dt><dd><p>Report on all DFHack lua scripts.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">devel/luacov</span> <span class="pre">-c</span> <span class="pre">quickfort</span></code></dt><dd><p>Report only on quickfort source files and then clear the stats. This is
+useful to run between test runs to see the coverage of your test changes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">devel/luacov</span> <span class="pre">quickfort</span> <span class="pre">hack/lua</span></code></dt><dd><p>Report only on quickfort and DFHack library lua source files.</p>
+</dd>
+</dl>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--clear</span></code></dt><dd><p>Remove accumulated metrics after generating the report, ensuring the next
+report starts from a clean slate.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>diggingInvaders &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="disable" href="disable.html" />
+    <link rel="prev" title="digFlood" href="digFlood.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="digFlood.html" title="previous chapter">digFlood</a></li>
+      <li>Next: <a href="disable.html" title="next chapter">disable</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">diggingInvaders</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="digginginvaders">
+<span id="id1"></span><h1>diggingInvaders<a class="headerlink" href="#digginginvaders" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../gameplay-tag-index.html"><span class="std std-ref">gameplay</span></a><span> | </span><a class="reference internal" href="../../military-tag-index.html"><span class="std std-ref">military</span></a><span> | </span><a class="reference internal" href="../../units-tag-index.html"><span class="std std-ref">units</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span></code></p>
+<p><span>Invaders dig and destroy to get to your dwarves.</span></p>
+</aside>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">diggingInvaders</span></code></dt><dd><p>Enable the plugin.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">add</span> <span class="pre">&lt;race&gt;</span></code></dt><dd><p>Register the specified race as a digging invader.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">remove</span> <span class="pre">&lt;race&gt;</span></code></dt><dd><p>Unregisters the specified race as a digging invader.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">now</span></code></dt><dd><p>Makes invaders try to dig now (if the plugin is enabled).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">clear</span></code></dt><dd><p>Clears the registry of digging invader races.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">edgesPerTick</span> <span class="pre">&lt;n&gt;</span></code></dt><dd><p>Makes the pathfinding algorithm work on at most n edges per tick. Set to 0
+or lower to make it unlimited.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">setCost</span> <span class="pre">&lt;race&gt;</span> <span class="pre">&lt;action&gt;</span> <span class="pre">&lt;n&gt;</span></code></dt><dd><p>Set the pathing cost per tile for a particular action. This determines what
+invaders consider to be the shortest path to their target.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">setDelay</span> <span class="pre">&lt;race&gt;</span> <span class="pre">&lt;action&gt;</span> <span class="pre">&lt;n&gt;</span></code></dt><dd><p>Set the time cost (in ticks) for performing a particular action. This
+determines how long it takes for invaders to get to their target.</p>
+</dd>
+</dl>
+<p>Note that the race is case-sensitive. You can get a list of races for your world
+with this command:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>devel/query --table df.global.world.raws.creatures.all --search creature_id --maxdepth 1 --maxlength 5000
+</pre></div>
+</div>
+<p>but in general, the race is what you’d expect, just capitalized (e.g. <code class="docutils literal notranslate"><span class="pre">GOBLIN</span></code>
+or <code class="docutils literal notranslate"><span class="pre">ELF</span></code>).</p>
+<p>Actions:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">walk</span></code></dt><dd><p>Default cost: 1, default delay: 0. This is the base cost for the pathing
+algorithm.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">destroyBuilding</span></code></dt><dd><p>Default cost: 2, default delay: 1,000,</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dig</span></code></dt><dd><p>Default cost: 10,000, default delay: 1,000. This is for digging soil or
+natural stone.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">destroyRoughConstruction</span></code></dt><dd><p>Default cost: 1,000, default delay: 1,000. This is for destroying
+constructions made from boulders.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">destroySmoothConstruction</span></code></dt><dd><p>Default cost: 100, default delay: 100. This is for destroying constructions
+made from blocks or bars.</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">diggingInvaders</span> <span class="pre">add</span> <span class="pre">GOBLIN</span></code></dt><dd><p>Registers members of the GOBLIN race as a digging invader.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>sort &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="source" href="source.html" />
+    <link rel="prev" title="siren" href="siren.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="siren.html" title="previous chapter">siren</a></li>
+      <li>Next: <a href="source.html" title="next chapter">source</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">sort</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="sort">
+<span id="id1"></span><h1>sort<a class="headerlink" href="#sort" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../interface-tag-index.html"><span class="std std-ref">interface</span></a></p>
+<p><span>Sort lists shown in the DF interface.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">sort-items</span></code></p>
+<p><span>Sort the visible item list.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">sort-units</span></code></p>
+<p><span>Sort the visible unit list.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">Shift</span><span class="kbd">N</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;sort-units</span> <span class="pre">name&quot;</span> <span class="pre">&quot;sort-items</span> <span class="pre">description&quot;</span></code></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">Shift</span><span class="kbd">R</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;sort-units</span> <span class="pre">arrival&quot;</span></code></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">Shift</span><span class="kbd">T</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;sort-units</span> <span class="pre">profession&quot;</span> <span class="pre">&quot;sort-items</span> <span class="pre">type</span> <span class="pre">material&quot;</span></code></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">Shift</span><span class="kbd">Q</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;sort-units</span> <span class="pre">squad_position&quot;</span> <span class="pre">&quot;sort-items</span> <span class="pre">quality&quot;</span></code></p>
+</aside>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>sort-items &lt;property&gt; [&lt;property&gt; ...]
+sort-units &lt;property&gt; [&lt;property&gt; ...]
+</pre></div>
+</div>
+<p>Both commands sort the visible list using the given sequence of comparisons.
+Each property can be prefixed with a <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> character to indicate
+whether elements that don’t have the given property defined go first or last
+(respectively) in the sorted list.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sort-items</span> <span class="pre">material</span> <span class="pre">type</span> <span class="pre">quality</span></code></dt><dd><p>Sort a list of items by material, then by type, then by quality</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sort-units</span> <span class="pre">profession</span> <span class="pre">name</span></code></dt><dd><p>Sort a list of units by profession, then by name</p>
+</dd>
+</dl>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h2>
+<p>Items can be sorted by the following properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_quality</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quality</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">improvement</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wear</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">material</span></code></p></li>
+</ul>
+<p>Units can be sorted by the following properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">age</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arrival</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">noble</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">profession</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">profession_class</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">race</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">squad</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">squad_position</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">happiness</span></code></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>gui/launcher &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="gui/liquids" href="liquids.html" />
+    <link rel="prev" title="gui/kitchen-info" href="kitchen-info.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="kitchen-info.html" title="previous chapter">gui/kitchen-info</a></li>
+      <li>Next: <a href="liquids.html" title="next chapter">gui/liquids</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">gui/launcher</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#editing-and-running-commands">Editing and running commands</a></li>
+<li><a class="reference internal" href="#autocomplete">Autocomplete</a></li>
+<li><a class="reference internal" href="#context-sensitive-help">Context-sensitive help</a></li>
+<li><a class="reference internal" href="#command-history">Command history</a></li>
+<li><a class="reference internal" href="#dev-mode">Dev mode</a></li>
+<li><a class="reference internal" href="#autocomplete-tab-speed">Autocomplete tab speed</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-launcher">
+<span id="id1"></span><h1>gui/launcher<a class="headerlink" href="#gui-launcher" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dfhack-tag-index.html"><span class="std std-ref">dfhack</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">gui/launcher</span></code></p>
+<p><span>In-game DFHack command launcher with integrated help.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">`</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Ctrl</span><span class="kbd">Shift</span><span class="kbd">D</span></p>
+</aside>
+<p>This tool is the primary GUI interface for running DFHack commands. You can open
+it from any screen with the ` hotkey. Tap ` again (or hit <kbd class="kbd docutils literal notranslate">Esc</kbd>) to
+close. Users with keyboard layouts that make the ` key difficult (or
+impossible) to press can use the alternate hotkey of
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">D</kbd>.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>gui/launcher [initial commandline]
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gui/launcher</span></code></dt><dd><p>Open the launcher dialog with a blank initial commandline.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gui/launcher</span> <span class="pre">prospect</span> <span class="pre">--show</span> <span class="pre">ores,veins</span></code></dt><dd><p>Open the launcher dialog with the edit area pre-populated with the given
+command, ready for modification or running. Tools related to <code class="docutils literal notranslate"><span class="pre">prospect</span></code>
+will appear in the autocomplete list, and help text for <code class="docutils literal notranslate"><span class="pre">prospect</span></code> will be
+displayed in the help area.</p>
+</dd>
+</dl>
+</section>
+<section id="editing-and-running-commands">
+<h2>Editing and running commands<a class="headerlink" href="#editing-and-running-commands" title="Permalink to this heading">¶</a></h2>
+<p>Enter the command you want to run by typing its name. If you want to start over,
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">C</kbd> will clear the line. When you are happy with the command,
+hit <kbd class="kbd docutils literal notranslate">Enter</kbd> or click on the <code class="docutils literal notranslate"><span class="pre">run</span></code> button to run it. Any output from the
+command will appear in the help area. If you want to run the command but close
+the dialog immediately so you can get back to the game, use
+<kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">Enter</kbd> or hold down the <kbd class="kbd docutils literal notranslate">Shift</kbd> key and click on the
+<code class="docutils literal notranslate"><span class="pre">run</span></code> button instead. The dialog also closes automatically if you run a
+command that brings up a new GUI screen. In any case, the command output will
+also be written to the DFHack terminal console if you need to find it later.</p>
+<p>If your keyboard layout makes any key impossible to type (such as <kbd class="kbd docutils literal notranslate">[</kbd> and
+<kbd class="kbd docutils literal notranslate">]</kbd> on German QWERTZ keyboards), use <kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">K</kbd> to
+bring up the on-screen keyboard. You can “type” the characters you need by
+clicking on the character with the mouse.</p>
+</section>
+<section id="autocomplete">
+<h2>Autocomplete<a class="headerlink" href="#autocomplete" title="Permalink to this heading">¶</a></h2>
+<p>As you type, autocomplete options for DFHack commands appear in the right
+column. If the first word of what you’ve typed matches a valid command, then the
+autocomplete options will also include commands that have similar functionality
+to the one that you’ve named. Click on an autocomplete list option to select it
+or cycle through them with <kbd class="kbd docutils literal notranslate">Tab</kbd> and <kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">Tab</kbd>.</p>
+</section>
+<section id="context-sensitive-help">
+<h2>Context-sensitive help<a class="headerlink" href="#context-sensitive-help" title="Permalink to this heading">¶</a></h2>
+<p>When you start <code class="docutils literal notranslate"><span class="pre">gui/launcher</span></code> without parameters, it shows some useful
+information in the help area about how to get started with browsing DFHack tools
+by their category <a class="reference internal" href="../tags.html#tags"><span class="std std-ref">tags</span></a>.</p>
+<p>Once you have typed (or autocompleted) a word that matches a valid command, the
+help area shows the help for that command, including usage instructions and
+examples. You can scroll the help text by half-pages by clicking on the
+scrollbar or with <kbd class="kbd docutils literal notranslate">PgUp</kbd> and <kbd class="kbd docutils literal notranslate">PgDn</kbd>. You can also scroll line by line
+with <kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">Up</kbd> and <kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">Down</kbd>, or by clicking on the
+scrollbar arrows.</p>
+</section>
+<section id="command-history">
+<h2>Command history<a class="headerlink" href="#command-history" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gui/launcher</span></code> keeps a history of commands you have run to let you quickly run
+those commands again. You can scroll through your command history with the
+<kbd class="kbd docutils literal notranslate">Up</kbd> and <kbd class="kbd docutils literal notranslate">Down</kbd> cursor keys, or you can search your history for
+something specific with the <kbd class="kbd docutils literal notranslate">Alt</kbd><kbd class="kbd docutils literal notranslate">S</kbd> hotkey. When you hit
+<kbd class="kbd docutils literal notranslate">Alt</kbd><kbd class="kbd docutils literal notranslate">S</kbd>, start typing to search your history for a match. To find the
+next match for what you’ve already typed, hit <kbd class="kbd docutils literal notranslate">Alt</kbd><kbd class="kbd docutils literal notranslate">S</kbd> again. You can
+run the matched command immediately with <kbd class="kbd docutils literal notranslate">Enter</kbd> (or
+<kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">Enter</kbd>), or hit <kbd class="kbd docutils literal notranslate">Esc</kbd> to edit the command before running
+it.</p>
+</section>
+<section id="dev-mode">
+<h2>Dev mode<a class="headerlink" href="#dev-mode" title="Permalink to this heading">¶</a></h2>
+<p>By default, commands intended for developers and modders are filtered out of the
+autocomplete list. You can toggle this filtering by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">D</kbd>
+at any time.</p>
+</section>
+<section id="autocomplete-tab-speed">
+<h2>Autocomplete tab speed<a class="headerlink" href="#autocomplete-tab-speed" title="Permalink to this heading">¶</a></h2>
+<p>By default in DF, holding down the <kbd class="kbd docutils literal notranslate">Tab</kbd> key is the same as just pressing
+it once. This makes scanning quickly through the autocomplete list with the
+keyboard quite slow. To speed things up, you can go to the DF keybinding
+configuration screen (hit <kbd class="kbd docutils literal notranslate">Esc</kbd> from the main map and select
+<code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Bindings</span></code> from the menu), select <code class="docutils literal notranslate"><span class="pre">General</span></code>, and then <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">tab</span> <span class="pre">or</span>
+<span class="pre">highlight</span> <span class="pre">selection</span></code>. If you change the configuration for that item to
+<code class="docutils literal notranslate"><span class="pre">Immediate</span> <span class="pre">repeat</span></code>, then holding <kbd class="kbd docutils literal notranslate">Tab</kbd> will allow you to scan through
+the autocomplete list more quickly. Be sure to also change the configuration for
+the next item, <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">tab</span> <span class="pre">or</span> <span class="pre">highlight</span> <span class="pre">selection,</span> <span class="pre">secondary</span></code>, to also allow
+<kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">Tab</kbd> to work the same way.</p>
+<p>Back at the main Key Bindings screen, select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">exit</span></code> to get back to
+the game.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

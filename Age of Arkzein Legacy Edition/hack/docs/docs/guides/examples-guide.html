@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DFHack config file examples &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Quickfort blueprint library" href="quickfort-library-guide.html" />
+    <link rel="prev" title="DFHack modding guide" href="modding-guide.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">User guides</a><ul>
+      <li>Previous: <a href="modding-guide.html" title="previous chapter">DFHack modding guide</a></li>
+      <li>Next: <a href="quickfort-library-guide.html" title="next chapter">Quickfort blueprint library</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">DFHack config file examples</a><ul>
+<li><a class="reference internal" href="#the-init-subfolder">The <code class="docutils literal notranslate"><span class="pre">init/</span></code> subfolder</a><ul>
+<li><a class="reference internal" href="#onmapload-dreamfort-init">onMapLoad_dreamfort.init</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dfhack-config-file-examples">
+<span id="dfhack-examples-guide"></span><span id="config-examples-guide"></span><h1>DFHack config file examples<a class="headerlink" href="#dfhack-config-file-examples" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/examples">hack/examples</a> folder contains ready-to-use
+examples of various DFHack configuration files. You can use them by copying them
+to appropriate folders where DFHack and its plugins can find them (details
+below). You can use them unmodified, or you can customize them to better suit
+your preferences.</p>
+<section id="the-init-subfolder">
+<h2>The <code class="docutils literal notranslate"><span class="pre">init/</span></code> subfolder<a class="headerlink" href="#the-init-subfolder" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/examples/init">init/</a> subfolder contains useful DFHack
+<a class="reference internal" href="../Core.html#init-files"><span class="std std-ref">Init files</span></a> that you can copy into your <code class="file docutils literal notranslate"><span class="pre">dfhack-config/init</span></code> folder –
+the same directory as <code class="docutils literal notranslate"><span class="pre">dfhack.init</span></code>.</p>
+<section id="onmapload-dreamfort-init">
+<span id="id1"></span><h3><a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/examples/init/onMapLoad_dreamfort.init">onMapLoad_dreamfort.init</a><a class="headerlink" href="#onmapload-dreamfort-init" title="Permalink to this heading">¶</a></h3>
+<p>This is the config file that comes with the <a class="reference internal" href="quickfort-library-guide.html#dreamfort"><span class="std std-ref">Dreamfort</span></a> set of blueprints, but
+it is useful (and customizable) for any fort. It includes the following config:</p>
+<ul class="simple">
+<li><p>Calls <a class="reference internal" href="../tools/ban-cooking.html#ban-cooking"><span class="std std-ref">ban-cooking</span></a> for items that have important alternate uses and should
+not be cooked. This configuration is only set when a fortress is first
+started, so later manual changes will not be overridden.</p></li>
+<li><p>Automates calling of various fort maintenance scripts, like <a class="reference internal" href="../tools/cleanowned.html#cleanowned"><span class="std std-ref">cleanowned</span></a> and
+<a class="reference internal" href="../tools/fix/stuckdoors.html#fix-stuckdoors"><span class="std std-ref">fix/stuckdoors</span></a>.</p></li>
+<li><p>Keeps your manager orders intelligently ordered with <a class="reference internal" href="../tools/orders.html#orders"><span class="std std-ref">orders</span></a> <code class="docutils literal notranslate"><span class="pre">sort</span></code> so no
+orders block other orders from ever getting completed.</p></li>
+<li><p>Periodically enqueues orders to shear and milk shearable and milkable pets.</p></li>
+<li><p>Sets up <a class="reference internal" href="../tools/autofarm.html#autofarm"><span class="std std-ref">autofarm</span></a> to grow 30 units of every crop, except for pig tails, which
+is set to 150 units to support the textile industry.</p></li>
+<li><p>Sets up <a class="reference internal" href="../tools/seedwatch.html#seedwatch"><span class="std std-ref">seedwatch</span></a> to protect 30 of every type of seed.</p></li>
+<li><p>Configures <a class="reference internal" href="../tools/prioritize.html#prioritize"><span class="std std-ref">prioritize</span></a> to automatically boost the priority of important and
+time-sensitive tasks that could otherwise get ignored in busy forts, like
+hauling food, tanning hides, storing items in vehicles, pulling levers, and
+removing constructions.</p></li>
+<li><p>Optimizes <a class="reference internal" href="../tools/autobutcher.html#autobutcher"><span class="std std-ref">autobutcher</span></a> settings for raising geese, alpacas, sheep, llamas,
+and pigs. Adds sensible defaults for all other animals, including dogs and
+cats. There are instructions in the file for customizing the settings for
+other combinations of animals. These settings are also only set when a
+fortress is first started, so any later changes you make to autobutcher
+settings won’t be overridden.</p></li>
+<li><p>Enables <a class="reference internal" href="../tools/automelt.html#automelt"><span class="std std-ref">automelt</span></a>, <a class="reference internal" href="../tools/tailor.html#tailor"><span class="std std-ref">tailor</span></a>, <a class="reference internal" href="../tools/zone.html#zone"><span class="std std-ref">zone</span></a>, <a class="reference internal" href="../tools/nestboxes.html#nestboxes"><span class="std std-ref">nestboxes</span></a>, and <a class="reference internal" href="../tools/autonestbox.html#autonestbox"><span class="std std-ref">autonestbox</span></a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

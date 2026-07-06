@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>gui/workflow &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="gui/workorder-details" href="workorder-details.html" />
+    <link rel="prev" title="gui/unit-info-viewer" href="unit-info-viewer.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="unit-info-viewer.html" title="previous chapter">gui/unit-info-viewer</a></li>
+      <li>Next: <a href="workorder-details.html" title="next chapter">gui/workorder-details</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">gui/workflow</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-workflow">
+<span id="id1"></span><h1>gui/workflow<a class="headerlink" href="#gui-workflow" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../../auto-tag-index.html"><span class="std std-ref">auto</span></a><span> | </span><a class="reference internal" href="../../../jobs-tag-index.html"><span class="std std-ref">jobs</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">gui/workflow</span></code></p>
+<p><span>Manage automated item production rules.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">W</span><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode/QueryBuilding/Some/Workshop/Job</span></code></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">W</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;gui/workflow</span> <span class="pre">status&quot;</span></code><span> in </span><code class="docutils literal notranslate"><span class="pre">overallstatus</span></code></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">W</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;gui/workflow</span> <span class="pre">status&quot;</span></code><span> in </span><code class="docutils literal notranslate"><span class="pre">dfhack/lua/status_overlay</span></code></p>
+</aside>
+<p>This tool provides a simple interface to item production constraints managed by
+<a class="reference internal" href="../workflow.html#workflow"><span class="std std-ref">workflow</span></a>. When a workshop job is selected in <kbd class="kbd docutils literal notranslate">q</kbd> mode and this tool is
+invoked, it displays the constraints applicable to the current job and their
+current status. It also allows you to modify existing constraints or add new
+ones.</p>
+<img alt="../../../_images/workflow.png" src="../../../_images/workflow.png" />
+<p>A constraint is a target range to be compared against either the number of
+individual items or the number of item stacks. It also includes an item type
+and, optionally, a material. When the current stock count is below the lower
+bound of the range, the job is resumed; if it is above or equal to the top
+bound, it will be suspended. If there are multiple constraints, being out of the
+range of any constraint will cause the job to be suspended.</p>
+<p>Pressing <kbd class="kbd docutils literal notranslate">I</kbd> switches the current constraint between counting stacks and
+counting individual items. Pressing <kbd class="kbd docutils literal notranslate">R</kbd> lets you input the range directly,
+or <kbd class="kbd docutils literal notranslate">e</kbd>, <kbd class="kbd docutils literal notranslate">r</kbd>, <kbd class="kbd docutils literal notranslate">d</kbd>, <kbd class="kbd docutils literal notranslate">f</kbd> incrementally adjusts the bounds.</p>
+<p>Pressing <kbd class="kbd docutils literal notranslate">A</kbd> produces a list of possible outputs of this job as guessed by
+workflow, and lets you create a new constraint by choosing one as template. If
+you don’t see the choice you want in the list, it likely means you have to
+adjust the job material first using <a class="reference internal" href="../jobutils.html#job"><span class="std std-ref">job item-material</span></a> or
+<a class="reference internal" href="workshop-job.html#gui-workshop-job"><span class="std std-ref">gui/workshop-job</span></a>, as described in the <a class="reference internal" href="../workflow.html#workflow"><span class="std std-ref">workflow</span></a> documentation. In this
+manner, this feature can be used for troubleshooting jobs that don’t match the
+right constraints.</p>
+<img alt="../../../_images/workflow-new1.png" src="../../../_images/workflow-new1.png" />
+<p>If you select one of the outputs with <kbd class="kbd docutils literal notranslate">Enter</kbd>, the matching constraint is
+simply added to the list. If you use <kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">Enter</kbd>, the interface
+proceeds to the next dialog, which allows you to edit the suggested constraint
+parameters and set the item count range.</p>
+<img alt="../../../_images/workflow-new2.png" src="../../../_images/workflow-new2.png" />
+<p>Pressing <kbd class="kbd docutils literal notranslate">S</kbd> (or by using the hotkey in the <kbd class="kbd docutils literal notranslate">z</kbd> stocks screen) opens
+the overall status screen where you can manage constraints for all jobs:</p>
+<img alt="../../../_images/workflow-status.png" src="../../../_images/workflow-status.png" />
+<p>This screen shows all currently existing workflow constraints, and allows
+monitoring and/or changing them from one screen.</p>
+<p>The color of the stock level number indicates how “healthy” the stock level is,
+based on current count and trend. Bright green is very good, green is good, red
+is bad, bright red is very bad.</p>
+<p>The limit number is also color-coded. Red means that there are currently no
+workshops producing that item (i.e. no jobs). If it’s yellow, that means the
+production has been delayed, possibly due to lack of input materials.</p>
+<p>The chart on the right is a plot of the last 14 days (28 half day plots) worth
+of stock history for the selected item, with the rightmost point representing
+the current stock value. The bright green dashed line is the target
+limit (maximum) and the dark green line is that minus the gap (minimum).</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">gui/workflow</span></code></dt><dd><p>View and manage constraints for the currently selected workshop job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gui/workflow</span> <span class="pre">status</span></code></dt><dd><p>View and manage constraints across all <a class="reference internal" href="../workflow.html#workflow"><span class="std std-ref">workflow</span></a> managed jobs.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>keybinding &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="kill-lua" href="kill-lua.html" />
+    <link rel="prev" title="jobutils" href="jobutils.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="jobutils.html" title="previous chapter">jobutils</a></li>
+      <li>Next: <a href="kill-lua.html" title="next chapter">kill-lua</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">keybinding</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="keybinding">
+<span id="id1"></span><h1>keybinding<a class="headerlink" href="#keybinding" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../dfhack-tag-index.html"><span class="std std-ref">dfhack</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">keybinding</span></code></p>
+<p><span>Create hotkeys that will run DFHack commands.</span></p>
+</aside>
+<p>Like any other command, it can be used at any time from the console, but
+bindings are not remembered between runs of the game unless re-created in
+<code class="file docutils literal notranslate"><span class="pre">dfhack-config/init/dfhack.init</span></code>.</p>
+<p>Hotkeys can be any combinations of Ctrl/Alt/Shift with A-Z, 0-9, F1-F12, or `
+(the key below the <kbd class="kbd docutils literal notranslate">Esc</kbd> key on most keyboards).</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span></code></dt><dd><p>Show some useful information, including the current game context.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span> <span class="pre">list</span> <span class="pre">&lt;key&gt;</span></code></dt><dd><p>List bindings active for the key combination.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span> <span class="pre">clear</span> <span class="pre">&lt;key&gt;</span> <span class="pre">[&lt;key&gt;...]</span></code></dt><dd><p>Remove bindings for the specified keys.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span> <span class="pre">add</span> <span class="pre">&lt;key&gt;</span> <span class="pre">&quot;&lt;cmdline&gt;&quot;</span> <span class="pre">[&quot;&lt;cmdline&gt;&quot;</span> <span class="pre">...]</span></code></dt><dd><p>Add bindings for the specified key.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span> <span class="pre">set</span> <span class="pre">&lt;key&gt;</span> <span class="pre">&quot;&lt;cmdline&gt;&quot;</span> <span class="pre">[&quot;&lt;cmdline&gt;&quot;</span> <span class="pre">...]</span></code></dt><dd><p>Clear, and then add bindings for the specified key.</p>
+</dd>
+</dl>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> parameter above has the following <strong>case-sensitive</strong> syntax:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>[Ctrl-][Alt-][Shift-]KEY[@context[|context...]]
+</pre></div>
+</div>
+<p>where the <code class="docutils literal notranslate"><span class="pre">KEY</span></code> part can be any recognized key and <kbd class="kbd docutils literal notranslate">[</kbd><kbd class="kbd docutils literal notranslate">]</kbd> denote
+optional parts.</p>
+<p>When multiple commands are bound to the same key combination, DFHack selects
+the first applicable one. Later <code class="docutils literal notranslate"><span class="pre">add</span></code> commands, and earlier entries within one
+<code class="docutils literal notranslate"><span class="pre">add</span></code> command have priority. Commands that are not specifically intended for
+use as a hotkey are always considered applicable.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">context</span></code> part in the key specifier above can be used to explicitly
+restrict the UI state where the binding would be applicable.</p>
+<p>Only bindings with a <code class="docutils literal notranslate"><span class="pre">context</span></code> tag that either matches the current context
+fully, or is a prefix ending at a <code class="docutils literal notranslate"><span class="pre">/</span></code> boundary would be considered for
+execution, i.e. when in context <code class="docutils literal notranslate"><span class="pre">foo/bar/baz</span></code>, keybindings restricted to any
+of <code class="docutils literal notranslate"><span class="pre">&#64;foo/bar/baz</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;foo/bar</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;foo</span></code>, or none will be active.</p>
+<p>Multiple contexts can be specified by separating them with a pipe (<code class="docutils literal notranslate"><span class="pre">|</span></code>) - for
+example, <code class="docutils literal notranslate"><span class="pre">&#64;foo|bar|baz/foo</span></code> would match anything under <code class="docutils literal notranslate"><span class="pre">&#64;foo</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;bar</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">&#64;baz/foo</span></code>.</p>
+<p>Commands like <a class="reference internal" href="liquids.html#liquids"><span class="std std-ref">liquids</span></a> or <a class="reference internal" href="tiletypes.html#tiletypes"><span class="std std-ref">tiletypes</span></a> cannot be used as hotkeys since they
+require the console for interactive input.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span> <span class="pre">add</span> <span class="pre">Ctrl-Shift-C</span> <span class="pre">hotkeys</span></code></dt><dd><p>Bind Ctrl-Shift-C to run the <a class="reference internal" href="hotkeys.html#hotkeys"><span class="std std-ref">hotkeys</span></a> command on any screen at any time.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span> <span class="pre">add</span> <span class="pre">Alt-F&#64;dwarfmode</span> <span class="pre">gui/quickfort</span></code></dt><dd><p>Bind Alt-F to run <a class="reference internal" href="gui/quickfort.html#gui-quickfort"><span class="std std-ref">gui/quickfort</span></a>, but only when on a screen that shows the
+main map.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">keybinding</span> <span class="pre">add</span> <span class="pre">Ctrl-Shift-Z&#64;dwarfmode/Default</span> <span class="pre">&quot;stocks</span> <span class="pre">show&quot;</span></code></dt><dd><p>Bind Ctrl-Shift-Z to run <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">stocks show</span></a>, but only when on the main
+map in the default mode (that is, no special mode, like cursor look, is
+enabled).</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

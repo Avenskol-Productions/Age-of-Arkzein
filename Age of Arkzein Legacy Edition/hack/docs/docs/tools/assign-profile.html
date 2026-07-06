@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>assign-profile &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="assign-skills" href="assign-skills.html" />
+    <link rel="prev" title="assign-preferences" href="assign-preferences.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="assign-preferences.html" title="previous chapter">assign-preferences</a></li>
+      <li>Next: <a href="assign-skills.html" title="next chapter">assign-skills</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">assign-profile</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="assign-profile">
+<span id="id1"></span><h1>assign-profile<a class="headerlink" href="#assign-profile" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../units-tag-index.html"><span class="std std-ref">units</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">assign-profile</span></code></p>
+<p><span>Adjust characteristics of a unit according to saved profiles.</span></p>
+</aside>
+<p>This tool can load a profile stored in a JSON file and apply the
+characteristics to a unit.</p>
+<p>A profile can describe which attributes, skills, preferences, beliefs, goals,
+and facets a unit will have. The script relies on the presence of the other
+<code class="docutils literal notranslate"><span class="pre">assign-...</span></code> modules in this collection; please refer to the other modules’
+documentation for more information on the kinds of characteristics you can set.</p>
+<p>See the “hack/scripts/dwarf_profiles.json” file for examples of the json schema.
+Please make a new file with your own additions, though, since the example file
+will get overwritten when you upgrade DFHack.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-profile [--unit &lt;id&gt;] &lt;options&gt;
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>Loads and applies the profile called “DOCTOR” in the default json file,
+resetting the characteristics that are changed by the profile:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-profile --profile DOCTOR --reset PROFILE
+</pre></div>
+</div>
+</li>
+<li><p>Loads and applies a profile called “ARCHER” in a file you (the player) wrote.
+It keeps all the old characteristics except the attributes and the skills,
+which will be reset (and then, if the profile provides some attributes or
+skills values, those new values will be applied):</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-profile --file /dfhack-config/assign-profile/military_profiles.json --profile ARCHER --reset [ ATTRIBUTES SKILLS ]
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--unit</span> <span class="pre">&lt;id&gt;</span></code></dt><dd><p>The target unit ID. If not present, the currently selected unit will be the
+target.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--file</span> <span class="pre">&lt;filename&gt;</span></code></dt><dd><p>The json file containing the profile to apply. It’s a relative path,
+starting from the DF root directory and ending at the json file. It must
+begin with a slash. Default value: “/hack/scripts/dwarf_profiles.json”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--profile</span> <span class="pre">&lt;profile&gt;</span></code></dt><dd><p>The profile inside the json file to apply.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--reset</span> <span class="pre">[</span> <span class="pre">&lt;list</span> <span class="pre">of</span> <span class="pre">characteristics&gt;</span> <span class="pre">]</span></code></dt><dd><p>The characteristics to be reset/cleared. If not present, it will not clear
+or reset any characteristic, and it will simply add what is described in the
+profile. If it’s a valid list of characteristics, those characteristics will
+be reset, and then what is described in the profile will be applied. If set
+to the string <code class="docutils literal notranslate"><span class="pre">PROFILE</span></code>, it will reset only the characteristics directly
+modified by the profile (and then the new values described will be applied).
+If set to <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, it will reset EVERY characteristic and then it will apply
+the profile. Accepted values are: <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, <code class="docutils literal notranslate"><span class="pre">PROFILE</span></code>, <code class="docutils literal notranslate"><span class="pre">ATTRIBUTES</span></code>,
+<code class="docutils literal notranslate"><span class="pre">SKILLS</span></code>, <code class="docutils literal notranslate"><span class="pre">PREFERENCES</span></code>, <code class="docutils literal notranslate"><span class="pre">BELIEFS</span></code>, <code class="docutils literal notranslate"><span class="pre">GOALS</span></code>, and <code class="docutils literal notranslate"><span class="pre">FACETS</span></code>. There
+must be a space before and after each square bracket. If only one value is
+provided, the square brackets can be omitted.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

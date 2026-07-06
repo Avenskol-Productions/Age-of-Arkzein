@@ -1,0 +1,14 @@
+automelt
+========
+
+Tags: fort | productivity | items | stockpiles
+
+  Quickly designate items to be melted.
+
+When enabled, this plugin adds an option to the "q" menu for stockpiles. When the "automelt" option is selected for the stockpile, any items placed in the stockpile will automatically be designated to be melted.
+
+
+Usage
+-----
+
+   enable automelt

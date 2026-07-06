@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>autohauler &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="autolabor" href="autolabor.html" />
+    <link rel="prev" title="autogems" href="autogems.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="autogems.html" title="previous chapter">autogems</a></li>
+      <li>Next: <a href="autolabor.html" title="next chapter">autolabor</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">autohauler</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="autohauler">
+<span id="id1"></span><h1>autohauler<a class="headerlink" href="#autohauler" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../auto-tag-index.html"><span class="std std-ref">auto</span></a><span> | </span><a class="reference internal" href="../../labors-tag-index.html"><span class="std std-ref">labors</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">autohauler</span></code></p>
+<p><span>Automatically manage hauling labors.</span></p>
+</aside>
+<p>Similar to <a class="reference internal" href="autolabor.html#autolabor"><span class="std std-ref">autolabor</span></a>, but instead of managing all labors, autohauler only
+addresses hauling labors, leaving the assignment of skilled labors entirely up
+to you. You can use the in-game <a class="reference internal" href="manipulator.html#manipulator"><span class="std std-ref">manipulator</span></a> UI or an external tool like Dwarf
+Therapist to do so.</p>
+<p>Idle dwarves who are not on active military duty will be assigned the hauling
+labors; everyone else (including those currently hauling) will have the hauling
+labors removed. This is to encourage every dwarf to do their assigned skilled
+labors whenever possible, but resort to hauling when those jobs are not
+available. This also implies that the user will have a very tight skill
+assignment, with most skilled labors only being assigned to just a few dwarves
+and almost every non-military dwarf having at least one skilled labor assigned.</p>
+<p>Autohauler allows a skill to be used as a flag to exempt a dwarf from
+autohauler’s effects. By default, this is the unused ALCHEMIST labor, but it
+can be changed by the user.</p>
+<p>Autohauler uses DFHack’s <a class="reference internal" href="debug.html#debug"><span class="std std-ref">debug</span></a> functionality to display information about the changes it makes. The amount of
+information displayed can be controlled through appropriate use of the <code class="docutils literal notranslate"><span class="pre">debugfilter</span></code> command.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">autohauler</span></code></dt><dd><p>Start managing hauling labors. This is normally all you need to do.
+Autohauler works well on default settings.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">status</span></code></dt><dd><p>Show autohauler status and status of fort dwarves.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">&lt;labor&gt;</span> <span class="pre">haulers</span></code></dt><dd><p>Set whether a particular labor should be assigned to haulers.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">&lt;labor&gt;</span> <span class="pre">allow|forbid</span></code></dt><dd><p>Set whether a particular labor should mark a dwarf as exempt from hauling.
+By default, only the <code class="docutils literal notranslate"><span class="pre">ALCHEMIST</span></code> labor is set to <code class="docutils literal notranslate"><span class="pre">forbid</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">reset-all|&lt;labor&gt;</span> <span class="pre">reset</span></code></dt><dd><p>Reset a particular labor (or all labors) to their default
+haulers/allow/forbid state.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">list</span></code></dt><dd><p>Show the active configuration for all labors.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">frameskip</span> <span class="pre">&lt;number&gt;</span></code></dt><dd><p>Set the number of frames between runs of autohauler.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">HAUL_STONE</span> <span class="pre">haulers</span></code></dt><dd><p>Set stone hauling as a hauling labor (this is already the default).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">RECOVER_WOUNDED</span> <span class="pre">allow</span></code></dt><dd><p>Allow the “Recover wounded” labor to be manually assigned by the player. By
+default it is automatically given to haulers.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autohauler</span> <span class="pre">MINE</span> <span class="pre">forbid</span></code></dt><dd><p>Don’t assign hauling labors to dwarves with the Mining labor enabled.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

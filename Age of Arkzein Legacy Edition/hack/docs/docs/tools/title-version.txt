@@ -1,0 +1,12 @@
+title-version
+=============
+
+Tags: interface
+
+  Displays the DFHack version on DF's title screen.
+
+
+Usage
+-----
+
+   enable title-version

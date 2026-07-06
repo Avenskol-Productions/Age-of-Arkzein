@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>modtools/add-syndrome &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="modtools/anonymous-script" href="anonymous-script.html" />
+    <link rel="prev" title="gui/workshop-job" href="../gui/workshop-job.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="../gui/workshop-job.html" title="previous chapter">gui/workshop-job</a></li>
+      <li>Next: <a href="anonymous-script.html" title="next chapter">modtools/anonymous-script</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">modtools/add-syndrome</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="modtools-add-syndrome">
+<span id="id1"></span><h1>modtools/add-syndrome<a class="headerlink" href="#modtools-add-syndrome" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dev-tag-index.html"><span class="std std-ref">dev</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">modtools/add-syndrome</span></code></p>
+<p><span>Add and remove syndromes from units.</span></p>
+</aside>
+<p>This allows adding and removing syndromes from units.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>modtools/add-syndrome --target &lt;id&gt; --syndrome &lt;name&gt;|&lt;id&gt; [&lt;options&gt;]
+modtools/add-syndrome --target &lt;id&gt; --eraseClass &lt;class&gt;
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">modtools/add-syndrome</span> <span class="pre">--target</span> <span class="pre">2391</span> <span class="pre">--syndrome</span> <span class="pre">&quot;gila</span> <span class="pre">monster</span> <span class="pre">bite&quot;</span> <span class="pre">--eraseAll</span></code></dt><dd><p>Remove all instances of the “gila monster bite” syndrome from the specified
+unit.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">modtools/add-syndrome</span> <span class="pre">--target</span> <span class="pre">1231</span> <span class="pre">--syndrome</span> <span class="pre">14</span> <span class="pre">--resetPolicy</span> <span class="pre">DoNothing</span></code></dt><dd><p>Adds syndrome 14 to the specified unit, but only if that unit doesn’t
+already have the syndrome.</p>
+</dd>
+</dl>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--target</span> <span class="pre">&lt;id&gt;</span></code></dt><dd><p>The unit id of the target unit.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--syndrome</span> <span class="pre">&lt;name&gt;|&lt;id&gt;</span></code></dt><dd><p>The syndrome to work with.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--resetPolicy</span> <span class="pre">&lt;policy&gt;</span></code></dt><dd><p>Specify a policy of what to do if the unit already has an
+instance of the syndrome, one of: <code class="docutils literal notranslate"><span class="pre">NewInstance</span></code>, <code class="docutils literal notranslate"><span class="pre">DoNothing</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ResetDuration</span></code>, or <code class="docutils literal notranslate"><span class="pre">AddDuration</span></code>. By default, it will create a new
+instance of the syndrome, even if one already exists for the unit.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--erase</span></code></dt><dd><p>Instead of adding an instance of the syndrome, erase one.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--eraseAll</span></code></dt><dd><p>Erase every instance of the syndrome.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--eraseClass</span> <span class="pre">&lt;class</span> <span class="pre">id&gt;</span></code></dt><dd><p>Erase every instance of every syndrome with the given SYN_CLASS (an integer
+id).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--skipImmunities</span></code></dt><dd><p>Add the syndrome to the target even if it is immune to the syndrome.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

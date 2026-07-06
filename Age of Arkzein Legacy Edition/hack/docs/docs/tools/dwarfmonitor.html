@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>dwarfmonitor &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="dwarfvet" href="dwarfvet.html" />
+    <link rel="prev" title="dwarf-op" href="dwarf-op.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="dwarf-op.html" title="previous chapter">dwarf-op</a></li>
+      <li>Next: <a href="dwarfvet.html" title="next chapter">dwarfvet</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">dwarfmonitor</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#widget-configuration">Widget configuration</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dwarfmonitor">
+<span id="id1"></span><h1>dwarfmonitor<a class="headerlink" href="#dwarfmonitor" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../inspection-tag-index.html"><span class="std std-ref">inspection</span></a><span> | </span><a class="reference internal" href="../../jobs-tag-index.html"><span class="std std-ref">jobs</span></a><span> | </span><a class="reference internal" href="../../units-tag-index.html"><span class="std std-ref">units</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">dwarfmonitor</span></code></p>
+<p><span>Report on dwarf preferences and efficiency.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">M</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;dwarfmonitor</span> <span class="pre">prefs&quot;</span></code><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode/Default</span></code></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Ctrl</span><span class="kbd">F</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;dwarfmonitor</span> <span class="pre">stats&quot;</span></code><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode/Default</span></code></p>
+</aside>
+<p>It can also show heads-up display widgets with live fort statistics.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">dwarfmonitor</span></code></dt><dd><p>Enable tracking of job efficiency for display on the <code class="docutils literal notranslate"><span class="pre">dwarfmonitor</span> <span class="pre">stats</span></code>
+screen.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dwarfmonitor</span> <span class="pre">stats</span></code></dt><dd><p>Show statistics and efficiency summary.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dwarfmonitor</span> <span class="pre">prefs</span></code></dt><dd><p>Show a summary of preferences for dwarves in your fort.</p>
+</dd>
+</dl>
+</section>
+<section id="widget-configuration">
+<h2>Widget configuration<a class="headerlink" href="#widget-configuration" title="Permalink to this heading">¶</a></h2>
+<p>The following widgets are registered for display on the main fortress mode
+screen with the <a class="reference internal" href="overlay.html#overlay"><span class="std std-ref">overlay</span></a> framework:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dwarfmonitor.cursor</span></code></dt><dd><p>Show the current keyboard and mouse cursor positions.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dwarfmonitor.date</span></code></dt><dd><p>Show the in-game date.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dwarfmonitor.misery</span></code></dt><dd><p>Show overall happiness levels of all dwarves.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dwarfmonitor.weather</span></code></dt><dd><p>Show current weather (e.g. rain/snow).</p>
+</dd>
+</dl>
+<p>They can be enabled or disable via the <a class="reference internal" href="overlay.html#overlay"><span class="std std-ref">overlay</span></a> command.</p>
+<p>The <code class="file docutils literal notranslate"><span class="pre">dfhack-config/dwarfmonitor.json</span></code> file can be edited to change widget
+configuration with any of the following fields:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">date_format</span></code> (string): format for the <code class="docutils literal notranslate"><span class="pre">dwarfmonitor.date</span></code> widget:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code>: The current year</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code>: The current month, zero-padded if necessary</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: The current month, <em>not</em> zero-padded</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code>: The current day, zero-padded if necessary</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code>: The current day, <em>not</em> zero-padded</p></li>
+</ul>
+<p>The default date format is <code class="docutils literal notranslate"><span class="pre">Y-M-D</span></code>, per the <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601</a> standard.</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coords_type</span></code> (string): the coordinate type to show in the <code class="docutils literal notranslate"><span class="pre">dwarfmonitor.cursor</span></code> widget:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code> (the default): show all of the coordinate types listed here</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mouse_ui</span></code>: the X/Y UI coordinates of the tile the mouse is positioned over</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mouse_map</span></code>: the X/Y/Z map coordinates of the tile the mouse is
+positioned over (only if over the map)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keyboard_map</span></code>: the X/Y/Z map coordinates of the tile selected by the
+keyboard-controlled <code class="docutils literal notranslate"><span class="pre">X</span></code> cursor in DF (if active)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coords_short</span></code> (boolean, default: <code class="docutils literal notranslate"><span class="pre">false</span></code>): if <code class="docutils literal notranslate"><span class="pre">true</span></code>, hides explanatory
+text from the <code class="docutils literal notranslate"><span class="pre">dwarfmonitor.cursor</span></code> widget, and only shows coordinates as
+<code class="docutils literal notranslate"><span class="pre">(X,Y,Z)</span></code></p></li>
+</ul>
+<p>Example configuration file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;date_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m/d/y&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;coords_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mouse_map&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;coords_short&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

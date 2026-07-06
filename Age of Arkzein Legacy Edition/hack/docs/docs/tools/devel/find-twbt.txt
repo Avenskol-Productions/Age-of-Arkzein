@@ -1,0 +1,16 @@
+devel/find-twbt
+===============
+
+Tags: dev
+
+Command: "devel/find-twbt"
+
+  Display the memory offsets of some important TWBT functions.
+
+Finds some TWBT-related offsets - currently just "twbt_render_map".
+
+
+Usage
+-----
+
+   devel/find-twbt

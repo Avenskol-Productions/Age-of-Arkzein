@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>gui/siege-engine &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="gui/stamper" href="stamper.html" />
+    <link rel="prev" title="gui/settings-manager" href="settings-manager.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="settings-manager.html" title="previous chapter">gui/settings-manager</a></li>
+      <li>Next: <a href="stamper.html" title="next chapter">gui/stamper</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">gui/siege-engine</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#screenshot">Screenshot</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-siege-engine">
+<span id="id1"></span><h1>gui/siege-engine<a class="headerlink" href="#gui-siege-engine" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../../gameplay-tag-index.html"><span class="std std-ref">gameplay</span></a><span> | </span><a class="reference internal" href="../../../buildings-tag-index.html"><span class="std std-ref">buildings</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">gui/siege-engine</span></code></p>
+<p><span>Extend the functionality and usability of siege engines.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">A</span><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode/QueryBuilding/Some/SiegeEngine</span></code></p>
+</aside>
+<p>This tool is an in-game interface for <a class="reference internal" href="../siege-engine.html#siege-engine"><span class="std std-ref">siege-engine</span></a>, which allows you to link
+siege engines to stockpiles, restrict operation to certain dwarves, fire a
+greater variety of ammo, and aim in 3 dimensions.</p>
+<p>Run the UI after selecting a siege engine in <kbd class="kbd docutils literal notranslate">q</kbd> mode.</p>
+<p>The main UI mode displays the current target, selected ammo item type, linked
+stockpiles and the allowed operator skill range. The map tile color is changed
+to signify if it can be hit by the selected engine: green for fully reachable,
+blue for out of range, red for blocked, yellow for partially blocked.</p>
+<p>Pressing <kbd class="kbd docutils literal notranslate">r</kbd> changes into the target selection mode, which works by
+highlighting two points with <kbd class="kbd docutils literal notranslate">Enter</kbd> like all designations. When a target
+area is set, the engine projectiles are aimed at that area, or units within it
+(this doesn’t actually change the original aiming code, instead the projectile
+trajectory parameters are rewritten as soon as it appears).</p>
+<p>After setting the target in this way for one engine, you can ‘paste’ the same
+area into others just by pressing <kbd class="kbd docutils literal notranslate">p</kbd> in the main page of the UI. The area
+to paste is kept until you quit DF, or until you select another area manually.</p>
+<p>Pressing <kbd class="kbd docutils literal notranslate">t</kbd> switches to a mode for selecting a stockpile to take ammo
+from.</p>
+<p>Exiting from the siege engine UI via <kbd class="kbd docutils literal notranslate">Esc</kbd> reverts the view to the state
+prior to starting the script. <kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">Esc</kbd> retains the current
+viewport, and also exits from the <kbd class="kbd docutils literal notranslate">q</kbd> mode to the main map.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>gui/siege-engine
+</pre></div>
+</div>
+</section>
+<section id="screenshot">
+<h2>Screenshot<a class="headerlink" href="#screenshot" title="Permalink to this heading">¶</a></h2>
+<img alt="../../../_images/siege-engine.png" src="../../../_images/siege-engine.png" />
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

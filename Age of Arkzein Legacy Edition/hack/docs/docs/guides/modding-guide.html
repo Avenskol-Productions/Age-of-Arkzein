@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DFHack modding guide &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DFHack config file examples" href="examples-guide.html" />
+    <link rel="prev" title="User guides" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">User guides</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">User guides</a></li>
+      <li>Next: <a href="examples-guide.html" title="next chapter">DFHack config file examples</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">DFHack modding guide</a><ul>
+<li><a class="reference internal" href="#what-is-the-difference-between-a-script-and-a-mod">What is the difference between a script and a mod?</a></li>
+<li><a class="reference internal" href="#why-not-just-mod-the-raws">Why not just mod the raws?</a></li>
+<li><a class="reference internal" href="#a-mod-maker-s-development-environment">A mod-maker’s development environment</a></li>
+<li><a class="reference internal" href="#the-structure-of-the-game">The structure of the game</a></li>
+<li><a class="reference internal" href="#your-first-script">Your first script</a></li>
+<li><a class="reference internal" href="#exploring-df-structures">Exploring DF structures</a></li>
+<li><a class="reference internal" href="#detecting-triggers">Detecting triggers</a></li>
+<li><a class="reference internal" href="#custom-raw-tokens">Custom raw tokens</a></li>
+<li><a class="reference internal" href="#the-structure-of-a-full-mod">The structure of a full mod</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dfhack-modding-guide">
+<span id="modding-guide"></span><h1>DFHack modding guide<a class="headerlink" href="#dfhack-modding-guide" title="Permalink to this heading">¶</a></h1>
+<section id="what-is-the-difference-between-a-script-and-a-mod">
+<h2>What is the difference between a script and a mod?<a class="headerlink" href="#what-is-the-difference-between-a-script-and-a-mod" title="Permalink to this heading">¶</a></h2>
+<p>A script is a single file that can be run as a command in DFHack, like something
+that modifies or displays game data on request. A mod is something you install
+to get persistent behavioural changes in the game and/or add new content. Mods
+can contain and use scripts in addition to (or instead of) modifications to the
+DF game raws.</p>
+<p>DFHack scripts are written in Lua. If you don’t already know Lua, there’s a
+great primer at <a class="reference external" href="https://www.lua.org/pil/contents.html">lua.org</a>.</p>
+</section>
+<section id="why-not-just-mod-the-raws">
+<h2>Why not just mod the raws?<a class="headerlink" href="#why-not-just-mod-the-raws" title="Permalink to this heading">¶</a></h2>
+<p>It depends on what you want to do. Some mods <em>are</em> better to do in just the
+raws. You don’t need DFHack to add a new race or modify attributes, for example.
+However, DFHack scripts can do many things that you just can’t do in the raws,
+like make a creature that trails smoke. Some things <em>could</em> be done in the raws,
+but writing a script is less hacky, easier to maintain, easier to extend, and is
+not prone to side-effects. A great example is adding a syndrome when a reaction
+is performed. If done in the raws, you have to create an exploding boulder to
+apply the syndrome. DFHack scripts can add the syndrome directly and with much
+more flexibility. In the end, complex mods will likely require a mix of raw
+modding and DFHack scripting.</p>
+</section>
+<section id="a-mod-maker-s-development-environment">
+<h2>A mod-maker’s development environment<a class="headerlink" href="#a-mod-maker-s-development-environment" title="Permalink to this heading">¶</a></h2>
+<p>While you’re writing your mod, you need a place to store your in-development
+scripts that will:</p>
+<ul class="simple">
+<li><p>be directly runnable by DFHack</p></li>
+<li><p>not get lost when you upgrade DFHack</p></li>
+</ul>
+<p>The recommended approach is to create a directory somewhere outside of your DF
+installation (let’s call it “/path/to/own-scripts”) and do all your script
+development in there.</p>
+<p>Inside your DF installation folder, there is a file named
+<code class="file docutils literal notranslate"><span class="pre">dfhack-config/script-paths.txt</span></code>. If you add a line like this to that
+file:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="o">+/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">own</span><span class="o">-</span><span class="n">scripts</span>
+</pre></div>
+</div>
+<p>Then that directory will be searched when you run DFHack commands from inside
+the game. The <code class="docutils literal notranslate"><span class="pre">+</span></code> at the front of the path means to search that directory
+first, before any other script directory (like <code class="file docutils literal notranslate"><span class="pre">hack/scripts</span></code> or
+<code class="file docutils literal notranslate"><span class="pre">raw/scripts</span></code>). That way, your latest changes will always be used instead
+of older copies that you may have installed in a DF directory.</p>
+<p>For scripts with the same name, the <a class="reference internal" href="../Core.html#script-paths"><span class="std std-ref">order of precedence</span></a> will
+be:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">own-scripts/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data/save/*/raw/scripts/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raw/scripts/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hack/scripts/</span></code></p></li>
+</ol>
+</section>
+<section id="the-structure-of-the-game">
+<h2>The structure of the game<a class="headerlink" href="#the-structure-of-the-game" title="Permalink to this heading">¶</a></h2>
+<p>“The game” is in the global variable <a class="reference internal" href="../dev/Lua%20API.html#lua-df"><span class="std std-ref">df</span></a>. The game’s memory can be
+found in <code class="docutils literal notranslate"><span class="pre">df.global</span></code>, containing things like the list of all items, whether to
+reindex pathfinding, et cetera. Also relevant to us in <code class="docutils literal notranslate"><span class="pre">df</span></code> are the various
+types found in the game, e.g. <code class="docutils literal notranslate"><span class="pre">df.pronoun_type</span></code> which we will be using in this
+guide. We’ll explore more of the game structures below.</p>
+</section>
+<section id="your-first-script">
+<h2>Your first script<a class="headerlink" href="#your-first-script" title="Permalink to this heading">¶</a></h2>
+<p>So! It’s time to write your first script. This section will walk you through how
+to make a script that will get the pronoun type of the currently selected unit.</p>
+<p>First line, we get the unit:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">dfhack</span><span class="p">.</span><span class="n">gui</span><span class="p">.</span><span class="n">getSelectedUnit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If no unit is selected, an error message will be printed (which can be silenced
+by passing <code class="docutils literal notranslate"><span class="pre">true</span></code> to <code class="docutils literal notranslate"><span class="pre">getSelectedUnit</span></code>) and <code class="docutils literal notranslate"><span class="pre">unit</span></code> will be <code class="docutils literal notranslate"><span class="pre">nil</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">unit</span></code> is <code class="docutils literal notranslate"><span class="pre">nil</span></code>, we don’t want the script to run anymore:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span> <span class="ow">not</span> <span class="n">unit</span> <span class="kr">then</span>
+    <span class="kr">return</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Now, the field <code class="docutils literal notranslate"><span class="pre">sex</span></code> in a unit is an integer, but each integer corresponds to
+a string value (“it”, “she”, or “he”). We get this value by indexing the
+bidirectional map <code class="docutils literal notranslate"><span class="pre">df.pronoun_type</span></code>. Indexing the other way, incidentally,
+with one of the strings, will yield its corresponding number. So:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">pronounTypeString</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">pronoun_type</span><span class="p">[</span><span class="n">unit</span><span class="p">.</span><span class="n">sex</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pronounTypeString</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Simple. Save this as a Lua file in your own scripts directory and run it as
+shown before when a unit is selected in the Dwarf Fortress UI.</p>
+</section>
+<section id="exploring-df-structures">
+<h2>Exploring DF structures<a class="headerlink" href="#exploring-df-structures" title="Permalink to this heading">¶</a></h2>
+<p>So how could you have known about the field and type we just used? Well, there
+are two main tools for discovering the various fields in the game’s data
+structures. The first is the <code class="docutils literal notranslate"><span class="pre">df-structures</span></code>
+<a class="reference external" href="https://github.com/DFHack/df-structures">repository</a> that contains XML files
+describing the contents of the game’s structures. These are complete, but
+difficult to read (for a human). The second option is the <a class="reference internal" href="../tools/gui/gm-editor.html#gui-gm-editor"><span class="std std-ref">gui/gm-editor</span></a>
+script, an interactive data explorer. You can run the script while objects like
+units are selected to view the data within them. You can also run
+<code class="docutils literal notranslate"><span class="pre">gui/gm-editor</span> <span class="pre">scr</span></code> to view the data for the current screen. Press <kbd class="kbd docutils literal notranslate">?</kbd>
+while the script is active to view help.</p>
+<p>Familiarising yourself with the many structs of the game will help with ideas
+immensely, and you can always ask for help in the <a class="reference internal" href="../Introduction.html#support"><span class="std std-ref">right places</span></a>.</p>
+</section>
+<section id="detecting-triggers">
+<h2>Detecting triggers<a class="headerlink" href="#detecting-triggers" title="Permalink to this heading">¶</a></h2>
+<p>The common method for injecting new behaviour into the game is to define a
+callback function and get it called when something interesting happens. DFHack
+provides two libraries for this, <code class="docutils literal notranslate"><span class="pre">repeat-util</span></code> and <a class="reference internal" href="../dev/Lua%20API.html#eventful-api"><span class="std std-ref">eventful</span></a>.
+<code class="docutils literal notranslate"><span class="pre">repeat-util</span></code> is used to run a function once per a configurable number of
+frames (paused or unpaused), ticks (unpaused), in-game days, months, or years.
+If you need to be aware the instant something happens, you’ll need to run a
+check once a tick. Be careful not to do this gratuitously, though, since
+running that often can slow down the game!</p>
+<p><code class="docutils literal notranslate"><span class="pre">eventful</span></code>, on the other hand, is much more performance-friendly since it will
+only call your callback when a relevant event happens, like a reaction or job
+being completed or a projectile moving.</p>
+<p>To get something to run once per tick, we can call
+<code class="docutils literal notranslate"><span class="pre">repeat-util.scheduleEvery()</span></code>. First, we load the module:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">repeatUtil</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;repeat-util&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Both <code class="docutils literal notranslate"><span class="pre">repeat-util</span></code> and <code class="docutils literal notranslate"><span class="pre">eventful</span></code> require keys for registered callbacks. You
+should use something unique, like your mod name:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">modId</span> <span class="o">=</span> <span class="s2">&quot;callback-example-mod&quot;</span>
+</pre></div>
+</div>
+<p>Then, we pass the key, amount of time units between function calls, what the
+time units are, and finally the callback function itself:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">repeatUtil</span><span class="p">.</span><span class="n">scheduleEvery</span><span class="p">(</span><span class="n">modId</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+    <span class="c1">-- Do something like iterating over all active units and</span>
+    <span class="c1">-- check for something interesting</span>
+    <span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">unit</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">global</span><span class="p">.</span><span class="n">world</span><span class="p">.</span><span class="n">units</span><span class="p">.</span><span class="n">active</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="p">...</span>
+    <span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">eventful</span></code> is slightly more involved. First get the module:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">eventful</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;plugins.eventful&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">eventful</span></code> contains a table for each event which you populate with functions.
+Each function in the table is then called with the appropriate arguments when
+the event occurs. So, for example, to print the position of a moving (item)
+projectile:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">eventful</span><span class="p">.</span><span class="n">onProjItemCheckMovement</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">projectile</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">projectile</span><span class="p">.</span><span class="n">cur_pos</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">projectile</span><span class="p">.</span><span class="n">cur_pos</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+          <span class="n">projectile</span><span class="p">.</span><span class="n">cur_pos</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Check out the <a class="reference internal" href="../dev/Lua%20API.html#eventful-api"><span class="std std-ref">full list of supported events</span></a> to see what else
+you can react to with <code class="docutils literal notranslate"><span class="pre">eventful</span></code>.</p>
+<p>Now, you may have noticed that you won’t be able to register multiple callbacks
+with a single key named after your mod. You can, of course, call all the
+functions you want from a single registered callback. Alternately, you can
+create multiple callbacks using different keys, using your mod ID as a key name
+prefix. If you do register multiple callbacks, though, there are no guarantees
+about the call order.</p>
+</section>
+<section id="custom-raw-tokens">
+<h2>Custom raw tokens<a class="headerlink" href="#custom-raw-tokens" title="Permalink to this heading">¶</a></h2>
+<p>In this section, we are going to use <a class="reference internal" href="../dev/Lua%20API.html#custom-raw-tokens"><span class="std std-ref">custom raw tokens</span></a>
+applied to a reaction to transfer the material of a reagent to a product as a
+handle improvement (like on artifact buckets), and then we are going to see how
+you could make boots that make units go faster when worn.</p>
+<p>First, let’s define a custom crossbow with its own custom reaction. The
+crossbow:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[ITEM_WEAPON:ITEM_WEAPON_CROSSBOW_SIEGE]
+    [NAME:crossbow:crossbows]
+    [SIZE:600]
+    [SKILL:HAMMER]
+    [RANGED:CROSSBOW:BOLT]
+    [SHOOT_FORCE:4000]
+    [SHOOT_MAXVEL:800]
+    [TWO_HANDED:0]
+    [MINIMUM_SIZE:17500]
+    [MATERIAL_SIZE:4]
+    [ATTACK:BLUNT:10000:4000:bash:bashes:NO_SUB:1250]
+        [ATTACK_PREPARE_AND_RECOVER:3:3]
+    [SIEGE_CROSSBOW_MOD_FIRE_RATE_MULTIPLIER:2] custom token (you&#39;ll see)
+</pre></div>
+</div>
+<p>The reaction to make it (you would add the reaction and not the weapon to an
+entity raw):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[REACTION:MAKE_SIEGE_CROSSBOW]
+    [NAME:make siege crossbow]
+    [BUILDING:BOWYER:NONE]
+    [SKILL:BOWYER]
+    [REAGENT:mechanism 1:2:TRAPPARTS:NONE:NONE:NONE]
+    [REAGENT:bar:150:BAR:NONE:NONE:NONE]
+        [METAL_ITEM_MATERIAL]
+    [REAGENT:handle 1:1:BLOCKS:NONE:NONE:NONE] wooden handles
+        [ANY_PLANT_MATERIAL]
+    [REAGENT:handle 2:1:BLOCKS:NONE:NONE:NONE]
+        [ANY_PLANT_MATERIAL]
+    [SIEGE_CROSSBOW_MOD_TRANSFER_HANDLE_MATERIAL_TO_PRODUCT_IMPROVEMENT:1]
+        another custom token
+    [PRODUCT:100:1:WEAPON:ITEM_WEAPON_CROSSBOW_SIEGE:GET_MATERIAL_FROM_REAGENT:bar:NONE]
+</pre></div>
+</div>
+<p>So, we are going to use the <code class="docutils literal notranslate"><span class="pre">eventful</span></code> module to make it so that (after the
+script is run) when this crossbow is crafted, it will have two handles, each
+with the material given by the block reagents.</p>
+<p>First, require the modules we are going to use:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">eventful</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">&quot;plugins.eventful&quot;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">customRawTokens</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">&quot;custom-raw-tokens&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, let’s make a callback (we’ll be defining the body of this function soon):</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">modId</span> <span class="o">=</span> <span class="s2">&quot;siege-crossbow-mod&quot;</span>
+<span class="n">eventful</span><span class="p">.</span><span class="n">onReactionComplete</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span>
+        <span class="n">reactionProduct</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">inputItems</span><span class="p">,</span> <span class="n">inputReagents</span><span class="p">,</span>
+        <span class="n">outputItems</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First, we check to see if it the reaction that just happened is relevant to this
+callback:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span> <span class="ow">not</span> <span class="n">customRawTokens</span><span class="p">.</span><span class="n">getToken</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span>
+    <span class="s2">&quot;SIEGE_CROSSBOW_MOD_TRANSFER_HANDLE_MATERIAL_TO_PRODUCT_IMPROVEMENT&quot;</span><span class="p">)</span>
+<span class="kr">then</span>
+    <span class="kr">return</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Then, we get the product number listed. Next, for every reagent, if the reagent
+name starts with “handle” then we get the corresponding item, and…</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">reagent</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">inputReagents</span><span class="p">)</span> <span class="kr">do</span>
+    <span class="kr">if</span> <span class="n">reagent</span><span class="p">.</span><span class="n">code</span><span class="p">:</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;handle&#39;</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="c1">-- Found handle reagent</span>
+        <span class="kd">local</span> <span class="n">item</span> <span class="o">=</span> <span class="n">inputItems</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>…We then add a handle improvement to the listed product within our loop:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">new</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">itemimprovement_itemspecificst</span><span class="p">:</span><span class="n">new</span><span class="p">()</span>
+<span class="n">new</span><span class="p">.</span><span class="n">mat_type</span><span class="p">,</span> <span class="n">new</span><span class="p">.</span><span class="n">mat_index</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">mat_type</span><span class="p">,</span> <span class="n">item</span><span class="p">.</span><span class="n">mat_index</span>
+<span class="n">new</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">itemimprovement_specific_type</span><span class="p">.</span><span class="n">HANDLE</span>
+<span class="n">outputItems</span><span class="p">[</span><span class="n">productNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">improvements</span><span class="p">:</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This works well as long as you don’t have multiple stacks filling up one
+reagent.</p>
+<p>Let’s also make some code to modify the fire rate of our siege crossbow:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">eventful</span><span class="p">.</span><span class="n">onProjItemCheckMovement</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">projectile</span><span class="p">)</span>
+    <span class="kr">if</span> <span class="n">projectile</span><span class="p">.</span><span class="n">distance_flown</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="kr">then</span>
+        <span class="c1">-- don&#39;t make this adjustment more than once</span>
+        <span class="kr">return</span>
+    <span class="kr">end</span>
+
+    <span class="kd">local</span> <span class="n">firer</span> <span class="o">=</span> <span class="n">projectile</span><span class="p">.</span><span class="n">firer</span>
+    <span class="kr">if</span> <span class="ow">not</span> <span class="n">firer</span> <span class="kr">then</span>
+        <span class="kr">return</span>
+    <span class="kr">end</span>
+
+    <span class="kd">local</span> <span class="n">weapon</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">item</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">projectile</span><span class="p">.</span><span class="n">bow_id</span><span class="p">)</span>
+    <span class="kr">if</span> <span class="ow">not</span> <span class="n">weapon</span> <span class="kr">then</span>
+        <span class="kr">return</span>
+    <span class="kr">end</span>
+
+    <span class="kd">local</span> <span class="n">multiplier</span> <span class="o">=</span> <span class="nb">tonumber</span><span class="p">(</span><span class="n">customRawTokens</span><span class="p">.</span><span class="n">getToken</span><span class="p">(</span>
+            <span class="n">weapon</span><span class="p">.</span><span class="n">subtype</span><span class="p">,</span>
+            <span class="s2">&quot;SIEGE_CROSSBOW_MOD_FIRE_RATE_MULTIPLIER&quot;</span><span class="p">))</span> <span class="ow">or</span> <span class="mi">1</span>
+    <span class="n">firer</span><span class="p">.</span><span class="n">counters</span><span class="p">.</span><span class="n">think_counter</span> <span class="o">=</span> <span class="nb">math.floor</span><span class="p">(</span>
+            <span class="n">firer</span><span class="p">.</span><span class="n">counters</span><span class="p">.</span><span class="n">think_counter</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>Now, let’s see how we could make some “pegasus boots”. First, let’s define the
+item in the raws:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[ITEM_SHOES:ITEM_SHOES_BOOTS_PEGASUS]
+    [NAME:pegasus boot:pegasus boots]
+    [ARMORLEVEL:1]
+    [UPSTEP:1]
+    [METAL_ARMOR_LEVELS]
+    [LAYER:OVER]
+    [COVERAGE:100]
+    [LAYER_SIZE:25]
+    [LAYER_PERMIT:15]
+    [MATERIAL_SIZE:2]
+    [METAL]
+    [LEATHER]
+    [HARD]
+    [PEGASUS_BOOTS_MOD_FOOT_MOVEMENT_TIMER_REDUCTION_PER_TICK:2] custom raw token
+        (you don&#39;t have to comment the custom token every time,
+        but it does clarify what it is)
+</pre></div>
+</div>
+<p>Then, let’s make a <code class="docutils literal notranslate"><span class="pre">repeat-util</span></code> callback for once a tick:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">repeatUtil</span><span class="p">.</span><span class="n">scheduleEvery</span><span class="p">(</span><span class="n">modId</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Let’s iterate over every active unit, and for every unit, iterate over their
+worn items to calculate how much we are going to take from their on-foot movement timers:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">unit</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">global</span><span class="p">.</span><span class="n">world</span><span class="p">.</span><span class="n">units</span><span class="p">.</span><span class="n">active</span><span class="p">)</span> <span class="kr">do</span>
+    <span class="kd">local</span> <span class="n">amount</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">entry</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">inventory</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="kr">if</span> <span class="n">entry</span><span class="p">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">df</span><span class="p">.</span><span class="n">unit_inventory_item</span><span class="p">.</span><span class="n">T_mode</span><span class="p">.</span><span class="n">Worn</span> <span class="kr">then</span>
+            <span class="kd">local</span> <span class="n">reduction</span> <span class="o">=</span> <span class="n">customRawTokens</span><span class="p">.</span><span class="n">getToken</span><span class="p">(</span>
+                    <span class="n">entry</span><span class="p">.</span><span class="n">item</span><span class="p">,</span>
+                    <span class="s1">&#39;PEGASUS_BOOTS_MOD_FOOT_MOVEMENT_TIMER_REDUCTION_PER_TICK&#39;</span><span class="p">)</span>
+            <span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">+</span> <span class="p">(</span><span class="nb">tonumber</span><span class="p">(</span><span class="n">reduction</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="kr">end</span>
+    <span class="kr">end</span>
+    <span class="c1">-- Subtract amount from on-foot movement timers if not on ground</span>
+    <span class="kr">if</span> <span class="ow">not</span> <span class="n">unit</span><span class="p">.</span><span class="n">flags1</span><span class="p">.</span><span class="n">on_ground</span> <span class="kr">then</span>
+        <span class="n">dfhack</span><span class="p">.</span><span class="n">units</span><span class="p">.</span><span class="n">subtractActionTimers</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">unit_action_type_group</span><span class="p">.</span><span class="n">MovementFeet</span><span class="p">)</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="the-structure-of-a-full-mod">
+<h2>The structure of a full mod<a class="headerlink" href="#the-structure-of-a-full-mod" title="Permalink to this heading">¶</a></h2>
+<p>For reference, <a class="reference external" href="https://www.github.com/wolfboyft/tachy-guns">Tachy Guns</a> is a
+full mod that conforms to this guide.</p>
+<p>Create a folder for mod projects somewhere outside your Dwarf Fortress
+installation directory (e.g. <code class="docutils literal notranslate"><span class="pre">/path/to/mymods/</span></code>) and use your mod IDs as the
+names for the mod folders within it. In the example below, we’ll use a mod ID of
+<code class="docutils literal notranslate"><span class="pre">example-mod</span></code>. I’m sure your mods will have more creative names! The
+<code class="docutils literal notranslate"><span class="pre">example-mod</span></code> mod will be developed in the <code class="docutils literal notranslate"><span class="pre">/path/to/mymods/example-mod/</span></code>
+directory and has a basic structure that looks like this:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="n">mod</span><span class="p">.</span><span class="n">lua</span>
+<span class="n">raw</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="p">...</span>
+<span class="n">raw</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="n">mod</span><span class="p">.</span><span class="n">lua</span>
+<span class="n">raw</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="n">mod</span><span class="o">/</span><span class="p">...</span>
+<span class="n">README</span><span class="p">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Let’s go through that line by line.</p>
+<ul class="simple">
+<li><p>A short (one-line) script in <code class="docutils literal notranslate"><span class="pre">raw/init.d/</span></code> to initialise your
+mod when a save is loaded.</p></li>
+<li><p>Modifications to the game raws (potentially with custom raw tokens) go in
+<code class="docutils literal notranslate"><span class="pre">raw/objects/</span></code>.</p></li>
+<li><p>A control script in <code class="docutils literal notranslate"><span class="pre">raw/scripts/</span></code> that handles enabling and disabling your
+mod.</p></li>
+<li><p>A subfolder for your mod under <code class="docutils literal notranslate"><span class="pre">raw/scripts/</span></code> will contain all the internal
+scripts and/or modules used by your mod.</p></li>
+</ul>
+<p>It is a good idea to use a version control system to organize changes to your
+mod code. You can create a separate Git repository for each of your mods. The
+<code class="docutils literal notranslate"><span class="pre">README.md</span></code> file will be your mod help text when people browse to your online
+repository.</p>
+<p>Unless you want to install your <code class="docutils literal notranslate"><span class="pre">raw/</span></code> folder into your DF game folder every
+time you make a change to your scripts, you should add your development scripts
+directory to your script paths in <code class="docutils literal notranslate"><span class="pre">dfhack-config/script-paths.txt</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="o">+/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mymods</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="n">mod</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Ok, you’re all set up! Now, let’s take a look at an example
+<code class="docutils literal notranslate"><span class="pre">raw/scripts/example-mod.lua</span></code> file:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- main setup and teardown for example-mod</span>
+<span class="c1">-- this next line indicates that the script supports the &quot;enable&quot;</span>
+<span class="c1">-- API so you can start it by running &quot;enable example-mod&quot; and stop</span>
+<span class="c1">-- it by running &quot;disable example-mod&quot;</span>
+<span class="c1">--@ enable = true</span>
+
+<span class="kd">local</span> <span class="n">usage</span> <span class="o">=</span> <span class="s">[[</span>
+<span class="s">Usage</span>
+<span class="s">-----</span>
+
+<span class="s">    enable example-mod</span>
+<span class="s">    disable example-mod</span>
+<span class="s">]]</span>
+<span class="kd">local</span> <span class="n">repeatUtil</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;repeat-util&#39;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">eventful</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s1">&#39;plugins.eventful&#39;</span><span class="p">)</span>
+
+<span class="c1">-- you can reference global values or functions declared in any of</span>
+<span class="c1">-- your internal scripts</span>
+<span class="kd">local</span> <span class="n">moduleA</span> <span class="o">=</span> <span class="n">reqscript</span><span class="p">(</span><span class="s1">&#39;example-mod/module-a&#39;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">moduleB</span> <span class="o">=</span> <span class="n">reqscript</span><span class="p">(</span><span class="s1">&#39;example-mod/module-b&#39;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">moduleC</span> <span class="o">=</span> <span class="n">reqscript</span><span class="p">(</span><span class="s1">&#39;example-mod/module-c&#39;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">moduleD</span> <span class="o">=</span> <span class="n">reqscript</span><span class="p">(</span><span class="s1">&#39;example-mod/module-d&#39;</span><span class="p">)</span>
+
+<span class="n">enabled</span> <span class="o">=</span> <span class="n">enabled</span> <span class="ow">or</span> <span class="kc">false</span>
+<span class="kd">local</span> <span class="n">modId</span> <span class="o">=</span> <span class="s1">&#39;example-mod&#39;</span>
+
+<span class="kr">if</span> <span class="ow">not</span> <span class="n">dfhack_flags</span><span class="p">.</span><span class="n">enable</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">usage</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">((</span><span class="s1">&#39;Example mod is currently &#39;</span><span class="p">):</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">enabled</span> <span class="ow">and</span> <span class="s1">&#39;enabled&#39;</span> <span class="ow">or</span> <span class="s1">&#39;disabled&#39;</span><span class="p">))</span>
+    <span class="kr">return</span>
+<span class="kr">end</span>
+
+<span class="kr">if</span> <span class="n">dfhack_flags</span><span class="p">.</span><span class="n">enable_state</span> <span class="kr">then</span>
+    <span class="c1">-- do any initialization your internal scripts might require</span>
+    <span class="n">moduleA</span><span class="p">.</span><span class="n">onLoad</span><span class="p">()</span>
+    <span class="n">moduleB</span><span class="p">.</span><span class="n">onLoad</span><span class="p">()</span>
+
+    <span class="c1">-- multiple functions in the same repeat callback</span>
+    <span class="n">repeatUtil</span><span class="p">.</span><span class="n">scheduleEvery</span><span class="p">(</span><span class="n">modId</span> <span class="o">..</span> <span class="s1">&#39; every tick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;ticks&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+        <span class="n">moduleA</span><span class="p">.</span><span class="n">every1Tick</span><span class="p">()</span>
+        <span class="n">moduleB</span><span class="p">.</span><span class="n">every1Tick</span><span class="p">()</span>
+    <span class="kr">end</span><span class="p">)</span>
+
+    <span class="c1">-- one function per repeat callback (you can put them in the</span>
+    <span class="c1">-- above format if you prefer)</span>
+    <span class="n">repeatUtil</span><span class="p">.</span><span class="n">scheduleEvery</span><span class="p">(</span><span class="n">modId</span> <span class="o">..</span> <span class="s1">&#39; 100 frames&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;frames&#39;</span><span class="p">,</span>
+                             <span class="n">moduleD</span><span class="p">.</span><span class="n">every100Frames</span><span class="p">)</span>
+
+    <span class="c1">-- multiple functions in the same eventful callback</span>
+    <span class="n">eventful</span><span class="p">.</span><span class="n">onReactionComplete</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span>
+            <span class="n">reaction_product</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">input_items</span><span class="p">,</span> <span class="n">input_reagents</span><span class="p">,</span>
+            <span class="n">output_items</span><span class="p">)</span>
+        <span class="c1">-- pass the event&#39;s parameters to the listeners</span>
+        <span class="n">moduleB</span><span class="p">.</span><span class="n">onReactionComplete</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span> <span class="n">reaction_product</span><span class="p">,</span>
+                <span class="n">unit</span><span class="p">,</span> <span class="n">input_items</span><span class="p">,</span> <span class="n">input_reagents</span><span class="p">,</span> <span class="n">output_items</span><span class="p">)</span>
+        <span class="n">moduleC</span><span class="p">.</span><span class="n">onReactionComplete</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span> <span class="n">reaction_product</span><span class="p">,</span>
+                <span class="n">unit</span><span class="p">,</span> <span class="n">input_items</span><span class="p">,</span> <span class="n">input_reagents</span><span class="p">,</span> <span class="n">output_items</span><span class="p">)</span>
+    <span class="kr">end</span>
+
+    <span class="c1">-- one function per eventful callback (you can put them in the</span>
+    <span class="c1">-- above format if you prefer)</span>
+    <span class="n">eventful</span><span class="p">.</span><span class="n">onProjItemCheckMovement</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="n">moduleD</span><span class="p">.</span><span class="n">onProjItemCheckMovement</span>
+    <span class="n">eventful</span><span class="p">.</span><span class="n">onProjUnitCheckMovement</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="n">moduleD</span><span class="p">.</span><span class="n">onProjUnitCheckMovement</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Example mod enabled&#39;</span><span class="p">)</span>
+    <span class="n">enabled</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kr">else</span>
+    <span class="c1">-- call any shutdown functions your internal scripts might require</span>
+    <span class="n">moduleA</span><span class="p">.</span><span class="n">onUnload</span><span class="p">()</span>
+
+    <span class="n">repeatUtil</span><span class="p">.</span><span class="n">cancel</span><span class="p">(</span><span class="n">modId</span> <span class="o">..</span> <span class="s1">&#39; every ticks&#39;</span><span class="p">)</span>
+    <span class="n">repeatUtil</span><span class="p">.</span><span class="n">cancel</span><span class="p">(</span><span class="n">modId</span> <span class="o">..</span> <span class="s1">&#39; 100 frames&#39;</span><span class="p">)</span>
+
+    <span class="n">eventful</span><span class="p">.</span><span class="n">onReactionComplete</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="kc">nil</span>
+    <span class="n">eventful</span><span class="p">.</span><span class="n">onProjItemCheckMovement</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="kc">nil</span>
+    <span class="n">eventful</span><span class="p">.</span><span class="n">onProjUnitCheckMovement</span><span class="p">[</span><span class="n">modId</span><span class="p">]</span> <span class="o">=</span> <span class="kc">nil</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Example mod disabled&#39;</span><span class="p">)</span>
+    <span class="n">enabled</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>You can call <code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">example-mod</span></code> and <code class="docutils literal notranslate"><span class="pre">disable</span> <span class="pre">example-mod</span></code> yourself while
+developing, but for end users you can start your mod automatically from
+<code class="docutils literal notranslate"><span class="pre">raw/init.d/example-mod.lua</span></code>:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">dfhack</span><span class="p">.</span><span class="n">run_command</span><span class="p">(</span><span class="s1">&#39;enable example-mod&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">raw/scripts/example-mod/module-a.lua</span></code> you could have code like this:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">--@ module = true</span>
+<span class="c1">-- The above line is required for reqscript to work</span>
+
+<span class="kr">function</span> <span class="nf">onLoad</span><span class="p">()</span> <span class="c1">-- global variables are exported</span>
+    <span class="c1">-- do initialization here</span>
+<span class="kr">end</span>
+
+<span class="c1">-- this is an internal function: local functions/variables</span>
+<span class="c1">-- are not exported</span>
+<span class="kd">local</span> <span class="kr">function</span> <span class="nf">usedByOnTick</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+    <span class="c1">-- ...</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">onTick</span><span class="p">()</span> <span class="c1">-- exported</span>
+    <span class="kr">for</span> <span class="n">_</span><span class="p">,</span><span class="n">unit</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">global</span><span class="p">.</span><span class="n">world</span><span class="p">.</span><span class="n">units</span><span class="p">.</span><span class="n">all</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="n">usedByOnTick</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../dev/Lua%20API.html#reqscript"><span class="std std-ref">reqscript</span></a> function reloads scripts that have changed, so you can modify
+your scripts while DF is running and just disable/enable your mod to load the
+changes into your ongoing game!</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

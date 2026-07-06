@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>orders &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="overlay" href="overlay.html" />
+    <link rel="prev" title="open-legends" href="open-legends.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="open-legends.html" title="previous chapter">open-legends</a></li>
+      <li>Next: <a href="overlay.html" title="next chapter">overlay</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">orders</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#the-orders-library">The orders library</a><ul>
+<li><a class="reference internal" href="#library-basic">library/basic</a></li>
+<li><a class="reference internal" href="#library-furnace">library/furnace</a></li>
+<li><a class="reference internal" href="#library-military">library/military</a></li>
+<li><a class="reference internal" href="#library-smelting">library/smelting</a></li>
+<li><a class="reference internal" href="#library-rockstock">library/rockstock</a></li>
+<li><a class="reference internal" href="#library-glassstock">library/glassstock</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="orders">
+<span id="id1"></span><h1>orders<a class="headerlink" href="#orders" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../workorders-tag-index.html"><span class="std std-ref">workorders</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">orders</span></code></p>
+<p><span>Manage manager orders.</span></p>
+</aside>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">orders</span> <span class="pre">orders</span> <span class="pre">list</span></code></dt><dd><p>Shows the list of previously exported orders, including the orders library.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">orders</span> <span class="pre">export</span> <span class="pre">&lt;name&gt;</span></code></dt><dd><p>Saves all the current manager orders in a file.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">orders</span> <span class="pre">import</span> <span class="pre">&lt;name&gt;</span></code></dt><dd><p>Imports the specified manager orders. Note this adds to your current set of
+manager orders. It will not clear the orders that already exist.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">orders</span> <span class="pre">clear</span></code></dt><dd><p>Deletes all manager orders in the current embark.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">orders</span> <span class="pre">sort</span></code></dt><dd><p>Sorts current manager orders by repeat frequency so repeating orders don’t
+prevent one-time orders from ever being completed. The sorting order is:
+one-time orders first, then yearly, seasonally, monthly, and finally, daily.</p>
+</dd>
+</dl>
+<p>You can keep your orders automatically sorted by adding the following command to
+your <code class="docutils literal notranslate"><span class="pre">onMapLoad.init</span></code> file:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>repeat -name orders-sort -time 1 -timeUnits days -command [ orders sort ]
+</pre></div>
+</div>
+<p>Exported orders are saved in the <code class="docutils literal notranslate"><span class="pre">dfhack-config/orders</span></code> directory, where you
+can view, edit, and delete them, if desired.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">orders</span> <span class="pre">export</span> <span class="pre">myorders</span></code></dt><dd><p>Export the current manager orders to a file named
+<code class="docutils literal notranslate"><span class="pre">dfhack-config/orders/myorders.json</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">orders</span> <span class="pre">import</span> <span class="pre">library/basic</span></code></dt><dd><p>Import manager orders from the library that keep your fort stocked with
+basic essentials.</p>
+</dd>
+</dl>
+</section>
+<section id="the-orders-library">
+<h2>The orders library<a class="headerlink" href="#the-orders-library" title="Permalink to this heading">¶</a></h2>
+<p>DFHack comes with a library of useful manager orders that are ready for import:</p>
+<section id="library-basic">
+<h3><a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/orders/basic.json">library/basic</a><a class="headerlink" href="#library-basic" title="Permalink to this heading">¶</a></h3>
+<p>This collection of orders handles basic fort necessities:</p>
+<ul class="simple">
+<li><p>prepared meals and food products (and by-products like oil)</p></li>
+<li><p>booze/mead</p></li>
+<li><p>thread/cloth/dye</p></li>
+<li><p>pots/jugs/buckets/mugs</p></li>
+<li><p>bags of leather, cloth, silk, and yarn</p></li>
+<li><p>crafts, totems, and shleggings from otherwise unusable by-products</p></li>
+<li><p>mechanisms/cages</p></li>
+<li><p>splints/crutches</p></li>
+<li><p>lye/soap</p></li>
+<li><p>ash/potash</p></li>
+<li><p>beds/wheelbarrows/minecarts</p></li>
+<li><p>scrolls</p></li>
+</ul>
+<p>You should import it as soon as you have enough dwarves to perform the tasks.
+Right after the first migration wave is usually a good time.</p>
+<p>Armok’s note: shleggings? Yes, <a class="reference external" href="https://youtu.be/bLN8cOcTjdo">shleggings</a>.</p>
+</section>
+<section id="library-furnace">
+<h3><a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/orders/furnace.json">library/furnace</a><a class="headerlink" href="#library-furnace" title="Permalink to this heading">¶</a></h3>
+<p>This collection creates basic items that require heat. It is separated out from
+<code class="docutils literal notranslate"><span class="pre">library/basic</span></code> to give players the opportunity to set up magma furnaces first
+in order to save resources. It handles:</p>
+<ul class="simple">
+<li><p>charcoal (including smelting of bituminous coal and lignite)</p></li>
+<li><p>pearlash</p></li>
+<li><p>sand</p></li>
+<li><p>green/clear/crystal glass</p></li>
+<li><p>adamantine processing</p></li>
+<li><p>item melting</p></li>
+</ul>
+<p>Orders are missing for plaster powder until DF <a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=11803">Bug 11803</a> is fixed.</p>
+</section>
+<section id="library-military">
+<h3><a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/orders/military.json">library/military</a><a class="headerlink" href="#library-military" title="Permalink to this heading">¶</a></h3>
+<p>This collection adds high-volume smelting jobs for military-grade metal ores and
+produces weapons and armor:</p>
+<ul class="simple">
+<li><p>leather backpacks/waterskins/cloaks/quivers/armor</p></li>
+<li><p>bone/wooden bolts</p></li>
+<li><p>smelting for platinum, silver, steel, bronze, bismuth bronze, and copper (and
+their dependencies)</p></li>
+<li><p>bronze/bismuth bronze/copper bolts</p></li>
+<li><p>platinum/silver/steel/iron/bismuth bronze/bronze/copper weapons and armor,
+with checks to ensure only the best available materials are being used</p></li>
+</ul>
+<p>If you set a stockpile to take weapons and armor of less than masterwork quality
+and turn on <a class="reference internal" href="automelt.html#automelt"><span class="std std-ref">automelt</span></a> (like what <a class="reference internal" href="../guides/quickfort-library-guide.html#dreamfort"><span class="std std-ref">Dreamfort</span></a> provides on its industry level),
+these orders will automatically upgrade your military equipment to masterwork.
+Make sure you have a lot of fuel (or magma forges and furnaces) before you turn
+<code class="docutils literal notranslate"><span class="pre">automelt</span></code> on, though!</p>
+<p>This file should only be imported, of course, if you need to equip a military.</p>
+</section>
+<section id="library-smelting">
+<h3><a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/orders/smelting.json">library/smelting</a><a class="headerlink" href="#library-smelting" title="Permalink to this heading">¶</a></h3>
+<p>This collection adds smelting jobs for all ores. It includes handling the ores
+already managed by <code class="docutils literal notranslate"><span class="pre">library/military</span></code>, but has lower limits. This ensures all
+ores will be covered if a player imports <code class="docutils literal notranslate"><span class="pre">library/smelting</span></code> but not
+<code class="docutils literal notranslate"><span class="pre">library/military</span></code>, but the higher-volume <code class="docutils literal notranslate"><span class="pre">library/military</span></code> orders will
+take priority if both are imported.</p>
+</section>
+<section id="library-rockstock">
+<h3><a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/orders/rockstock.json">library/rockstock</a><a class="headerlink" href="#library-rockstock" title="Permalink to this heading">¶</a></h3>
+<p>This collection of orders keeps a small stock of all types of rock furniture.
+This allows you to do ad-hoc furnishings of guildhalls, libraries, temples, or
+other rooms with <a class="reference internal" href="buildingplan.html#buildingplan"><span class="std std-ref">buildingplan</span></a> and your masons will make sure there is always
+stock on hand to fulfill the plans.</p>
+</section>
+<section id="library-glassstock">
+<h3><a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/data/orders/glassstock.json">library/glassstock</a><a class="headerlink" href="#library-glassstock" title="Permalink to this heading">¶</a></h3>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">library/rockstock</span></code> above, this collection keeps a small stock of
+all types of glass furniture. If you have a functioning glass industry, this is
+more sustainable than <code class="docutils literal notranslate"><span class="pre">library/rockstock</span></code> since you can never run out of sand.
+If you have plenty of rock and just want the variety, you can import both
+<code class="docutils literal notranslate"><span class="pre">library/rockstock</span></code> and <code class="docutils literal notranslate"><span class="pre">library/glassstock</span></code> to get a mixture of rock and
+glass furnishings in your fort.</p>
+<p>There are a few items that <code class="docutils literal notranslate"><span class="pre">library/glassstock</span></code> produces that
+<code class="docutils literal notranslate"><span class="pre">library/rockstock</span></code> does not, since there are some items that can not be made
+out of rock, for example:</p>
+<ul class="simple">
+<li><p>tubes and corkscrews for building magma-safe screw pumps</p></li>
+<li><p>windows</p></li>
+<li><p>terrariums (as an alternative to wooden cages)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

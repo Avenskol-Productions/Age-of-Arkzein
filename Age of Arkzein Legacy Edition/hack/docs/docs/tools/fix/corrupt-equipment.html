@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>fix/corrupt-equipment &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="fix/dead-units" href="dead-units.html" />
+    <link rel="prev" title="fix/blood-del" href="blood-del.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="blood-del.html" title="previous chapter">fix/blood-del</a></li>
+      <li>Next: <a href="dead-units.html" title="next chapter">fix/dead-units</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">fix/corrupt-equipment</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#technical-details">Technical details</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fix-corrupt-equipment">
+<span id="id1"></span><h1>fix/corrupt-equipment<a class="headerlink" href="#fix-corrupt-equipment" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../../bugfix-tag-index.html"><span class="std std-ref">bugfix</span></a><span> | </span><a class="reference internal" href="../../../military-tag-index.html"><span class="std std-ref">military</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">fix/corrupt-equipment</span></code></p>
+<p><span>Fixes some game crashes caused by corrupt military equipment.</span></p>
+</aside>
+<p>This fix corrects some kinds of corruption that can occur in equipment lists, as
+in <a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=11014">Bug 11014</a>. Run this script at least every time a squad comes back from a
+raid.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>fix/corrupt-equipment
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">fix/corrupt-equipment</span></code></dt><dd><p>Run the fix manually a single time.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--time</span> <span class="pre">100</span> <span class="pre">--timeUnits</span> <span class="pre">ticks</span> <span class="pre">--command</span> <span class="pre">[</span> <span class="pre">fix/corrupt-equipment</span> <span class="pre">]</span></code></dt><dd><p>Automatically run the fix in the background every 100 ticks so you don’t
+have to remember to run it manually.</p>
+</dd>
+</dl>
+</section>
+<section id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this heading">¶</a></h2>
+<p>There are several types of corruption that have been identified:</p>
+<ol class="arabic simple">
+<li><p>Items that have been deleted without being removed from the equipment lists</p></li>
+<li><p>Items of the wrong type being stored in the equipment lists</p></li>
+<li><p>Items of the wrong type being assigned to squad members</p></li>
+</ol>
+<p>This script currently only fixes the first two, as they have been linked to the
+majority of crashes.</p>
+<p>Note that in some cases, multiple issues may be present, and may only be present
+for a short window of time before DF crashes. To address this, running this
+script with <a class="reference internal" href="../repeat.html#repeat"><span class="std std-ref">repeat</span></a> is recommended.</p>
+<p>Running this script with <a class="reference internal" href="../repeat.html#repeat"><span class="std std-ref">repeat</span></a> on all saves is not recommended, as it can
+have overhead (sometimes over 0.1 seconds on a large save). In general, running
+this script with <a class="reference internal" href="../repeat.html#repeat"><span class="std std-ref">repeat</span></a> is recommended if:</p>
+<ul class="simple">
+<li><p>You have experienced crashes likely caused by <a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=11014">Bug 11014</a>, and running this
+script a single time produces output but does not fix the crash</p></li>
+<li><p>You are running large military operations, or have sent squads out on raids</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

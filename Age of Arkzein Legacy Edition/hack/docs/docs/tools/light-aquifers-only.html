@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>light-aquifers-only &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="linger" href="linger.html" />
+    <link rel="prev" title="lever" href="lever.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="lever.html" title="previous chapter">lever</a></li>
+      <li>Next: <a href="linger.html" title="next chapter">linger</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">light-aquifers-only</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#technical-details">Technical details</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="light-aquifers-only">
+<span id="id1"></span><h1>light-aquifers-only<a class="headerlink" href="#light-aquifers-only" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../embark-tag-index.html"><span class="std std-ref">embark</span></a><span> | </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../map-tag-index.html"><span class="std std-ref">map</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">light-aquifers-only</span></code></p>
+<p><span>Change heavy and varied aquifers to light aquifers.</span></p>
+</aside>
+<p>This script behaves differently depending on whether it’s called pre-embark or
+post-embark. Pre-embark, it changes all aquifers in the world to light ones,
+while post-embark it only modifies the map tiles, leaving the rest of the world
+unchanged.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>light-aquifers-only
+</pre></div>
+</div>
+<p>If you don’t ever want to have to deal with heavy aquifers, you can add the
+<code class="docutils literal notranslate"><span class="pre">light-aquifers-only</span></code> command to your <code class="file docutils literal notranslate"><span class="pre">dfhack-config/init/onMapLoad.init</span></code>
+file.</p>
+</section>
+<section id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this heading">¶</a></h2>
+<p>When run pre-embark, this script changes the drainage of all world tiles that
+would generate Heavy aquifers into a value that results in Light aquifers
+instead, based on logic revealed by ToadyOne in a FotF answer:
+<a class="reference external" href="http://www.bay12forums.com/smf/index.php?topic=169696.msg8099138#msg8099138">http://www.bay12forums.com/smf/index.php?topic=169696.msg8099138#msg8099138</a></p>
+<p>Basically, the drainage is used as an “RNG” to cause an aquifer to be heavy
+about 5% of the time. The script shifts the matching numbers to a neighboring
+one, which does not result in any change of the biome.</p>
+<p>When run post-embark, this script simply clears the flags that mark aquifer
+tiles as heavy, converting them to light.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

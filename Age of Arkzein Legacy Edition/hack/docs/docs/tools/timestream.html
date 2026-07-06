@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>timestream &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="title-folder" href="title-folder.html" />
+    <link rel="prev" title="tiletypes" href="tiletypes.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="tiletypes.html" title="previous chapter">tiletypes</a></li>
+      <li>Next: <a href="title-folder.html" title="next chapter">title-folder</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">timestream</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="timestream">
+<span id="id1"></span><h1>timestream<a class="headerlink" href="#timestream" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../fps-tag-index.html"><span class="std std-ref">fps</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">timestream</span></code></p>
+<p><span>Fix FPS death.</span></p>
+</aside>
+<p>Do you remember when you first start a new fort, your initial 7 dwarves zip
+around the screen and get things done so quickly? As a player, you never had
+to wait for your initial dwarves to move across the map. Don’t you wish that
+your fort of 200 dwarves could be as zippy? This tool can help.</p>
+<p><code class="docutils literal notranslate"><span class="pre">timestream</span></code> keeps the game running quickly by dynamically adjusting the
+calendar speed relative to the frames per second that your computer can support.
+Your dwarves spend the same amount of in-game time to do their tasks, but the
+time that you, the player, have to wait for the dwarves to do things speeds up.
+This means that the dwarves in your fully developed fort appears as energetic as
+a newly created one, and mature forts are much more fun to play.</p>
+<p>If you just want to change the game calendar speed without adjusting dwarf
+speed, this tool can do that too. Your dwarves will just be able to get
+less/more done per season (depending on whether you speed up or slow down the
+calendar).</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">timestream</span> <span class="pre">--units</span> <span class="pre">[--fps</span> <span class="pre">&lt;target</span> <span class="pre">FPS&gt;]</span></code></dt><dd><p>Keep the game running as responsively as it did when it was running at the
+given frames per second. Dwarves get the same amount done per game day, but
+game days go by faster. If a target FPS is not given, it defaults to 100.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">timestream</span> <span class="pre">--rate</span> <span class="pre">&lt;rate&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">timestream</span> <span class="pre">--fps</span> <span class="pre">&lt;target</span> <span class="pre">FPS&gt;</span></code></dt><dd><p>Just change the rate of the calendar, without corresponding adjustments to
+units. Game responsiveness will not change, but dwarves will be able to get
+more (or less) done per game day. A rate of <code class="docutils literal notranslate"><span class="pre">1</span></code> is “normal” calendar
+speed. Alternately, you can run the calendar at a rate that it would have
+moved at while the game was running at the specified frames per second.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">timestream</span> <span class="pre">--units</span></code></dt><dd><p>Keep the game running as quickly and smoothly as it did when it ran
+“naturally” at 100 FPS. This mode makes things much more pleasant for the
+player without giving any advantage/disadvantage to your in-game dwarves.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">timestream</span> <span class="pre">--rate</span> <span class="pre">2</span></code></dt><dd><p>Calendar runs at 2x normal speed and units get half as much done as usual
+per game day.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">timestream</span> <span class="pre">--fps</span> <span class="pre">100</span></code></dt><dd><p>Calendar runs at a dynamic speed to simulate 100 FPS. Units get a varying
+amount of work done per game day, but will get less and less done as your
+fort grows and your unadjusted FPS decreases.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">timestream</span> <span class="pre">--rate</span> <span class="pre">1</span></code></dt><dd><p>Reset everything back to normal.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>changelayer &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="changevein" href="changevein.html" />
+    <link rel="prev" title="changeitem" href="changeitem.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="changeitem.html" title="previous chapter">changeitem</a></li>
+      <li>Next: <a href="changevein.html" title="next chapter">changevein</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">changelayer</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="changelayer">
+<span id="id1"></span><h1>changelayer<a class="headerlink" href="#changelayer" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../map-tag-index.html"><span class="std std-ref">map</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">changelayer</span></code></p>
+<p><span>Change the material of an entire geology layer.</span></p>
+</aside>
+<p>Note that one layer can stretch across many z-levels, and changes to the geology
+layer will affect all surrounding regions, not just your embark! Mineral veins
+and gem clusters will not be affected. Use <a class="reference internal" href="changevein.html#changevein"><span class="std std-ref">changevein</span></a> if you want to modify
+those.</p>
+<p>tl;dr: You will end up with changing large areas in one go, especially if you
+use it in lower z levels. Use this command with care!</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>changelayer &lt;material RAW id&gt; [&lt;options&gt;]
+</pre></div>
+</div>
+<p>When run without options, <code class="docutils literal notranslate"><span class="pre">changelayer</span></code> will:</p>
+<ul class="simple">
+<li><p>only affect the geology layer at the current cursor position</p></li>
+<li><p>only affect the biome that covers the current cursor position</p></li>
+<li><p>not allow changing stone to soil and vice versa</p></li>
+</ul>
+<p>You can use the <a class="reference internal" href="probe.html#probe"><span class="std std-ref">probe</span></a> command on various tiles around your map to find valid
+material RAW ids and to get an idea how layers and biomes are distributed.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">changelayer</span> <span class="pre">GRANITE</span></code></dt><dd><p>Convert the layer at the cursor position into granite.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">changelayer</span> <span class="pre">SILTY_CLAY</span> <span class="pre">force</span></code></dt><dd><p>Convert the layer at the cursor position into clay, even if it’s stone.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">changelayer</span> <span class="pre">MARBLE</span> <span class="pre">all_biomes</span> <span class="pre">all_layers</span></code></dt><dd><p>Convert all layers of all biomes which are not soil into marble.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If you use changelayer and nothing happens, try to pause/unpause the game
+for a while and move the cursor to another tile. Then try again. If that
+doesn’t help, then try to temporarily change some other layer, undo your
+changes, and try again for the layer you want to change. Saving and
+reloading your map also sometimes helps.</p></li>
+<li><p>You should be fine if you only change single layers without the use
+of ‘force’. Still, it’s advisable to save your game before messing with
+the map.</p></li>
+<li><p>When you force changelayer to convert soil to stone, you might see some
+weird stuff (flashing tiles, tiles changed all over place etc). Try
+reverting the changes manually or even better use an older savegame. You
+did save your game, right?</p></li>
+</ul>
+</div>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">all_biomes</span></code></dt><dd><p>Change the corresponding geology layer for all biomes on your map. Be aware
+that the same geology layer can AND WILL be on different z-levels for
+different biomes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">all_layers</span></code></dt><dd><p>Change all geology layers on your map (only for the selected biome unless
+<code class="docutils literal notranslate"><span class="pre">all_biomes</span></code> is also specified). Candy mountain, anyone? Will make your map
+quite boring, but tidy.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">force</span></code></dt><dd><p>Allow changing stone to soil and vice versa. <strong>THIS CAN HAVE WEIRD EFFECTS,
+USE WITH CARE AND SAVE FIRST</strong>. Note that soil will not be magically replaced
+with stone. You will, however, get a stone floor after digging, so it will
+allow the floor to be engraved. Similarly, stone will not be magically
+replaced with soil, but you will get a soil floor after digging, so it could
+be helpful for creating farm plots on maps with no soil.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">verbose</span></code></dt><dd><p>Output details about what is being changed.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

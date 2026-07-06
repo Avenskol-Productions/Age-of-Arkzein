@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>stripcaged &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="superdwarf" href="superdwarf.html" />
+    <link rel="prev" title="strangemood" href="strangemood.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="strangemood.html" title="previous chapter">strangemood</a></li>
+      <li>Next: <a href="superdwarf.html" title="next chapter">superdwarf</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">stripcaged</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="stripcaged">
+<span id="id1"></span><h1>stripcaged<a class="headerlink" href="#stripcaged" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../items-tag-index.html"><span class="std std-ref">items</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">stripcaged</span></code></p>
+<p><span>Remove items from caged prisoners.</span></p>
+</aside>
+<p>This tool helps with the tedious task of going through all your cages and
+marking the items inside for dumping. This lets you get leftover seeds out of
+cages after you tamed the animals inside. The most popular use of this tool,
+though, is to strip the weapons and armor from caged prisoners. After you run
+this tool, your dwarves will come and take the items to the garbage dump,
+leaving your cages clean and your prisoners stripped bare.</p>
+<p>If you don’t want to wait for your dwarves to dump all the items, you can use
+<a class="reference internal" href="autodump.html#autodump"><span class="std std-ref">autodump</span></a> to speed the process along.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">stripcaged</span> <span class="pre">list</span></code></dt><dd><p>Display a list of all cages and their item contents.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stripcaged</span> <span class="pre">items|weapons|armor|all</span> <span class="pre">[here|&lt;cage</span> <span class="pre">id&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Dump the given type of item. If <code class="docutils literal notranslate"><span class="pre">here</span></code> is specified, only act on the
+in-game selected cage (or the cage under the game cursor). Alternately, you
+can specify the item ids of specific cages that you want to target.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">stripcaged</span> <span class="pre">all</span></code></dt><dd><p>For all cages, dump all items, equipped by a creature or not.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stripcaged</span> <span class="pre">items</span></code></dt><dd><p>Dump loose items in all cages, such as seeds left over from animal training.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stripcaged</span> <span class="pre">weapons</span></code></dt><dd><p>Dump weapons equipped by caged creatures.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stripcaged</span> <span class="pre">armor</span> <span class="pre">here</span></code></dt><dd><p>Dumps the armor equipped by the caged creature under the cursor.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stripcaged</span> <span class="pre">all</span> <span class="pre">25321</span> <span class="pre">34228</span></code></dt><dd><p>Dumps all items out of the specified cages.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

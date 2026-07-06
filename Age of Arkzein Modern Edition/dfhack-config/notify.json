@@ -1,0 +1,59 @@
+{
+	"agitated_count": {
+		"enabled": true
+	},
+	"auto_train": {
+		"enabled": true
+	},
+	"bleeding_adv": {
+		"enabled": true
+	},
+	"hostile_count": {
+		"enabled": true
+	},
+	"injured": {
+		"enabled": true
+	},
+	"invader_count": {
+		"enabled": true
+	},
+	"mandates_expiring": {
+		"enabled": true
+	},
+	"missing_nemesis": {
+		"enabled": true
+	},
+	"moody_status": {
+		"enabled": true
+	},
+	"petitions_agreed": {
+		"enabled": true
+	},
+	"save-reminder": {
+		"enabled": true
+	},
+	"stuck_squad": {
+		"enabled": true
+	},
+	"suffocation_adv": {
+		"enabled": true
+	},
+	"traders_ready": {
+		"enabled": true
+	},
+	"warn_nuisance": {
+		"enabled": true
+	},
+	"warn_starving": {
+		"enabled": true
+	},
+	"warn_stranded": {
+		"enabled": true
+	},
+	"wildlife": {
+		"enabled": false
+	},
+	"wildlife_adv": {
+		"enabled": false
+	}
+}

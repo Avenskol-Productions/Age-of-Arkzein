@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>caravan &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="catsplosion" href="catsplosion.html" />
+    <link rel="prev" title="cannibalism" href="cannibalism.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="cannibalism.html" title="previous chapter">cannibalism</a></li>
+      <li>Next: <a href="catsplosion.html" title="next chapter">catsplosion</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">caravan</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#commands">Commands</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="caravan">
+<span id="id1"></span><h1>caravan<a class="headerlink" href="#caravan" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../bugfix-tag-index.html"><span class="std std-ref">bugfix</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">caravan</span></code></p>
+<p><span>Adjust properties of caravans on the map.</span></p>
+</aside>
+<p>This tool can help with caravans that are leaving too quickly, refuse to unload,
+or are just plain unhappy that you are such a poor negotiator.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>caravan &lt;command&gt;
+</pre></div>
+</div>
+<p>Also see <a class="reference internal" href="force.html#force"><span class="std std-ref">force</span></a> for creating caravans.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">caravan</span> <span class="pre">extend</span></code></dt><dd><p>Force a caravan that is leaving to return to the depot and extend their
+stay another 7 days.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">caravan</span> <span class="pre">unload</span></code></dt><dd><p>Fix a caravan that got spooked by wildlife and refuses to fully unload.</p>
+</dd>
+</dl>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
+<p>Commands listed with the argument <code class="docutils literal notranslate"><span class="pre">[&lt;ids&gt;]</span></code> can take multiple
+(space-separated) caravan IDs (see <code class="docutils literal notranslate"><span class="pre">caravan</span> <span class="pre">list</span></code>). If no IDs are specified,
+then the commands apply to all caravans on the map.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">list</span></code></dt><dd><p>List IDs and information about all caravans on the map.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extend</span> <span class="pre">[&lt;days&gt;</span> <span class="pre">[&lt;ids&gt;]]</span></code></dt><dd><p>Extend the time that caravans stay at the depot by the specified number of
+days (defaults to 7). Also causes caravans to return to the depot if
+applicable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">happy</span> <span class="pre">[&lt;ids&gt;]</span></code></dt><dd><p>Make caravans willing to trade again (after seizing goods, annoying
+merchants, etc.). Also causes caravans to return to the depot if applicable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">leave</span> <span class="pre">[&lt;ids&gt;]</span></code></dt><dd><p>Makes caravans pack up and leave immediately.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unload</span></code></dt><dd><p>Fix endless unloading at the depot. Run this if merchant pack animals were
+startled and now refuse to come to the trade depot.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

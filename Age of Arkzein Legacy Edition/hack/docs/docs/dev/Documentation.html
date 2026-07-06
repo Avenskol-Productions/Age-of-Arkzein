@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DFHack documentation system &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DFHack API concepts" href="../api/index.html" />
+    <link rel="prev" title="How to contribute to DFHack" href="Contributing.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">DFHack development guide</a><ul>
+      <li>Previous: <a href="Contributing.html" title="previous chapter">How to contribute to DFHack</a></li>
+      <li>Next: <a href="../api/index.html" title="next chapter">DFHack API concepts</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">DFHack documentation system</a><ul>
+<li><a class="reference internal" href="#concepts-and-general-guidance">Concepts and general guidance</a><ul>
+<li><a class="reference internal" href="#short-descriptions">Short descriptions</a></li>
+<li><a class="reference internal" href="#tags">Tags</a></li>
+<li><a class="reference internal" href="#links">Links</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation-standards">Documentation standards</a><ul>
+<li><a class="reference internal" href="#where-do-i-add-the-help-text">Where do I add the help text?</a></li>
+<li><a class="reference internal" href="#header-format">Header format</a></li>
+<li><a class="reference internal" href="#usage-help">Usage help</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-scripts-and-plugins">External scripts and plugins</a></li>
+<li><a class="reference internal" href="#required-dependencies">Required dependencies</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#macos">macOS</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-the-documentation">Building the documentation</a><ul>
+<li><a class="reference internal" href="#using-cmake">Using CMake</a></li>
+<li><a class="reference internal" href="#running-sphinx-manually">Running Sphinx manually</a></li>
+<li><a class="reference internal" href="#building-a-pdf-version">Building a PDF version</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-the-changelogs">Building the changelogs</a><ul>
+<li><a class="reference internal" href="#changelog-syntax">Changelog syntax</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#github-actions">GitHub Actions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dfhack-documentation-system">
+<span id="documentation"></span><h1>DFHack documentation system<a class="headerlink" href="#dfhack-documentation-system" title="Permalink to this heading">¶</a></h1>
+<p>DFHack documentation, like the file you are reading now, is created as a set of
+<code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <a class="reference external" href="https://www.sphinx-doc.org/rest.html">reStructuredText (reST)</a>
+format. This is a documentation format common in the Python community. It is very
+similar in concept – and in syntax – to Markdown, as found on GitHub and many other
+places. However it is more advanced than Markdown, with more features available when
+compiled to HTML, such as automatic tables of contents, cross-linking, special
+external links (forum, wiki, etc) and more. The documentation is compiled by a
+Python tool named <a class="reference external" href="https://www.sphinx-doc.org">Sphinx</a>.</p>
+<p>The DFHack build process will compile and install the documentation so it can be
+displayed in-game by the <a class="reference internal" href="../tools/help.html#help"><span class="std std-ref">help</span></a> and <a class="reference internal" href="../tools/ls.html#ls"><span class="std std-ref">ls</span></a> commands (and any other command or GUI that
+displays help text), but documentation compilation is disabled by default due to the
+additional Python and Sphinx requirements. If you already have a version of the docs
+installed (say from a downloaded release binary), then you only need to build the docs
+if you’re changing them and want to see the changes reflected in your game.</p>
+<p>You can also build the docs if you just want a local HTML- or text-rendered copy, though
+you can always read the <a class="reference external" href="https://dfhack.readthedocs.org">online version</a> too.
+The active development version of the documentation is tagged with <code class="docutils literal notranslate"><span class="pre">latest</span></code> and
+is available <a class="reference external" href="https://docs.dfhack.org/en/latest/index.html">here</a></p>
+<p>Note that even if you do want a local copy, it is certainly not necessary to
+compile the documentation in order to read it. Like Markdown, reST documents are
+designed to be just as readable in a plain-text editor as they are in HTML format.
+The main thing you lose in plain text format is hyperlinking.</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#concepts-and-general-guidance" id="id2">Concepts and general guidance</a></p>
+<ul>
+<li><p><a class="reference internal" href="#short-descriptions" id="id3">Short descriptions</a></p></li>
+<li><p><a class="reference internal" href="#tags" id="id4">Tags</a></p></li>
+<li><p><a class="reference internal" href="#links" id="id5">Links</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#documentation-standards" id="id6">Documentation standards</a></p>
+<ul>
+<li><p><a class="reference internal" href="#where-do-i-add-the-help-text" id="id7">Where do I add the help text?</a></p></li>
+<li><p><a class="reference internal" href="#header-format" id="id8">Header format</a></p></li>
+<li><p><a class="reference internal" href="#usage-help" id="id9">Usage help</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id10">Examples</a></p></li>
+<li><p><a class="reference internal" href="#options" id="id11">Options</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#external-scripts-and-plugins" id="id12">External scripts and plugins</a></p></li>
+<li><p><a class="reference internal" href="#required-dependencies" id="id13">Required dependencies</a></p>
+<ul>
+<li><p><a class="reference internal" href="#linux" id="id14">Linux</a></p></li>
+<li><p><a class="reference internal" href="#macos" id="id15">macOS</a></p></li>
+<li><p><a class="reference internal" href="#windows" id="id16">Windows</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#building-the-documentation" id="id17">Building the documentation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-cmake" id="id18">Using CMake</a></p></li>
+<li><p><a class="reference internal" href="#running-sphinx-manually" id="id19">Running Sphinx manually</a></p></li>
+<li><p><a class="reference internal" href="#building-a-pdf-version" id="id20">Building a PDF version</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#building-the-changelogs" id="id21">Building the changelogs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#changelog-syntax" id="id22">Changelog syntax</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#github-actions" id="id23">GitHub Actions</a></p></li>
+</ul>
+</nav>
+<section id="concepts-and-general-guidance">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Concepts and general guidance</a><a class="headerlink" href="#concepts-and-general-guidance" title="Permalink to this heading">¶</a></h2>
+<p>The source <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files are compiled to HTML for viewing in a browser and to text
+format for viewing in-game. For in-game help, the help text is read from its installed
+location in <code class="docutils literal notranslate"><span class="pre">hack/docs</span></code> under the DF directory.</p>
+<p>When writing documentation, remember that everything should be documented! If it’s not
+clear <em>where</em> a particular thing should be documented, ask on Discord or in the DFHack
+thread on Bay12 – you’ll not only be getting help, you’ll also be providing valuable
+feedback that makes it easier for future contributors to find documentation on how to
+write the documentation!</p>
+<p>Try to keep lines within 80-100 characters so it’s readable in plain text in the
+terminal - Sphinx (our documentation system) will make sure paragraphs flow.</p>
+<section id="short-descriptions">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Short descriptions</a><a class="headerlink" href="#short-descriptions" title="Permalink to this heading">¶</a></h3>
+<p>Each command that a user can run – as well as every plugin – needs to have a
+short (~54 character) descriptive string associated with it. This description text is:</p>
+<ul class="simple">
+<li><p>used in-game by the <a class="reference internal" href="../tools/ls.html#ls"><span class="std std-ref">ls</span></a> command and DFHack UI screens that list commands</p></li>
+<li><p>used in the generated index entries in the HTML docs</p></li>
+</ul>
+</section>
+<section id="tags">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Tags</a><a class="headerlink" href="#tags" title="Permalink to this heading">¶</a></h3>
+<p>To make it easier for players to find related commands, all plugins and commands are marked
+with relevant tags. These are used to compile indices and generate cross-links between the
+commands, both in the HTML documents and in-game. See the list of available <a class="reference internal" href="../Tags.html#tag-list"><span class="std std-ref">DFHack tool tags</span></a> and
+think about which categories your new tool belongs in.</p>
+</section>
+<section id="links">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Links</a><a class="headerlink" href="#links" title="Permalink to this heading">¶</a></h3>
+<p>If it would be helpful to mention another DFHack command, don’t just type the
+name - add a hyperlink!  Specify the link target in backticks, and it will be
+replaced with the corresponding title and linked:  e.g. <code class="docutils literal notranslate"><span class="pre">`autolabor`</span></code>
+=&gt; <a class="reference internal" href="../tools/autolabor.html#autolabor"><span class="std std-ref">autolabor</span></a>. Scripts and plugins have link targets that match their names
+created for you automatically.</p>
+<p>If you want to link to a heading in your own page, you can specify it like this:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>`Heading text exactly as written`_
+</pre></div>
+</div>
+<p>Note that the DFHack documentation is configured so that single backticks (with
+no prefix or suffix) produce links to internal link targets, such as the
+<code class="docutils literal notranslate"><span class="pre">autolabor</span></code> target shown above. This is different from the reStructuredText
+default behavior of rendering such text in italics (as a reference to a title).
+For alternative link behaviors, see:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/roles.html">The reStructuredText documentation on roles</a></p></li>
+<li><p><a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#hyperlink-targets">The reStructuredText documentation on external links</a></p></li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html">The Sphinx documentation on roles</a></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">:doc:</span></code> is useful for linking to another document outside of DFHack.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="documentation-standards">
+<span id="docs-standards"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Documentation standards</a><a class="headerlink" href="#documentation-standards" title="Permalink to this heading">¶</a></h2>
+<p>Whether you’re adding new code or just fixing old documentation (and there’s plenty),
+there are a few important standards for completeness and consistent style.  Treat
+this section as a guide rather than iron law, match the surrounding text, and you’ll
+be fine.</p>
+<section id="where-do-i-add-the-help-text">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Where do I add the help text?</a><a class="headerlink" href="#where-do-i-add-the-help-text" title="Permalink to this heading">¶</a></h3>
+<p>For scripts and plugins that are distributed as part of DFHack, documentation files
+should be added to the <a class="reference external" href="https://github.com/DFHack/scripts/tree/master/docs">scripts/docs</a> and <a class="reference external" href="https://github.com/DFHack/dfhack/tree/develop/docs/plugins">docs/plugins</a> directories,
+respectively, in a file named after the script or plugin. For example, a script named
+<code class="docutils literal notranslate"><span class="pre">gui/foobar.lua</span></code> (which provides the <code class="docutils literal notranslate"><span class="pre">gui/foobar</span></code> command) should be documented
+in a file named <code class="docutils literal notranslate"><span class="pre">docs/gui/foobar.rst</span></code> in the scripts repo. Similarly, a plugin named
+<code class="docutils literal notranslate"><span class="pre">foobaz</span></code> should be documented in a file named <code class="docutils literal notranslate"><span class="pre">docs/plugins/foobaz.rst</span></code> in the dfhack repo.
+For plugins, all commands provided by that plugin should be documented in that same file.</p>
+<p>Short descriptions (the ~54 character short help) for scripts and plugins are taken from
+the <code class="docutils literal notranslate"><span class="pre">summary</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">dfhack-tool</span></code> directive that each tool help document must
+have (see the <a class="reference internal" href="#header-format">Header format</a> section below). Please make this brief but descriptive!</p>
+<p>Short descriptions for commands provided by plugins are taken from the <code class="docutils literal notranslate"><span class="pre">description</span></code>
+parameter passed to the <code class="docutils literal notranslate"><span class="pre">PluginCommand</span></code> constructor used when the command is registered
+in the plugin source file.</p>
+</section>
+<section id="header-format">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Header format</a><a class="headerlink" href="#header-format" title="Permalink to this heading">¶</a></h3>
+<p>The docs <strong>must</strong> begin with a heading which exactly matches the script or plugin name, underlined
+with <code class="docutils literal notranslate"><span class="pre">=====</span></code> to the same length. This must be followed by a <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dfhack-tool:</span></code> directive with
+at least the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:summary:</span></code> - a short, single-sentence description of the tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:tags:</span></code> - a space-separated list of <a class="reference internal" href="../Tags.html#tag-list"><span class="std std-ref">tags</span></a> that apply to the tool</p></li>
+</ul>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">dfhack-tool</span></code> generates both a description of a tool and a command
+with the same name. For tools (specifically plugins) that do not provide exactly
+1 command with the same name as the tool, pass the <code class="docutils literal notranslate"><span class="pre">:no-command:</span></code> parameter (with
+no content after it) to prevent the command block from being generated.</p>
+<p>For tools that provide multiple commands, or a command by the same name but with
+significantly different functionality (e.g. a plugin that can be both enabled
+and invoked as a command for different results), use the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dfhack-command:</span></code>
+directive for each command. This takes only a <code class="docutils literal notranslate"><span class="pre">:summary:</span></code> argument, with the
+same meaning as above.</p>
+<p>For example, documentation for the <code class="docutils literal notranslate"><span class="pre">build-now</span></code> script might look like:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">build-now</span>
+<span class="gh">=========</span>
+
+<span class="p">..</span> <span class="ow">dfhack-tool</span><span class="p">::</span>
+    <span class="nc">:summary:</span> Instantly completes unsuspended building construction jobs.
+    <span class="nc">:tags:</span> fort armok buildings
+
+By default, all buildings on the map are completed, but the area of effect is configurable.
+</pre></div>
+</div>
+<p>And documentation for the <code class="docutils literal notranslate"><span class="pre">autodump</span></code> plugin might look like:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">autodump</span>
+<span class="gh">========</span>
+
+<span class="p">..</span> <span class="ow">dfhack-tool</span><span class="p">::</span>
+    <span class="nc">:summary:</span> Automatically set items in a stockpile to be dumped.
+    <span class="nc">:tags:</span> fort armok fps productivity items stockpiles
+    <span class="nc">:no-command:</span>
+
+<span class="p">..</span> <span class="ow">dfhack-command</span><span class="p">::</span> autodump
+    <span class="nc">:summary:</span> Teleports items marked for dumping to the cursor position.
+
+<span class="p">..</span> <span class="ow">dfhack-command</span><span class="p">::</span> autodump-destroy-here
+    <span class="nc">:summary:</span> Destroy items marked for dumping under the cursor.
+
+<span class="p">..</span> <span class="ow">dfhack-command</span><span class="p">::</span> autodump-destroy-item
+    <span class="nc">:summary:</span> Destroys the selected item.
+
+When <span class="nv">`enabled &lt;enable&gt;`</span>, this plugin adds an option to the <span class="na">:kbd:</span><span class="nv">`q`</span> menu for
+stockpiles.
+
+When invoked as a command, it can instantly move all unforbidden items marked
+for dumping to the tile under the cursor.
+</pre></div>
+</div>
+</section>
+<section id="usage-help">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Usage help</a><a class="headerlink" href="#usage-help" title="Permalink to this heading">¶</a></h3>
+<p>The first section after the header and introductory text should be the usage section. You can
+choose between two formats, based on whatever is cleaner or clearer for your syntax. The first
+option is to show usage formats together, with an explanation following the block:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Usage</span>
+<span class="gh">-----</span>
+
+<span class="se">::</span>
+
+<span class="s">    build-now [&lt;options&gt;]</span>
+<span class="s">    build-now here [&lt;options&gt;]</span>
+<span class="s">    build-now [&lt;pos&gt; [&lt;pos&gt;]] [&lt;options&gt;]</span>
+
+Where the optional <span class="s">``&lt;pos&gt;``</span> pair can be used to specify the
+coordinate bounds within which <span class="s">``build-now``</span> will operate. If
+they are not specified, <span class="s">``build-now``</span> will scan the entire map.
+If only one <span class="s">``&lt;pos&gt;``</span> is specified, only the building at that
+coordinate is built.
+
+The <span class="s">``&lt;pos&gt;``</span> parameters can either be an <span class="s">``&lt;x&gt;,&lt;y&gt;,&lt;z&gt;``</span> triple
+(e.g. <span class="s">``35,12,150``</span>) or the string <span class="s">``here``</span>, which means the
+position of the active game cursor.
+</pre></div>
+</div>
+<p>The second option is to arrange the usage options in a list, with the full command
+and arguments in monospaced font. Then indent the next line and describe the effect:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Usage</span>
+<span class="gh">-----</span>
+
+<span class="s">``build-now [&lt;options&gt;]``</span>
+    Scan the entire map and build all unsuspended constructions
+    and buildings.
+<span class="s">``build-now here [&lt;options&gt;]``</span>
+    Build the unsuspended construction or building under the
+    cursor.
+<span class="s">``build-now [&lt;pos&gt; [&lt;pos&gt;]] [&lt;options&gt;]``</span>
+    Build all unsuspended constructions within the specified
+    coordinate box.
+
+The <span class="s">``&lt;pos&gt;``</span> parameters are specified as...
+</pre></div>
+</div>
+<p>Note that in both options, the entire commandline syntax is written, including the command itself.
+Literal text is written as-is (e.g. the word <code class="docutils literal notranslate"><span class="pre">here</span></code> in the above example), and text that
+describes the kind of parameter that is being passed (e.g. <code class="docutils literal notranslate"><span class="pre">pos</span></code> or <code class="docutils literal notranslate"><span class="pre">options</span></code>) is enclosed in
+angle brackets (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>). Optional elements are enclosed in square brackets (<code class="docutils literal notranslate"><span class="pre">[</span></code> and <code class="docutils literal notranslate"><span class="pre">]</span></code>).
+If the command takes an arbitrary number of elements, use <code class="docutils literal notranslate"><span class="pre">...</span></code>, for example:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>prioritize [<span class="nt">&lt;options&gt;</span>] &lt;job type&gt; [<span class="nt">&lt;job type&gt;</span> ...]
+quickfort &lt;command&gt;[,&lt;command&gt;...] &lt;list_id&gt;[,&lt;list_id&gt;...] [<span class="nt">&lt;options&gt;</span>]
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h3>
+<p>If the only way to run the command is to type the command itself, then this section is not necessary.
+Otherwise, please consider adding a section that shows some real, practical usage examples. For
+many users, this will be the <strong>only</strong> section they will read. It is so important that it is a good
+idea to include the <code class="docutils literal notranslate"><span class="pre">Examples</span></code> section <strong>before</strong> you describe any extended options your command
+might take. Write examples for what you expect the popular use cases will be. Also be sure to write
+examples showing specific, practical values being used for any parameter that takes a value or has
+tricky formatting.</p>
+<p>Examples should go in their own subheading. The examples themselves should be organized as in
+option 2 for Usage above. Here is an example <code class="docutils literal notranslate"><span class="pre">Examples</span></code> section:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Examples</span>
+<span class="gh">--------</span>
+
+<span class="s">``build-now``</span>
+    Completes all unsuspended construction jobs on the map.
+<span class="s">``build-now 37,20,154 here``</span>
+    Builds the unsuspended, unconstructed buildings in the box
+    bounded by the coordinate x=37,y=20,z=154 and the cursor.
+</pre></div>
+</div>
+</section>
+<section id="options">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Options</a><a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h3>
+<p>The options header should follow the examples, with each option in the same format as the
+examples:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Options</span>
+<span class="gh">-------</span>
+
+<span class="s">``-h``</span>, <span class="s">``--help``</span>
+    Show help text.
+<span class="s">``-l``</span>, <span class="s">``--quality &lt;level&gt;``</span>
+    Set the quality of the architecture for built architected
+    builtings.
+<span class="s">``-q``</span>, <span class="s">``--quiet``</span>
+    Suppress informational output (error messages are still
+    printed).
+</pre></div>
+</div>
+<p>Note that for parameters that have both short and long forms, any values that those options
+take only need to be specified once (e.g. <code class="docutils literal notranslate"><span class="pre">&lt;level&gt;</span></code>).</p>
+</section>
+</section>
+<section id="external-scripts-and-plugins">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">External scripts and plugins</a><a class="headerlink" href="#external-scripts-and-plugins" title="Permalink to this heading">¶</a></h2>
+<p>Scripts and plugins distributed separately from DFHack’s release packages don’t have the
+opportunity to add their documentation to the rendered HTML or text output. However, these
+scripts and plugins can use a different mechanism to at least make their help text available
+in-game.</p>
+<p>Note that since help text for external scripts and plugins is not rendered by Sphinx,
+it should be written in plain text. Any reStructuredText markup will not be processed and,
+if present, will be shown verbatim to the player (which is probably not what you want).</p>
+<p>For external scripts, the short description comes from a comment on the first line
+(the comment marker and extra whitespace is stripped). For Lua, this would look like:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- A short description of my cool script.</span>
+</pre></div>
+</div>
+<p>and for Ruby scripts it would look like:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="c1"># A short description of my cool script.</span>
+</pre></div>
+</div>
+<p>The main help text for an external script needs to appear between two markers. For
+Lua, these markers are <code class="docutils literal notranslate"><span class="pre">[====[</span></code> and <code class="docutils literal notranslate"><span class="pre">]====]</span></code>, and for Ruby they are <code class="docutils literal notranslate"><span class="pre">=begin</span></code> and
+<code class="docutils literal notranslate"><span class="pre">=end</span></code>. The documentation standards above still apply to external tools, but there is
+no need to include backticks for links or monospaced fonts. Here is a Lua example for an
+entire script header:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>-- Inventory management for adventurers.
+-- [====[
+<span class="gh">gui/adv-inventory</span>
+<span class="gh">=================</span>
+
+Tags: adventure | items
+
+Allows you to quickly move items between containers. This
+includes yourself and any followers you have.
+
+<span class="gh">Usage</span>
+<span class="gh">-----</span>
+
+    gui/adv-inventory [<span class="nt">&lt;options&gt;</span>]
+
+<span class="gh">Examples</span>
+<span class="gh">--------</span>
+
+gui/adv-inventory
+    Opens the GUI with nothing preselected
+
+gui/adv-inventory take-all
+    Opens the GUI with all container items already selected and
+    ready to move into the adventurer&#39;s inventory.
+
+<span class="gh">Options</span>
+<span class="gh">-------</span>
+
+take-all
+    Starts the GUI with container items pre-selected
+
+give-all
+    Starts the GUI with your own items pre-selected
+]====]
+</pre></div>
+</div>
+<p>For external plugins, help text for provided commands can be passed as the <code class="docutils literal notranslate"><span class="pre">usage</span></code>
+parameter when registering the commands with the <code class="docutils literal notranslate"><span class="pre">PluginCommand</span></code> constructor. There
+is currently no way for associating help text with the plugin itself, so any
+information about what the plugin does when enabled should be combined into the command
+help.</p>
+</section>
+<section id="required-dependencies">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Required dependencies</a><a class="headerlink" href="#required-dependencies" title="Permalink to this heading">¶</a></h2>
+<p>In order to build the documentation, you must have Python with Sphinx
+version 3.4.3 or later and Python 3.</p>
+<p>When installing Sphinx from OS package managers, be aware that there is
+another program called “Sphinx”, completely unrelated to documentation management.
+Be sure you are installing the right Sphinx; it may be called <code class="docutils literal notranslate"><span class="pre">python-sphinx</span></code>,
+for example. To avoid doubt, <code class="docutils literal notranslate"><span class="pre">pip</span></code> can be used instead as detailed below.</p>
+<p>Once you have installed Sphinx, <code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">--version</span></code> should report the
+version of Sphinx that you have installed. If this works, CMake should also be
+able to find Sphinx.</p>
+<p>For more detailed platform-specific instructions, see the sections below:</p>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#linux" id="id24">Linux</a></p></li>
+<li><p><a class="reference internal" href="#macos" id="id25">macOS</a></p></li>
+<li><p><a class="reference internal" href="#windows" id="id26">Windows</a></p></li>
+</ul>
+</nav>
+<section id="linux">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Linux</a><a class="headerlink" href="#linux" title="Permalink to this heading">¶</a></h3>
+<p>Most Linux distributions will include Python by default. If not, start by
+installing Python 3. On Debian-based distros:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install python3
+</pre></div>
+</div>
+<p>Check your package manager to see if Sphinx 3.4.3 or later is
+available. On Debian-based distros, this package is named <code class="docutils literal notranslate"><span class="pre">python3-sphinx</span></code>.
+If this package is new enough, you can install it directly. If not, or if you
+want to use a newer Sphinx version (which may result in faster builds), you
+can install Sphinx through the <code class="docutils literal notranslate"><span class="pre">pip</span></code> package manager instead. On Debian-based
+distros, you can install pip with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt install python3-pip
+</pre></div>
+</div>
+<p>Once pip is available, you can then install Sphinx with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install sphinx
+</pre></div>
+</div>
+<p>If you run this as an unprivileged user, it may install a local copy of Sphinx
+for your user only. The <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> executable will typically end up in
+<code class="docutils literal notranslate"><span class="pre">~/.local/bin/</span></code> in this case. Alternatively, you can install Sphinx
+system-wide by running pip with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>. In any case, you will need the folder
+containing <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> to be in your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</p>
+</section>
+<section id="macos">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">macOS</a><a class="headerlink" href="#macos" title="Permalink to this heading">¶</a></h3>
+<p>macOS has Python 2.7 installed by default, but it does not have the pip package manager.</p>
+<p>You can install Homebrew’s Python 3, which includes pip, and then install the
+latest Sphinx using pip:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>brew install python3
+pip3 install sphinx
+</pre></div>
+</div>
+</section>
+<section id="windows">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Windows</a><a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h3>
+<p>Python for Windows can be downloaded <a class="reference external" href="https://www.python.org/downloads/">from python.org</a>.
+The latest version of Python 3 includes pip already.</p>
+<p>You can also install Python and pip through the Chocolatey package manager.
+After installing Chocolatey as outlined in the <a class="reference internal" href="Compile.html#compile-windows"><span class="std std-ref">Windows compilation instructions</span></a>,
+run the following command from an elevated (admin) command prompt (e.g. <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>choco install python pip -y
+</pre></div>
+</div>
+<p>Once you have pip available, you can install Sphinx with the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install sphinx
+</pre></div>
+</div>
+<p>Note that this may require opening a new (admin) command prompt if you just
+installed pip from the same command prompt.</p>
+</section>
+</section>
+<section id="building-the-documentation">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Building the documentation</a><a class="headerlink" href="#building-the-documentation" title="Permalink to this heading">¶</a></h2>
+<p>Once the required dependencies are installed, there are multiple ways to run
+Sphinx to build the docs:</p>
+<section id="using-cmake">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Using CMake</a><a class="headerlink" href="#using-cmake" title="Permalink to this heading">¶</a></h3>
+<p>Enabling the <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> CMake option will cause the documentation to be built
+whenever it changes as part of the normal DFHack build process. There are several
+ways to do this:</p>
+<ul>
+<li><p>When initially running CMake, add <code class="docutils literal notranslate"><span class="pre">-DBUILD_DOCS:bool=ON</span></code> to your <code class="docutils literal notranslate"><span class="pre">cmake</span></code>
+command. For example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake .. -DCMAKE_BUILD_TYPE:string<span class="o">=</span>Release -DBUILD_DOCS:bool<span class="o">=</span>ON -DCMAKE_INSTALL_PREFIX<span class="o">=</span>&lt;path to DF&gt;
+</pre></div>
+</div>
+</li>
+<li><p>If you have already run CMake, you can simply run it again from your build
+folder to update your configuration:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cmake .. -DBUILD_DOCS:bool<span class="o">=</span>ON
+</pre></div>
+</div>
+</li>
+<li><p>You can edit the <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> setting in CMakeCache.txt directly</p></li>
+<li><p>You can use the CMake GUI or <code class="docutils literal notranslate"><span class="pre">ccmake</span></code> to change the <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> setting</p></li>
+<li><p>On Windows, if you prefer to use the batch scripts, you can run
+<code class="docutils literal notranslate"><span class="pre">generate-msvc-gui.bat</span></code> and set <code class="docutils literal notranslate"><span class="pre">BUILD_DOCS</span></code> through the GUI. If you are
+running another file, such as <code class="docutils literal notranslate"><span class="pre">generate-msvc-all.bat</span></code>, you will need to edit
+the batch script to add the flag. You can also run <code class="docutils literal notranslate"><span class="pre">cmake</span></code> on the command line,
+similar to other platforms.</p></li>
+</ul>
+<p>By default, both HTML and text docs are built by CMake. The generated
+documentation is stored in <code class="docutils literal notranslate"><span class="pre">docs/html</span></code> and <code class="docutils literal notranslate"><span class="pre">docs/text</span></code> (respectively) in the
+root DFHack folder, and they will both be installed to <code class="docutils literal notranslate"><span class="pre">hack/docs</span></code> when you
+install DFHack. The html and txt files will intermingle, but will not interfere
+with one another.</p>
+</section>
+<section id="running-sphinx-manually">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Running Sphinx manually</a><a class="headerlink" href="#running-sphinx-manually" title="Permalink to this heading">¶</a></h3>
+<p>You can also build the documentation without running CMake - this is faster if
+you only want to rebuild the documentation regardless of any code changes. The
+<code class="docutils literal notranslate"><span class="pre">docs/build.py</span></code> script will build the documentation in any specified formats
+(HTML only by default) using the same command that CMake runs when building the
+docs. Run the script with <code class="docutils literal notranslate"><span class="pre">--help</span></code> to see additional options.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">docs/build.py</span></code></dt><dd><p>Build just the HTML docs</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">docs/build.py</span> <span class="pre">html</span> <span class="pre">text</span></code></dt><dd><p>Build both the HTML and text docs</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">docs/build.py</span> <span class="pre">--clean</span></code></dt><dd><p>Build HTML and force a clean build (all source files are re-read)</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The resulting documentation will be stored in <code class="docutils literal notranslate"><span class="pre">docs/html</span></code> and/or <code class="docutils literal notranslate"><span class="pre">docs/text</span></code>.</p>
+<p>Alternatively, you can run Sphinx manually with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build . docs/html
+</pre></div>
+</div>
+<p>or, to build plain-text output:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build -b text . docs/text
+</pre></div>
+</div>
+<p>Sphinx has many options to enable clean builds, parallel builds, logging, and
+more - run <code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">--help</span></code> for details. If you specify a different
+output path, be warned that Sphinx may overwrite existing files in the output
+folder. Also be aware that when running <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> directly, the
+<code class="docutils literal notranslate"><span class="pre">docs/html</span></code> folder may be polluted with intermediate build files that normally
+get written in the cmake <code class="docutils literal notranslate"><span class="pre">build</span></code> directory.</p>
+</section>
+<section id="building-a-pdf-version">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Building a PDF version</a><a class="headerlink" href="#building-a-pdf-version" title="Permalink to this heading">¶</a></h3>
+<p>ReadTheDocs automatically builds a PDF version of the documentation (available
+under the “Downloads” section when clicking on the release selector). If you
+want to build a PDF version locally, you will need <code class="docutils literal notranslate"><span class="pre">pdflatex</span></code>, which is part
+of a TeX distribution. The following command will then build a PDF, located in
+<code class="docutils literal notranslate"><span class="pre">docs/pdf/latex/DFHack.pdf</span></code>, with default options:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docs/build.py pdf
+</pre></div>
+</div>
+<p>Alternatively, you can run Sphinx manually with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build -M latexpdf . docs/pdf
+</pre></div>
+</div>
+</section>
+</section>
+<section id="building-the-changelogs">
+<span id="build-changelog"></span><h2><a class="toc-backref" href="#id21" role="doc-backlink">Building the changelogs</a><a class="headerlink" href="#building-the-changelogs" title="Permalink to this heading">¶</a></h2>
+<p>If you have Python installed, you can build just the changelogs without building
+the rest of the documentation by running the <code class="docutils literal notranslate"><span class="pre">docs/gen_changelog.py</span></code> script.
+This script provides additional options, including one to build individual
+changelogs for all DFHack versions - run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">docs/gen_changelog.py</span> <span class="pre">--help</span></code>
+for details.</p>
+<p>Changelog entries are obtained from <code class="docutils literal notranslate"><span class="pre">changelog.txt</span></code> files in multiple repos.
+This allows changes to be listed in the same repo where they were made. These
+changelogs are combined as part of the changelog build process:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/changelog.txt</span></code> for changes in the main <code class="docutils literal notranslate"><span class="pre">dfhack</span></code> repo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/changelog.txt</span></code> for changes made to scripts in the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> repo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library/xml/changelog.txt</span></code> for changes made in the <code class="docutils literal notranslate"><span class="pre">df-structures</span></code> repo</p></li>
+</ul>
+<p>Building the changelogs generates two files: <code class="docutils literal notranslate"><span class="pre">docs/changelogs/news.rst</span></code> and
+<code class="docutils literal notranslate"><span class="pre">docs/changelogs/news-dev.rst</span></code>. These correspond to <a class="reference internal" href="../NEWS.html#changelog"><span class="std std-ref">Changelog</span></a> and
+<a class="reference internal" href="../NEWS-dev.html#dev-changelog"><span class="std std-ref">Development changelog</span></a> and contain changes organized by stable and development DFHack
+releases, respectively. For example, an entry listed under “0.44.05-alpha1” in
+changelog.txt will be listed under that version in the development changelog as
+well, but under “0.44.05-r1” in the stable changelog (assuming that is the
+closest stable release after 0.44.05-alpha1). An entry listed under a stable
+release like “0.44.05-r1” in changelog.txt will be listed under that release in
+both the stable changelog and the development changelog.</p>
+<section id="changelog-syntax">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Changelog syntax</a><a class="headerlink" href="#changelog-syntax" title="Permalink to this heading">¶</a></h3>
+<p>changelog.txt uses a syntax similar to RST, with a few special sequences:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">===</span></code> indicates the start of a comment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> indicates the start of a release name (do not include “DFHack”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">##</span></code> indicates the start of a section name (this must be listed in <code class="docutils literal notranslate"><span class="pre">gen_changelog.py</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> indicates the start of a changelog entry. <strong>Note:</strong> an entry currently must be only one line.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">:</span></code> (colon followed by space) separates the name of a feature from a description of a change to that feature.</dt><dd><p>Changes made to the same feature are grouped if they end up in the same section.</p>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:\</span></code> (colon, backslash, space) avoids the above behavior</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">&#64;</span></code> (the space is optional) indicates the start of an entry that should only be displayed in NEWS-dev.rst.</dt><dd><p>Use this sparingly, e.g. for immediate fixes to one development build in another development build that
+are not of interest to users of stable builds only.</p>
+</dd>
+</dl>
+</li>
+<li><p>Three <code class="docutils literal notranslate"><span class="pre">[</span></code> characters indicate the start of a block (possibly a comment) that
+spans multiple lines. Three <code class="docutils literal notranslate"><span class="pre">]</span></code> characters indicate the end of such a block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!</span></code> immediately before a phrase set up to be replaced (see gen_changelog.py) stops that occurrence from being replaced.</p></li>
+</ul>
+</section>
+</section>
+<section id="github-actions">
+<span id="docs-ci"></span><h2><a class="toc-backref" href="#id23" role="doc-backlink">GitHub Actions</a><a class="headerlink" href="#github-actions" title="Permalink to this heading">¶</a></h2>
+<p>Documentation is built automatically with GitHub Actions (a GitHub-provided
+continuous integration service) for all pull requests and commits in the
+“dfhack” and “scripts” repositories. These builds run with strict settings, i.e.
+warnings are treated as errors. If a build fails, you will see a red “x” next to
+the relevant commit or pull request. You can view detailed output from Sphinx in
+a few ways:</p>
+<ul class="simple">
+<li><p>Click on the red “x” (or green checkmark), then click “Details” next to
+the “Build / docs” entry</p></li>
+<li><p>For pull requests only: navigate to the “Checks” tab, then click on “Build” in
+the sidebar to expand it, then “docs” under it</p></li>
+</ul>
+<p>Sphinx output will be visible under the step named “Build docs”. If a different
+step failed, or you aren’t sure how to interpret the output, leave a comment
+on the pull request (or commit).</p>
+<p>You can also download the “docs” artifact from the summary page (typically
+accessible by clicking “Build”) if the build succeeded. This is a way to
+visually inspect what the documentation looks like when built without installing
+Sphinx locally, although we recommend installing Sphinx if you are planning to
+do any significant work on the documentation.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

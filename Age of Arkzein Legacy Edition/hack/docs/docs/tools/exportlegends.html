@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>exportlegends &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="exterminate" href="exterminate.html" />
+    <link rel="prev" title="eventful" href="eventful.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="eventful.html" title="previous chapter">eventful</a></li>
+      <li>Next: <a href="exterminate.html" title="next chapter">exterminate</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">exportlegends</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="exportlegends">
+<span id="id1"></span><h1>exportlegends<a class="headerlink" href="#exportlegends" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../legends-tag-index.html"><span class="std std-ref">legends</span></a><span> | </span><a class="reference internal" href="../../inspection-tag-index.html"><span class="std std-ref">inspection</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">exportlegends</span></code></p>
+<p><span>Exports legends data for external viewing.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Ctrl</span><span class="kbd">A</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;exportlegends</span> <span class="pre">all&quot;</span></code><span> in </span><code class="docutils literal notranslate"><span class="pre">legends</span></code></p>
+</aside>
+<p>When run from legends mode, you can export detailed data about your world so
+that it can be browsed with external programs like
+<a class="reference external" href="http://www.bay12forums.com/smf/index.php?topic=128932">World Viewer</a> and other similar utilities. The data exported
+with this tool is more detailed than what you can get with vanilla export
+functionality, and some external tools depend on this extra information.</p>
+<p><code class="docutils literal notranslate"><span class="pre">exportlegends</span></code> can be especially useful when you are generating a lot of
+worlds that you later want to inspect or when you want a map of every site when
+there are several hundred.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>exportlegends &lt;command&gt; [&lt;folder name&gt;]
+</pre></div>
+</div>
+<p>Valid commands are:</p>
+<dl class="field-list simple">
+<dt class="field-odd">info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Exports the world/gen info, the legends XML, and an extended info file.</p>
+</dd>
+<dt class="field-even">custom<span class="colon">:</span></dt>
+<dd class="field-even"><p>Exports just the extended info file.</p>
+</dd>
+<dt class="field-odd">sites<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Exports all available site maps.</p>
+</dd>
+<dt class="field-even">maps<span class="colon">:</span></dt>
+<dd class="field-even"><p>Exports all seventeen detailed maps.</p>
+</dd>
+<dt class="field-odd">all<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Equivalent to calling all of the above, in that order.</p>
+</dd>
+</dl>
+<p>The default folder name is generated from the region number of the world and the
+current in-world date: <code class="docutils literal notranslate"><span class="pre">legends-regionX-YYYYY-MM-DD</span></code>. You can use a different
+folder by naming it on the <code class="docutils literal notranslate"><span class="pre">exportlegends</span></code> command line. Nested paths are
+accepted, but all but the last folder has to already exist. To export to the
+top-level DF folder, specify <code class="docutils literal notranslate"><span class="pre">.</span></code> as the folder name.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">exportlegends</span> <span class="pre">all</span></code></dt><dd><p>Export all information to the <code class="docutils literal notranslate"><span class="pre">legends-regionX-YYYYY-MM-DD</span></code> folder.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">exportlegends</span> <span class="pre">all</span> <span class="pre">legends/myregion</span></code></dt><dd><p>Export all information to the <code class="docutils literal notranslate"><span class="pre">legends/myregion</span></code> folder.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">exportlegends</span> <span class="pre">custom</span> <span class="pre">.</span></code></dt><dd><p>Export just the extended info file to the DF folder (no subfolder).</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

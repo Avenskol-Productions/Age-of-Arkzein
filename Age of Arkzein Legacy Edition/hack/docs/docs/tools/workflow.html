@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>workflow &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="workorder" href="workorder.html" />
+    <link rel="prev" title="workNow" href="workNow.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="workNow.html" title="previous chapter">workNow</a></li>
+      <li>Next: <a href="workorder.html" title="next chapter">workorder</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">workflow</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#constraint-format">Constraint format</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="workflow">
+<span id="id1"></span><h1>workflow<a class="headerlink" href="#workflow" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../auto-tag-index.html"><span class="std std-ref">auto</span></a><span> | </span><a class="reference internal" href="../../jobs-tag-index.html"><span class="std std-ref">jobs</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">workflow</span></code></p>
+<p><span>Manage automated item production rules.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">fix-job-postings</span></code></p>
+<p><span>Fixes crashes caused by old versions of workflow.</span></p>
+</aside>
+<p>Manage repeat jobs according to stock levels. <a class="reference internal" href="gui/workflow.html#gui-workflow"><span class="std std-ref">gui/workflow</span></a> provides a simple
+front-end integrated in the game UI.</p>
+<p>When the plugin is enabled, it protects all repeat jobs from removal. If they do
+disappear due to any cause (raw materials not available, manual removal by the
+player, etc.), they are immediately re-added to their workshop and suspended.</p>
+<p>If any constraints on item amounts are set, repeat jobs that produce that kind
+of item are automatically suspended and resumed as the item amount goes above or
+below the limit.</p>
+<p>There is a good amount of overlap between this plugin and the vanilla manager
+workorders, and both systems have their advantages. Vanilla manager workorders
+can be more expressive about when to enqueue jobs. For example, you can gate the
+activation of a vanilla workorder based on availability of raw materials, which
+you cannot do in <code class="docutils literal notranslate"><span class="pre">workflow</span></code>. However, <code class="docutils literal notranslate"><span class="pre">workflow</span></code> is often more convenient
+for quickly keeping a small stock of various items on hand without having to
+configure all the vanilla manager options. Also see the <a class="reference internal" href="orders.html#orders"><span class="std std-ref">orders</span></a> plugin for
+a library of manager orders that may make managing your stocks even more
+convenient than <code class="docutils literal notranslate"><span class="pre">workflow</span></code> can.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">workflow</span></code></dt><dd><p>Start monitoring for and managing workshop jobs that are set to repeat.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">enable|disable</span> <span class="pre">drybuckets</span></code></dt><dd><p>Enables/disables automatic emptying of abandoned water buckets.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">enable|disable</span> <span class="pre">auto-melt</span></code></dt><dd><p>Enables/disables automatic resumption of repeat melt jobs when there are
+objects to melt.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">count</span> <span class="pre">&lt;constraint-spec&gt;</span> <span class="pre">&lt;target&gt;</span> <span class="pre">[gap]</span></code></dt><dd><p>Set a constraint, counting every stack as 1 item. If a gap is specified,
+stocks are allowed to dip that many items below the target before relevant
+jobs are resumed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">amount</span> <span class="pre">&lt;constraint-spec&gt;</span> <span class="pre">&lt;target&gt;</span> <span class="pre">[gap]</span></code></dt><dd><p>Set a constraint, counting all items within stacks. If a gap is specified,
+stocks are allowed to dip that many items below the target before relevant
+jobs are resumed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">unlimit</span> <span class="pre">&lt;constraint-spec&gt;</span></code></dt><dd><p>Delete a constraint.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">unlimit-all</span></code></dt><dd><p>Delete all constraints.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">jobs</span></code></dt><dd><p>List workflow-controlled jobs (if in a workshop, filtered by it).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">list</span></code></dt><dd><p>List active constraints, and their job counts.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">workflow</span> <span class="pre">list-commands</span></code></dt><dd><p>List active constraints as workflow commands that re-create them; this list
+can be copied to a file, and then reloaded using the <a class="reference internal" href="script.html#script"><span class="std std-ref">script</span></a> built-in
+command.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fix-job-postings</span> <span class="pre">[dry-run]</span></code></dt><dd><p>Fixes crashes caused by the version of workflow released with DFHack
+0.40.24-r4. It will be run automatically if needed. If your save has never
+been run with this version, you will never need this command. Specify the
+<code class="docutils literal notranslate"><span class="pre">dry-run</span></code> keyword to see what this command would do without making any
+changes to game state.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<p>Keep metal bolts within 900-1000, and wood/bone within 150-200:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow amount AMMO:ITEM_AMMO_BOLTS/METAL 1000 100
+workflow amount AMMO:ITEM_AMMO_BOLTS/WOOD,BONE 200 50
+</pre></div>
+</div>
+<p>Keep the number of prepared food &amp; drink stacks between 90 and 120:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow count FOOD 120 30
+workflow count DRINK 120 30
+</pre></div>
+</div>
+<p>Make sure there are always 25-30 empty bins/barrels/bags:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow count BIN 30
+workflow count BARREL 30
+workflow count BOX/CLOTH,SILK,YARN 30
+</pre></div>
+</div>
+<p>Make sure there are always 15-20 coal and 25-30 copper bars:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow count BAR//COAL 20
+workflow count BAR//COPPER 30
+</pre></div>
+</div>
+<p>Produce 15-20 gold crafts:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow count CRAFTS//GOLD 20
+</pre></div>
+</div>
+<p>Collect 15-20 sand bags and clay boulders:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow count POWDER_MISC/SAND 20
+workflow count BOULDER/CLAY 20
+</pre></div>
+</div>
+<p>Make sure there are always 80-100 units of dimple dye:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow amount POWDER_MISC//MUSHROOM_CUP_DIMPLE:MILL 100 20
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order for this to work, you have to set the material of the PLANT input
+on the Mill Plants job to MUSHROOM_CUP_DIMPLE using the
+<a class="reference internal" href="jobutils.html#job"><span class="std std-ref">job item-material</span></a> command. Otherwise the plugin won’t be able to
+deduce the output material.</p>
+</div>
+<p>Maintain 10-100 locally-made crafts of exceptional quality:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>workflow count CRAFTS///LOCAL,EXCEPTIONAL 100 90
+</pre></div>
+</div>
+</section>
+<section id="constraint-format">
+<h2>Constraint format<a class="headerlink" href="#constraint-format" title="Permalink to this heading">¶</a></h2>
+<p>The constraint spec consists of 4 parts, separated with <code class="docutils literal notranslate"><span class="pre">/</span></code> characters:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>ITEM[:SUBTYPE]/[GENERIC_MAT,...]/[SPECIFIC_MAT:...]/[LOCAL,&lt;quality&gt;]
+</pre></div>
+</div>
+<p>The first part is mandatory and specifies the item type and subtype, using the
+raw tokens for items (the same syntax used for custom reaction inputs). For more
+information, see <a class="reference external" href="https://dwarffortresswiki.org/Material_token">this wiki page</a>.</p>
+<p>The subsequent parts are optional:</p>
+<ul>
+<li><p>A generic material spec constrains the item material to one of the hard-coded
+generic classes, which currently include:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>PLANT WOOD CLOTH SILK LEATHER BONE SHELL SOAP TOOTH HORN PEARL YARN
+METAL STONE SAND GLASS CLAY MILK
+</pre></div>
+</div>
+</li>
+<li><p>A specific material spec chooses the material exactly, using the raw syntax
+for reaction input materials, e.g. <code class="docutils literal notranslate"><span class="pre">INORGANIC:IRON</span></code>, although for
+convenience it also allows just <code class="docutils literal notranslate"><span class="pre">IRON</span></code>, or <code class="docutils literal notranslate"><span class="pre">ACACIA:WOOD</span></code> etc.  See the
+link above for more details on the unabbreviated raw syntax.</p></li>
+<li><p>A comma-separated list of miscellaneous flags, which currently can be used to
+ignore imported items (<code class="docutils literal notranslate"><span class="pre">LOCAL</span></code>) or items below a certain quality (1-5, with
+5 being masterwork).</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

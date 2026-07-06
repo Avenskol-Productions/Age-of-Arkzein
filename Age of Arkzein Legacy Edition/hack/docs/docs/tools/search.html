@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>search &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="season-palette" href="season-palette.html" />
+    <link rel="prev" title="script" href="script.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="script.html" title="previous chapter">script</a></li>
+      <li>Next: <a href="season-palette.html" title="next chapter">season-palette</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">search</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="search">
+<span id="search-plugin"></span><h1>search<a class="headerlink" href="#search" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../interface-tag-index.html"><span class="std std-ref">interface</span></a></p>
+<p><span>Adds search capabilities to the UI.</span></p>
+</aside>
+<p>Search options are added to the Stocks, Animals, Trading, Stockpile, Noble
+assignment candidates), Military (position candidates), Burrows (unit list),
+Rooms, Announcements, Job List, and Unit List screens all get hotkeys that allow
+you to dynamically filter the displayed lists.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>enable search
+</pre></div>
+</div>
+<img alt="../../_images/search.png" src="../../_images/search.png" />
+<p>Searching works the same way as the search option in <span class="guilabel">Move to Depot</span>.
+You will see the Search option displayed on screen with a hotkey
+(usually <kbd class="kbd docutils literal notranslate">s</kbd>). Pressing it lets you start typing a query and the relevant
+list will start filtering automatically.</p>
+<p>Pressing <kbd class="kbd docutils literal notranslate">Enter</kbd>, <kbd class="kbd docutils literal notranslate">Esc</kbd> or the arrow keys will return you to browsing
+the now filtered list, which still functions as normal. You can clear the filter
+by either going back into search mode and backspacing to delete it, or pressing
+the “shifted” version of the search hotkey while browsing the list (e.g. if the
+hotkey is <kbd class="kbd docutils literal notranslate">s</kbd>, then hitting <kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">s</kbd> will clear any filter).</p>
+<p>Leaving any screen automatically clears the filter.</p>
+<p>In the Trade screen, the actual trade will always only act on items that are
+actually visible in the list; the same effect applies to the Trade Value numbers
+displayed by the screen. Because of this, the <kbd class="kbd docutils literal notranslate">t</kbd> key is blocked while
+search is active, so you have to reset the filters first. Pressing
+<kbd class="kbd docutils literal notranslate">Alt</kbd><kbd class="kbd docutils literal notranslate">C</kbd> will clear both search strings.</p>
+<p>In the stockpile screen the option only appears if the cursor is in the
+rightmost list:</p>
+<img alt="../../_images/search-stockpile.png" src="../../_images/search-stockpile.png" />
+<p>Note that the ‘Permit XXX’/’Forbid XXX’ keys conveniently operate only on items
+actually shown in the rightmost list, so it is possible to select only fat or
+tallow by forbidding fats, then searching for fat/tallow, and using Permit Fats
+again while the list is filtered.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

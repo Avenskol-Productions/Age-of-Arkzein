@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>unsuspend &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="view-item-info" href="view-item-info.html" />
+    <link rel="prev" title="unretire-anyone" href="unretire-anyone.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="unretire-anyone.html" title="previous chapter">unretire-anyone</a></li>
+      <li>Next: <a href="view-item-info.html" title="next chapter">view-item-info</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">unsuspend</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#overlay">Overlay</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="unsuspend">
+<span id="id1"></span><h1>unsuspend<a class="headerlink" href="#unsuspend" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../jobs-tag-index.html"><span class="std std-ref">jobs</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">unsuspend</span></code></p>
+<p><span>Unsuspends building construction jobs.</span></p>
+</aside>
+<p>Unsuspends building construction jobs, except for jobs managed by <a class="reference internal" href="buildingplan.html#buildingplan"><span class="std std-ref">buildingplan</span></a>
+and those where water flow is greater than 1. This allows you to quickly recover
+if a bunch of jobs were suspended due to the workers getting scared off by
+wildlife or items temporarily blocking building sites.</p>
+<p>See <a class="reference internal" href="autounsuspend.html#autounsuspend"><span class="std std-ref">autounsuspend</span></a> for periodic automatic unsuspending of suspended jobs.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>unsuspend
+</pre></div>
+</div>
+</section>
+<section id="overlay">
+<h2>Overlay<a class="headerlink" href="#overlay" title="Permalink to this heading">¶</a></h2>
+<p>This script also provides an overlay that is managed by the <a class="reference internal" href="overlay.html#overlay"><span class="std std-ref">overlay</span></a> framework.
+When enabled, it will display a colored ‘X’ over suspended buildings. A green
+‘X’ indicates that the building is waiting on materials, and <a class="reference internal" href="buildingplan.html#buildingplan"><span class="std std-ref">buildingplan</span></a> will
+unsuspend it for you when those materials become available. A yellow ‘X’ means
+that the building is suspended and that you can unsuspend it manually or with
+the <a class="reference internal" href="#unsuspend"><span class="std std-ref">unsuspend</span></a> command. A red ‘X’ indicates that the building has been
+re-suspended multiple times, and that you might need to look into whatever is
+preventing the building from being built.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

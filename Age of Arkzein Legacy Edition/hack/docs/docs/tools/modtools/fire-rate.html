@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>modtools/fire-rate &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="modtools/force" href="force.html" />
+    <link rel="prev" title="modtools/extra-gamelog" href="extra-gamelog.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="extra-gamelog.html" title="previous chapter">modtools/extra-gamelog</a></li>
+      <li>Next: <a href="force.html" title="next chapter">modtools/force</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="modtools-fire-rate">
+<span id="id1"></span><h1>modtools/fire-rate<a class="headerlink" href="#modtools-fire-rate" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dev-tag-index.html"><span class="std std-ref">dev</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">modtools/fire-rate</span></code></p>
+<p><span>Alter the fire rate of ranged weapons.</span></p>
+</aside>
+<p>Allows altering the fire rates of ranged weapons. Each are defined on a per-item
+basis. As this is done in an on-world basis, commands for this should be placed
+in an <code class="docutils literal notranslate"><span class="pre">onLoad*.init</span></code>. This also technically serves as a patch to any of the
+weapons targeted in adventure mode, reducing the times down to their intended
+speeds (the game applies an additional hardcoded recovery time to any ranged
+attack you make in adventure mode).</p>
+<p>Once run, all ranged attacks will use this script’s systems for calculating
+recovery speeds, even for items that haven’t directly been modified using this
+script’s commands. One minor side effect is that it can’t account for
+interactions with the <code class="docutils literal notranslate"><span class="pre">FREE_ACTION</span></code> token; interactions with that tag which
+launch projectiles will be subject to recovery times (though there aren’t any
+interaction in vanilla where this would happen, as far as I know).</p>
+<p>Requires a Target and any number of Modifiers.</p>
+<p>Targets:</p>
+<dl class="field-list simple">
+<dt class="field-odd">-item &lt;item token&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The full token of the item to modify.
+Example: <code class="docutils literal notranslate"><span class="pre">WEAPON:ITEM_WEAPON_BOW</span></code></p>
+</dd>
+<dt class="field-even">-throw<span class="colon">:</span></dt>
+<dd class="field-even"><p>Modify the fire rate for throwing.
+This is specifically for thrown attacks without a weapon - if you have a
+weapon that uses <code class="docutils literal notranslate"><span class="pre">THROW</span></code> as its skill, you need to use the <code class="docutils literal notranslate"><span class="pre">-item</span></code>
+argument for it.</p>
+</dd>
+</dl>
+<p>Modifiers:</p>
+<dl class="field-list simple">
+<dt class="field-odd">-material &lt;material token&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Apply only to items made of the given material token. With the <code class="docutils literal notranslate"><span class="pre">-item</span></code>
+argument, this will apply to the material that the weapon is made of, whereas
+with the <code class="docutils literal notranslate"><span class="pre">-throw</span></code> argument this will apply to the material being thrown (or
+fired, in the case of interactions). This is optional.
+Format examples: “CREATURE:COW:MILK”, “PLANT:MUSHROOM_HELMET_PLUMP:DRINK”,
+“INORGANIC:GOLD”, “VOMIT”</p>
+</dd>
+<dt class="field-even">-fortBase &lt;integer&gt; -advBase &lt;integer&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>Set the base fire rate for the weapon in ticks to use in the respective mode
+(fortress/adventure). Means one shot per x ticks. Defaults to the game default
+of 80.</p>
+</dd>
+<dt class="field-odd">-fortSkillFactor &lt;float&gt; -advSkillFactor &lt;float&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Multiplier that modifies how effective a user’s skill is at improving the fire
+rate in the respective modes. In basic mode, recovery time is reduced by this
+value * user’s skill ticks. Defaults to 2.7. With that value and default
+settings, it will make a Legendary shooter fire at the speed cap.</p>
+</dd>
+<dt class="field-even">-fortCap &lt;integer&gt; -advCap &lt;integer&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sets a cap on the fastest fire rate that can be achieved in their respective
+mode. Due to game limitations, the cap can’t be less than 10 in adventure
+mode. Defaults to half of the base fire rate defined by the <code class="docutils literal notranslate"><span class="pre">-fort</span></code> or
+<code class="docutils literal notranslate"><span class="pre">-adv</span></code> arguments.</p>
+</dd>
+</dl>
+<p>Other:</p>
+<dl class="field-list simple">
+<dt class="field-odd">-mode &lt;”basic” | “vanilla”&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sets what method is used to determine how skill affects fire rates. This is
+applied globally, rather than on a per-item basis. Basic uses a simplified
+method for working out fire rates - each point in a skill reduces the fire
+cooldown by a consistent, fixed amount. This method is the default.
+Vanilla mode attempts to replicate behaviour for fire rates - skill rolls
+determine which of 6 fixed increments of speeds is used, with a unit’s skill
+affecting the range and averages. <strong>NOT YET IMPLEMENTED!</strong></p>
+</dd>
+</dl>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

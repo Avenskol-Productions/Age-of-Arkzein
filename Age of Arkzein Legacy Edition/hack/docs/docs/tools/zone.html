@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>zone &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="devel/all-bob" href="devel/all-bob.html" />
+    <link rel="prev" title="xlsxreader" href="xlsxreader.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="xlsxreader.html" title="previous chapter">xlsxreader</a></li>
+      <li>Next: <a href="devel/all-bob.html" title="next chapter">devel/all-bob</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">zone</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#filters">Filters</a></li>
+<li><a class="reference internal" href="#usage-with-single-units">Usage with single units</a></li>
+<li><a class="reference internal" href="#matching-with-filters">Matching with filters</a></li>
+<li><a class="reference internal" href="#mass-renaming">Mass-renaming</a></li>
+<li><a class="reference internal" href="#cage-zones">Cage zones</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="zone">
+<span id="id1"></span><h1>zone<a class="headerlink" href="#zone" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../animals-tag-index.html"><span class="std std-ref">animals</span></a><span> | </span><a class="reference internal" href="../../buildings-tag-index.html"><span class="std std-ref">buildings</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">zone</span></code></p>
+<p><span>Manage activity zones, cages, and the animals therein.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">Shift</span><span class="kbd">I</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;zone</span> <span class="pre">set&quot;</span></code><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode/Zones</span></code></p>
+</aside>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">zone</span></code></dt><dd><p>Add helpful filters to the pen/pasture sidebar menu (e.g. show only caged
+grazers).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">set</span></code></dt><dd><p>Set zone or cage under cursor as default for future <code class="docutils literal notranslate"><span class="pre">assign</span></code> or <code class="docutils literal notranslate"><span class="pre">tocages</span></code>
+commands.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span> <span class="pre">[&lt;zone</span> <span class="pre">id&gt;]</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Assign unit(s) to the zone with the given ID, or to the most recent pen or
+pit marked with the <code class="docutils literal notranslate"><span class="pre">set</span></code> command. If no filters are set, then a unit must
+be selected in the in-game ui.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">unassign</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Unassign selected creature from its zone.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">nick</span> <span class="pre">&lt;nickname&gt;</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Assign the given nickname to the selected animal or the animals matched by
+the given filter.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">remnick</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Remove nicknames from the selected animal or the animals matched by the
+given filter.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">enumnick</span> <span class="pre">&lt;nickname</span> <span class="pre">prefix&gt;</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Assign enumerated nicknames (e.g. “Hen 1”, “Hen 2”…).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">tocages</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Assign unit(s) to cages that have been built inside the pasture selected
+with the <code class="docutils literal notranslate"><span class="pre">set</span></code> command.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">uinfo</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Print info about unit(s). If no filters are set, then a unit must be
+selected in the in-game ui.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">zinfo</span></code></dt><dd><p>Print info about the zone(s) and any buildings under the cursor.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<p>Before any <code class="docutils literal notranslate"><span class="pre">assign</span></code> or <code class="docutils literal notranslate"><span class="pre">tocages</span></code> examples can be used, you must first move
+the cursor over a pen/pasture or pit zone and run <code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">set</span></code> to select the
+zone.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span> <span class="pre">all</span> <span class="pre">own</span> <span class="pre">ALPACA</span> <span class="pre">minage</span> <span class="pre">3</span> <span class="pre">maxage</span> <span class="pre">10</span></code></dt><dd><p>Assign all of your alpacas who are between 3 and 10 years old to the
+selected pasture.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span> <span class="pre">all</span> <span class="pre">own</span> <span class="pre">caged</span> <span class="pre">grazer</span> <span class="pre">nick</span> <span class="pre">ineedgrass</span></code></dt><dd><p>Assign all of your grazers who are sitting in cages on stockpiles (e.g.
+after buying them from merchants) to the selected pasture and give them the
+nickname ‘ineedgrass’.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span> <span class="pre">all</span> <span class="pre">own</span> <span class="pre">not</span> <span class="pre">grazer</span> <span class="pre">not</span> <span class="pre">race</span> <span class="pre">CAT</span></code></dt><dd><p>Assign all of your animals who are not grazers (excluding cats) to the
+selected pasture.
+”  zone assign all own milkable not grazern”</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span> <span class="pre">all</span> <span class="pre">own</span> <span class="pre">female</span> <span class="pre">milkable</span> <span class="pre">not</span> <span class="pre">grazer</span></code></dt><dd><p>Assign all of your non-grazing milkable creatures to the selected pasture or
+cage.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span> <span class="pre">all</span> <span class="pre">own</span> <span class="pre">race</span> <span class="pre">DWARF</span> <span class="pre">maxage</span> <span class="pre">2</span></code></dt><dd><p>Throw all useless kids into a pit :) They’ll be fine I’m sure.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">nick</span> <span class="pre">donttouchme</span></code></dt><dd><p>Nicknames all units in the current default zone or cage to ‘donttouchme’.
+This is especially useful for protecting a group of animals assigned to a
+pasture or cage from being “processed” by <a class="reference internal" href="autobutcher.html#autobutcher"><span class="std std-ref">autobutcher</span></a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">tocages</span> <span class="pre">count</span> <span class="pre">50</span> <span class="pre">own</span> <span class="pre">tame</span> <span class="pre">male</span> <span class="pre">not</span> <span class="pre">grazer</span></code></dt><dd><p>Stuff up to 50 of your tame male animals who are not grazers into cages
+built on the current default zone.</p>
+</dd>
+</dl>
+</section>
+<section id="filters">
+<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">all<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Process all units.</p>
+</dd>
+<dt class="field-even">count &lt;n&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>Process only up to n units.</p>
+</dd>
+<dt class="field-odd">unassigned<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Not assigned to zone, chain or built cage.</p>
+</dd>
+<dt class="field-even">minage &lt;years&gt;<span class="colon">:</span></dt>
+<dd class="field-even"><p>Minimum age. Must be followed by a number.</p>
+</dd>
+<dt class="field-odd">maxage &lt;years&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Maximum age. Must be followed by a number.</p>
+</dd>
+<dt class="field-even">not<span class="colon">:</span></dt>
+<dd class="field-even"><p>Negates the next filter keyword. All of the keywords documented
+below are negatable.</p>
+</dd>
+<dt class="field-odd">race<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Must be followed by a race RAW ID (e.g. BIRD_TURKEY, ALPACA,
+etc).</p>
+</dd>
+<dt class="field-even">caged<span class="colon">:</span></dt>
+<dd class="field-even"><p>In a built cage.</p>
+</dd>
+<dt class="field-odd">own<span class="colon">:</span></dt>
+<dd class="field-odd"><p>From own civilization. You’ll usually want to include this
+filter.</p>
+</dd>
+<dt class="field-even">war<span class="colon">:</span></dt>
+<dd class="field-even"><p>Trained war creature.</p>
+</dd>
+<dt class="field-odd">hunting<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Trained hunting creature.</p>
+</dd>
+<dt class="field-even">tamed<span class="colon">:</span></dt>
+<dd class="field-even"><p>Creature is tame.</p>
+</dd>
+<dt class="field-odd">trained<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Creature is trained. Finds war/hunting creatures as well as
+creatures who have a training level greater than ‘domesticated’.
+If you want to specifically search for war/hunting creatures
+use <code class="docutils literal notranslate"><span class="pre">war</span></code> or <code class="docutils literal notranslate"><span class="pre">hunting</span></code>.</p>
+</dd>
+<dt class="field-even">trainablewar<span class="colon">:</span></dt>
+<dd class="field-even"><p>Creature can be trained for war (and is not already trained for
+war/hunt).</p>
+</dd>
+<dt class="field-odd">trainablehunt<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Creature can be trained for hunting (and is not already trained
+for war/hunt).</p>
+</dd>
+<dt class="field-even">male<span class="colon">:</span></dt>
+<dd class="field-even"><p>Creature is male.</p>
+</dd>
+<dt class="field-odd">female<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Creature is female.</p>
+</dd>
+<dt class="field-even">egglayer<span class="colon">:</span></dt>
+<dd class="field-even"><p>Race lays eggs. If you want units who actually lay eggs, also
+specify <code class="docutils literal notranslate"><span class="pre">female</span></code>.</p>
+</dd>
+<dt class="field-odd">grazer<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Race is a grazer.</p>
+</dd>
+<dt class="field-even">milkable<span class="colon">:</span></dt>
+<dd class="field-even"><p>Race is milkable. If you want units who actually can be milked,
+also specify <code class="docutils literal notranslate"><span class="pre">female</span></code>.</p>
+</dd>
+<dt class="field-odd">merchant<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Is a merchant / belongs to a merchant. Should only be used for
+pitting or slaughtering, not for stealing animals.</p>
+</dd>
+</dl>
+</section>
+<section id="usage-with-single-units">
+<h2>Usage with single units<a class="headerlink" href="#usage-with-single-units" title="Permalink to this heading">¶</a></h2>
+<p>One convenient way to use the zone tool is to bind the commands <code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span></code>
+and <code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">set</span></code> to hotkeys. Place the in-game cursor over a pen/pasture or pit
+and use the <code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">set</span></code> hotkey to mark it. Then you can select units on the map
+(in ‘v’ or ‘k’ mode), in the unit list or from inside cages and use the
+<code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span></code> hotkey to assign them to their new home. Allows pitting your own
+dwarves, by the way.</p>
+</section>
+<section id="matching-with-filters">
+<h2>Matching with filters<a class="headerlink" href="#matching-with-filters" title="Permalink to this heading">¶</a></h2>
+<p>All filters can be used together with the <code class="docutils literal notranslate"><span class="pre">assign</span></code> and <code class="docutils literal notranslate"><span class="pre">tocages</span></code> commands.</p>
+<p>Note that it’s not possible to reassign units who are inside built cages or
+chained, though this likely won’t matter because if you have gone to the trouble
+of creating a zoo or chaining a creature, you probably wouldn’t want them
+reassigned anyways. Also, <code class="docutils literal notranslate"><span class="pre">zone</span></code> will avoid caging owned pets because the owner
+uncages them after a while which results in infinite hauling back and forth.</p>
+<p>Most filters should include an <code class="docutils literal notranslate"><span class="pre">own</span></code> element (which implies <code class="docutils literal notranslate"><span class="pre">tame</span></code>) unless
+you want to use <code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">assign</span></code> for pitting hostiles. The <code class="docutils literal notranslate"><span class="pre">own</span></code> filter ignores
+dwarves unless you explicitly specify <code class="docutils literal notranslate"><span class="pre">race</span> <span class="pre">DWARF</span></code> (so it’s safe to use
+<code class="docutils literal notranslate"><span class="pre">assign</span> <span class="pre">all</span> <span class="pre">own</span></code> to one big pasture if you want to have all your animals in
+the same place).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">egglayer</span></code> and <code class="docutils literal notranslate"><span class="pre">milkable</span></code> filters should be used together with
+<code class="docutils literal notranslate"><span class="pre">female</span></code> unless you want the males of the race included. Merchants and their
+animals are ignored unless you specify <code class="docutils literal notranslate"><span class="pre">merchant</span></code> (pitting them should be no
+problem, but stealing and pasturing their animals is not a good idea since
+currently they are not properly added to your own stocks; slaughtering them
+should work).</p>
+<p>Most filters can be negated (e.g. <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">grazer</span></code> -&gt; race is not a grazer).</p>
+</section>
+<section id="mass-renaming">
+<h2>Mass-renaming<a class="headerlink" href="#mass-renaming" title="Permalink to this heading">¶</a></h2>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">nick</span></code> command, you can set the same nickname for multiple units.
+If used without <code class="docutils literal notranslate"><span class="pre">assign</span></code>, <code class="docutils literal notranslate"><span class="pre">all</span></code>, or <code class="docutils literal notranslate"><span class="pre">count</span></code>, it will rename all units in
+the current default target zone. Combined with <code class="docutils literal notranslate"><span class="pre">assign</span></code>, <code class="docutils literal notranslate"><span class="pre">all</span></code>, or <code class="docutils literal notranslate"><span class="pre">count</span></code>
+(and likely further optional filters) it will rename units matching the filter
+conditions.</p>
+</section>
+<section id="cage-zones">
+<h2>Cage zones<a class="headerlink" href="#cage-zones" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">tocages</span></code> command assigns units to a set of cages, for example a room next
+to your butcher shop(s). Units will be spread evenly among available cages to
+optimize hauling to and butchering from them. For this to work you need to build
+cages and then place one pen/pasture activity zone above them, covering all
+cages you want to use. Then use <code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">set</span></code> (like with <code class="docutils literal notranslate"><span class="pre">assign</span></code>) and run
+<code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">tocages</span> <span class="pre">&lt;filter&gt;</span></code>. <code class="docutils literal notranslate"><span class="pre">tocages</span></code> can be used together with <code class="docutils literal notranslate"><span class="pre">nick</span></code> or
+<code class="docutils literal notranslate"><span class="pre">remnick</span></code> to adjust nicknames while assigning to cages.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

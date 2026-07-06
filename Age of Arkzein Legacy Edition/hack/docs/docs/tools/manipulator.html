@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>manipulator &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="map-render" href="map-render.html" />
+    <link rel="prev" title="make-monarch" href="make-monarch.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="make-monarch.html" title="previous chapter">make-monarch</a></li>
+      <li>Next: <a href="map-render.html" title="next chapter">map-render</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">manipulator</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#professions">Professions</a><ul>
+<li><a class="reference internal" href="#the-professions-library">The professions library</a></li>
+<li><a class="reference internal" href="#a-note-on-autohauler">A note on autohauler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="manipulator">
+<span id="id1"></span><h1>manipulator<a class="headerlink" href="#manipulator" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../labors-tag-index.html"><span class="std std-ref">labors</span></a></p>
+<p><span>An in-game labor management interface.</span></p>
+</aside>
+<p>It is equivalent to the popular Dwarf Therapist utility.</p>
+<p>To activate, open the unit screen and press <kbd class="kbd docutils literal notranslate">l</kbd>.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>enable manipulator
+</pre></div>
+</div>
+<img alt="../../_images/manipulator.png" src="../../_images/manipulator.png" />
+<p>The far left column displays the unit’s name, happiness (color-coded based on
+its value), profession, or squad, and the right half of the screen displays each
+dwarf’s labor settings and skill levels (0-9 for Dabbling through Professional,
+A-E for Great through Grand Master, and U-Z for Legendary through Legendary+5).</p>
+<p>Cells with teal backgrounds denote skills not controlled by labors, e.g.
+military and social skills.</p>
+<img alt="../../_images/manipulator2.png" src="../../_images/manipulator2.png" />
+<p>Press <kbd class="kbd docutils literal notranslate">t</kbd> to toggle between Profession, Squad, and Job views.</p>
+<img alt="../../_images/manipulator3.png" src="../../_images/manipulator3.png" />
+<p>Use the arrow keys or number pad to move the cursor around, holding <kbd class="kbd docutils literal notranslate">Shift</kbd> to
+move 10 tiles at a time.</p>
+<p>Press the Z-Up (<kbd class="kbd docutils literal notranslate">&lt;</kbd>) and Z-Down (<kbd class="kbd docutils literal notranslate">&gt;</kbd>) keys to move quickly between labor/skill
+categories. The numpad Z-Up and Z-Down keys seek to the first or last unit
+in the list. <kbd class="kbd docutils literal notranslate">Backspace</kbd> seeks to the top left corner.</p>
+<p>Press Enter to toggle the selected labor for the selected unit, or Shift+Enter
+to toggle all labors within the selected category.</p>
+<p>Press the <kbd class="kbd docutils literal notranslate">+</kbd><kbd class="kbd docutils literal notranslate">-</kbd> keys to sort the unit list according to the currently selected
+skill/labor, and press the <kbd class="kbd docutils literal notranslate">*</kbd><kbd class="kbd docutils literal notranslate">/</kbd> keys to sort the unit list by Name, Profession/Squad,
+Happiness, or Arrival order (using <kbd class="kbd docutils literal notranslate">Tab</kbd> to select which sort method to use here).</p>
+<p>With a unit selected, you can press the <kbd class="kbd docutils literal notranslate">v</kbd> key to view its properties (and
+possibly set a custom nickname or profession) or the <kbd class="kbd docutils literal notranslate">c</kbd> key to exit
+Manipulator and zoom to its position within your fortress.</p>
+<p>The following mouse shortcuts are also available:</p>
+<ul class="simple">
+<li><p>Click on a column header to sort the unit list. Left-click to sort it in one
+direction (descending for happiness or labors/skills, ascending for name,
+profession or squad) and right-click to sort it in the opposite direction.</p></li>
+<li><p>Left-click on a labor cell to toggle that labor. Right-click to move the
+cursor onto that cell instead of toggling it.</p></li>
+<li><p>Left-click on a unit’s name, profession or squad to view its properties.</p></li>
+<li><p>Right-click on a unit’s name, profession or squad to zoom to it.</p></li>
+</ul>
+<p>Pressing <kbd class="kbd docutils literal notranslate">Esc</kbd> normally returns to the unit screen, but <kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">Esc</kbd> would exit
+directly to the main dwarf mode screen.</p>
+</section>
+<section id="professions">
+<h2>Professions<a class="headerlink" href="#professions" title="Permalink to this heading">¶</a></h2>
+<p>The manipulator plugin supports saving professions: a named set of labors that can be
+quickly applied to one or multiple dwarves.</p>
+<p>To save a profession, highlight a dwarf and press <kbd class="kbd docutils literal notranslate">P</kbd>. The profession will be saved using
+the custom profession name of the dwarf, or the default profession name for that dwarf if no
+custom profession name has been set.</p>
+<p>To apply a profession, either highlight a single dwarf or select multiple with
+<kbd class="kbd docutils literal notranslate">x</kbd>, and press <kbd class="kbd docutils literal notranslate">p</kbd> to select the profession to apply. All labors for
+the selected dwarves will be reset to the labors of the chosen profession and
+the custom profession names for those dwarves will be set to the applied
+profession.</p>
+<p>Professions are saved as human-readable text files in the
+<code class="docutils literal notranslate"><span class="pre">dfhack-config/professions</span></code> folder within the DF folder, and can be edited or
+deleted there.</p>
+<section id="the-professions-library">
+<h3>The professions library<a class="headerlink" href="#the-professions-library" title="Permalink to this heading">¶</a></h3>
+<p>The manipulator plugin comes with a library of professions that you can assign
+to your dwarves.</p>
+<p>If you’d rather use Dwarf Therapist to manage your labors, it is easy to import
+these professions to DT and use them there. Simply assign the professions you
+want to import to a dwarf. Once you have assigned a profession to at least one
+dwarf, you can select “Import Professions from DF” in the DT “File” menu. The
+professions will then be available for use in DT.</p>
+<p>In the list below, the “needed” range indicates the approximate number of
+dwarves of each profession that you are likely to need at the start of the game
+and how many you are likely to need in a mature fort. These are just
+approximations. Your playstyle may demand more or fewer of each profession.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Chef</span></code> (needed: 0, 3)</dt><dd><p>Butchery, Tanning, and Cooking. It is important to focus just a few dwarves
+on cooking since well-crafted meals make dwarves very happy. They are also
+an excellent trade good.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Craftsdwarf</span></code> (needed: 0, 4-6)</dt><dd><p>All labors used at Craftsdwarf’s workshops, Glassmaker’s workshops, and
+kilns.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Doctor</span></code> (needed: 0, 2-4)</dt><dd><p>The full suite of medical labors, plus Animal Caretaking for those using
+the <a class="reference internal" href="dwarfvet.html#dwarfvet"><span class="std std-ref">dwarfvet</span></a> plugin.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Farmer</span></code> (needed 1, 4)</dt><dd><p>Food- and animal product-related labors.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Fisherdwarf</span></code> (needed 0, 0-1)</dt><dd><p>Fishing and fish cleaning. If you assign this profession to any dwarf, be
+prepared to be inundated with fish. Fisherdwarves <em>never stop fishing</em>. Be
+sure to also run <code class="docutils literal notranslate"><span class="pre">prioritize</span> <span class="pre">-a</span> <span class="pre">PrepareRawFish</span> <span class="pre">ExtractFromRawFish</span></code> or else
+caught fish will just be left to rot.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Hauler</span></code> (needed 0, &gt;20)</dt><dd><p>All hauling labors plus Siege Operating, Mechanic (so haulers can assist in
+reloading traps) and Architecture (so haulers can help build massive
+windmill farms and pump stacks). As you accumulate enough Haulers, you can
+turn off hauling labors for other dwarves so they can focus on their skilled
+tasks. You may also want to restrict your Mechanic’s workshops to only
+skilled mechanics so your unskilled haulers don’t make low-quality
+mechanisms.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Laborer</span></code> (needed 0, 10-12)</dt><dd><p>All labors that don’t improve quality with skill, such as Soapmaking and
+furnace labors.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Marksdwarf</span></code> (needed 0, 10-30)</dt><dd><p>Similar to <code class="docutils literal notranslate"><span class="pre">Hauler</span></code>. See the description for <code class="docutils literal notranslate"><span class="pre">Meleedwarf</span></code> below for more
+details.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Mason</span></code> (needed 2, 2-4)</dt><dd><p>Masonry and Gem Cutting/Encrusting.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Meleedwarf</span></code> (needed 0, 20-50)</dt><dd><p>Similar to <code class="docutils literal notranslate"><span class="pre">Hauler</span></code>, but without most civilian labors. This profession is
+separate from <code class="docutils literal notranslate"><span class="pre">Hauler</span></code> so you can find your military dwarves easily.
+<code class="docutils literal notranslate"><span class="pre">Meleedwarves</span></code> and <code class="docutils literal notranslate"><span class="pre">Marksdwarves</span></code> have Mechanics and hauling labors
+enabled so you can temporarily deactivate your military after sieges and
+allow your military dwarves to help clean up and reset traps.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Migrant</span></code> (needed 0, 0)</dt><dd><p>You can assign this profession to new migrants temporarily while you sort
+them into professions.  Like <code class="docutils literal notranslate"><span class="pre">Marksdwarf</span></code> and <code class="docutils literal notranslate"><span class="pre">Meleedwarf</span></code>, the purpose
+of this profession is so you can find your new dwarves more easily.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Miner</span></code> (needed 2, 2-10)</dt><dd><p>Mining and Engraving. This profession also has the <code class="docutils literal notranslate"><span class="pre">Alchemist</span></code> labor
+enabled, which disables hauling for those using the <a class="reference internal" href="autohauler.html#autohauler"><span class="std std-ref">autohauler</span></a> plugin.
+Once the need for Miners tapers off in the late game, dwarves with this
+profession make good military dwarves, wielding their picks as weapons.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Outdoorsdwarf</span></code> (needed 1, 2-4)</dt><dd><p>Carpentry, Bowyery, Woodcutting, Animal Training, Trapping, Plant Gathering,
+Beekeeping, and Siege Engineering.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Smith</span></code> (needed 0, 2-4)</dt><dd><p>Smithing labors. You may want to specialize your Smiths to focus on a single
+smithing skill to maximize equipment quality.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">StartManager</span></code> (needed 1, 0)</dt><dd><p>All skills not covered by the other starting professions (<code class="docutils literal notranslate"><span class="pre">Miner</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Mason</span></code>, <code class="docutils literal notranslate"><span class="pre">Outdoorsdwarf</span></code>, and <code class="docutils literal notranslate"><span class="pre">Farmer</span></code>), plus a few overlapping skills
+to assist in critical tasks at the beginning of the game. Individual labors
+should be turned off as migrants are assigned more specialized professions
+that cover them, and the StartManager dwarf can eventually convert to some
+other profession.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Tailor</span></code> (needed 0, 2)</dt><dd><p>Textile industry labors: Dying, Leatherworking, Weaving, and Clothesmaking.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="a-note-on-autohauler">
+<h3>A note on autohauler<a class="headerlink" href="#a-note-on-autohauler" title="Permalink to this heading">¶</a></h3>
+<p>These profession definitions are designed to work well with or without the
+<a class="reference internal" href="autohauler.html#autohauler"><span class="std std-ref">autohauler</span></a> plugin (which helps to keep your dwarves focused on skilled labors
+instead of constantly being distracted by hauling). If you do want to use
+autohauler, adding the following lines to your <code class="docutils literal notranslate"><span class="pre">onMapLoad.init</span></code> file will
+configure it to let the professions manage the “Feed water to civilians” and
+“Recover wounded” labors instead of enabling those labors for all hauling
+dwarves:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>on-new-fortress enable autohauler
+on-new-fortress autohauler FEED_WATER_CIVILIANS allow
+on-new-fortress autohauler RECOVER_WOUNDED allow
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

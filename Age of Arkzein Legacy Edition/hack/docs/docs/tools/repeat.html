@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>repeat &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="resurrect-adv" href="resurrect-adv.html" />
+    <link rel="prev" title="rendermax" href="rendermax.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="rendermax.html" title="previous chapter">rendermax</a></li>
+      <li>Next: <a href="resurrect-adv.html" title="next chapter">resurrect-adv</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">repeat</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#registering-commands">Registering commands</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="repeat">
+<span id="id1"></span><h1>repeat<a class="headerlink" href="#repeat" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../dfhack-tag-index.html"><span class="std std-ref">dfhack</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">repeat</span></code></p>
+<p><span>Call a DFHack command at a periodic interval.</span></p>
+</aside>
+<p>You can use this utility command to periodically call other DFHack commands.
+This is especially useful for setting up “maintenance” commands that you want
+called every once in a while but don’t want to have to remember to run yourself.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">[--name</span> <span class="pre">&lt;name&gt;]</span> <span class="pre">--time</span> <span class="pre">&lt;delay&gt;</span> <span class="pre">[--timeUnits</span> <span class="pre">&lt;units&gt;]</span> <span class="pre">--command</span> <span class="pre">[</span> <span class="pre">&lt;command&gt;</span> <span class="pre">]</span></code></dt><dd><p>Register the given command to be run periodically.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--list</span></code></dt><dd><p>Show the currently registered commands and their names.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--cancel</span> <span class="pre">&lt;name&gt;</span></code></dt><dd><p>Unregister the given registered command.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--name</span> <span class="pre">orders-sort</span> <span class="pre">--time</span> <span class="pre">600</span> <span class="pre">--command</span> <span class="pre">[</span> <span class="pre">orders</span> <span class="pre">sort</span> <span class="pre">]</span></code></dt><dd><p>Sort your manager workorders every 600 ticks (about half a day).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--time</span> <span class="pre">10</span> <span class="pre">--timeUnits</span> <span class="pre">days</span> <span class="pre">--command</span> <span class="pre">[</span> <span class="pre">warn-starving</span> <span class="pre">]</span></code></dt><dd><p>Check for starving dwarves and pets every 10 game days.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">--cancel</span> <span class="pre">warn-starving</span></code></dt><dd><p>Unregister the warn-starving command registered above.</p>
+</dd>
+</dl>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--name</span> <span class="pre">&lt;name&gt;</span></code></dt><dd><p>Registers the command under the given name. This ensures you have a
+memorable identifier for the <code class="docutils literal notranslate"><span class="pre">--list</span></code> output so you can unregister the
+command if you want. It also prevents the same command from being
+registered twice. If not specified, it’s set to the first argument after
+<code class="docutils literal notranslate"><span class="pre">--command</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--time</span> <span class="pre">&lt;delay&gt;</span></code></dt><dd><p>Sets the delay between invocations of the command. It must be a positive
+integer.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--timeUnits</span> <span class="pre">&lt;units&gt;</span></code></dt><dd><p>A unit of time for the value passed with the <code class="docutils literal notranslate"><span class="pre">--time</span></code> option. Units can be
+<code class="docutils literal notranslate"><span class="pre">frames</span></code> (raw FPS), <code class="docutils literal notranslate"><span class="pre">ticks</span></code> (unpaused game frames), or the in-world time
+measurements of <code class="docutils literal notranslate"><span class="pre">days</span></code>, <code class="docutils literal notranslate"><span class="pre">months</span></code>, or <code class="docutils literal notranslate"><span class="pre">years</span></code>. If not specified,
+<code class="docutils literal notranslate"><span class="pre">ticks</span></code> is the default.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--command</span> <span class="pre">[</span> <span class="pre">...</span> <span class="pre">]</span></code></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">...</span></code> specifies the command to be run, just as you would write it on
+the commandline. Note that the command must be enclosed in square brackets.</p>
+</dd>
+</dl>
+</section>
+<section id="registering-commands">
+<h2>Registering commands<a class="headerlink" href="#registering-commands" title="Permalink to this heading">¶</a></h2>
+<p>It is common that you want to register the same set of commands every time you
+load a game. For this, it is convenient to add the <code class="docutils literal notranslate"><span class="pre">repeat</span></code> commands you want
+to run to the <code class="docutils literal notranslate"><span class="pre">dfhack-config/init/onMapLoad.init</span></code> file so they are run
+whenever you load a fort.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

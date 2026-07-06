@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>overlay &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="pathable" href="pathable.html" />
+    <link rel="prev" title="orders" href="orders.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="orders.html" title="previous chapter">orders</a></li>
+      <li>Next: <a href="pathable.html" title="next chapter">pathable</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">overlay</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#widget-position">Widget position</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="overlay">
+<span id="id1"></span><h1>overlay<a class="headerlink" href="#overlay" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../dfhack-tag-index.html"><span class="std std-ref">dfhack</span></a><span> | </span><a class="reference internal" href="../../interface-tag-index.html"><span class="std std-ref">interface</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">overlay</span></code></p>
+<p><span>Manage on-screen overlay widgets.</span></p>
+</aside>
+<p>The overlay framework manages the on-screen widgets that other tools (including
+3rd party plugins and scripts) can register for display. For a graphical
+configuration interface, please see <a class="reference internal" href="gui/overlay.html#gui-overlay"><span class="std std-ref">gui/overlay</span></a>. If you are a developer who
+wants to write an overlay widget, please see the <a class="reference internal" href="../dev/overlay-dev-guide.html#overlay-dev-guide"><span class="std std-ref">DFHack overlay dev guide</span></a>.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">overlay</span></code></dt><dd><p>Display enabled widgets.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">enable|disable</span> <span class="pre">all|&lt;name</span> <span class="pre">or</span> <span class="pre">list</span> <span class="pre">number&gt;</span> <span class="pre">[&lt;name</span> <span class="pre">or</span> <span class="pre">list</span> <span class="pre">number&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Enable/disable all or specified widgets. Widgets can be specified by either
+their name or their number, as returned by <code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">list</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">list</span> <span class="pre">[&lt;filter&gt;]</span></code></dt><dd><p>Show a list of all the widgets that are registered with the overlay
+framework, optionally filtered by the given filter string.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">position</span> <span class="pre">&lt;name</span> <span class="pre">or</span> <span class="pre">list</span> <span class="pre">number&gt;</span> <span class="pre">[default|&lt;x&gt;</span> <span class="pre">&lt;y&gt;]</span></code></dt><dd><p>Display configuration information for the given widget or change the
+position where it is rendered. See the <a class="reference internal" href="#widget-position">Widget position</a> section below for
+details.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">trigger</span> <span class="pre">&lt;name</span> <span class="pre">or</span> <span class="pre">list</span> <span class="pre">number&gt;</span></code></dt><dd><p>Intended to be used by keybindings for manually triggering a widget. For
+example, you could use an <code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">trigger</span></code> keybinding to show a menu that
+normally appears when you hover the mouse over a screen hotspot.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">enable</span> <span class="pre">all</span></code></dt><dd><p>Enable all widgets. Note that they will only be displayed on the screens
+that they are associated with. You can see which screens a widget will be
+displayed on, along with whether the widget is a hotspot, by calling
+<code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">position</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">position</span> <span class="pre">hotkeys.menu</span></code></dt><dd><p>Show the current configuration of the <a class="reference internal" href="hotkeys.html#hotkeys"><span class="std std-ref">hotkeys</span></a> menu widget.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">position</span> <span class="pre">dwarfmonitor.cursor</span> <span class="pre">-2</span> <span class="pre">-3</span></code></dt><dd><p>Display the <a class="reference internal" href="dwarfmonitor.html#dwarfmonitor"><span class="std std-ref">dwarfmonitor</span></a> cursor position reporting widget in the lower
+right corner of the screen, 2 tiles from the left and 3 tiles from the
+bottom.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">position</span> <span class="pre">dwarfmonitor.cursor</span> <span class="pre">default</span></code></dt><dd><p>Reset the <a class="reference internal" href="dwarfmonitor.html#dwarfmonitor"><span class="std std-ref">dwarfmonitor</span></a> cursor position to its default.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">overlay</span> <span class="pre">trigger</span> <span class="pre">hotkeys.menu</span></code></dt><dd><p>Trigger the <a class="reference internal" href="hotkeys.html#hotkeys"><span class="std std-ref">hotkeys</span></a> menu widget so that it shows its popup menu. This is
+what is run when you hit <kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">Shift</kbd><kbd class="kbd docutils literal notranslate">C</kbd>.</p>
+</dd>
+</dl>
+</section>
+<section id="widget-position">
+<h2>Widget position<a class="headerlink" href="#widget-position" title="Permalink to this heading">¶</a></h2>
+<p>Widgets can be positioned at any (<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>) position on the screen, and can
+be specified relative to any edge. Coordinates are 1-based, which means that
+<code class="docutils literal notranslate"><span class="pre">1</span></code> is the far left column (for <code class="docutils literal notranslate"><span class="pre">x</span></code>) or the top row (for <code class="docutils literal notranslate"><span class="pre">y</span></code>). Negative
+numbers are measured from the right of the screen to the right edge of the
+widget or from the bottom of the screen to the bottom of the widget,
+respectively.</p>
+<p>For easy reference, the corners can be found at the following coordinates:</p>
+<dl class="field-list simple">
+<dt class="field-odd">(1, 1)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>top left corner</p>
+</dd>
+<dt class="field-even">(-1, 1)<span class="colon">:</span></dt>
+<dd class="field-even"><p>top right corner</p>
+</dd>
+<dt class="field-odd">(1, -1)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lower left corner</p>
+</dd>
+<dt class="field-even">(-1, -1)<span class="colon">:</span></dt>
+<dd class="field-even"><p>lower right corner</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

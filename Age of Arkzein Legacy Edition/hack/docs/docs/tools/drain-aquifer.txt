@@ -1,0 +1,16 @@
+drain-aquifer
+=============
+
+Tags: fort | armok | map
+
+Command: "drain-aquifer"
+
+  Remove all aquifers on the map.
+
+This tool irreversibly removes all 'aquifer' tags from the map blocks.
+
+
+Usage
+-----
+
+   drain-aquifer

@@ -1,0 +1,16 @@
+gui/petitions
+=============
+
+Tags: fort | inspection
+
+Command: "gui/petitions"
+
+  Show information about your fort's petitions.
+
+Show your fort's petitions, both pending and fulfilled.
+
+
+Usage
+-----
+
+   gui/petitions

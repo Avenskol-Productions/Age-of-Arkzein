@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>modtools/create-unit &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="modtools/equip-item" href="equip-item.html" />
+    <link rel="prev" title="modtools/create-tree" href="create-tree.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="create-tree.html" title="previous chapter">modtools/create-tree</a></li>
+      <li>Next: <a href="equip-item.html" title="next chapter">modtools/equip-item</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="modtools-create-unit">
+<span id="id1"></span><h1>modtools/create-unit<a class="headerlink" href="#modtools-create-unit" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dev-tag-index.html"><span class="std std-ref">dev</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">modtools/create-unit</span></code></p>
+<p><span>Create arbitrary units.</span></p>
+</aside>
+<p>Creates a unit.  Usage:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>-race raceName
+    (obligatory)
+    Specify the race of the unit to be created.
+    examples:
+        DWARF
+        HUMAN
+
+-caste casteName
+    Specify the caste of the unit to be created.
+    If omitted, the caste is randomly selected.
+    examples:
+        MALE
+        FEMALE
+        DEFAULT
+
+-domesticate
+    Tames the unit if it lacks the CAN_LEARN and CAN_SPEAK tokens.
+
+-civId id
+    Make the created unit a member of the specified civilisation
+    (or none if id = -1).  If id is \\LOCAL, make it a member of the
+    civ associated with the fort; otherwise id must be an integer
+
+-groupId id
+    Make the created unit a member of the specified group
+    (or none if id = -1).  If id is \\LOCAL, make it a member of the
+    group associated with the fort; otherwise id must be an integer
+
+-setUnitToFort
+    Sets the groupId and civId to those of the player in Fortress mode.
+    Equivalent to -civId \\LOCAL and -groupId \\LOCAL.
+
+-name entityRawName
+    Set the unit&#39;s name to be a random name appropriate for the
+    given entity. \\LOCAL can be specified instead to automatically
+    use the fort group entity in fortress mode only. Can be passed
+    empty to generate a wild name (random language, any words), i.e.
+    the type of name that animal people historical figures have.
+    examples:
+        MOUNTAIN
+        EVIL
+
+-nick nickname
+    This can be included to nickname the unit.
+    Replace &quot;nickname&quot; with the desired name.
+
+-age howOld
+    This can be included to specify the unit&#39;s age.
+    Replace &quot;howOld&quot; with a (non-negative) number.
+    The unit&#39;s age is set randomly if this is omitted.
+
+-equip [ ITEM:MATERIAL:QUANTITY ... ]
+    This can be included to create items and equip them onto
+        the created unit.
+    This is carried out via the same logic used in arena mode,
+        so equipment will always be sized correctly and placed
+        on what the game deems to be appropriate bodyparts.
+        Clothing is also layered in the appropriate order.
+    Note that this currently comes with some limitations,
+        such as an inability to specify item quality
+        and objects not being placed in containers
+        (for example, arrows are not placed in quivers).
+    Item quantity defaults to 1 if omitted.
+    When spaces are included in the item or material name,
+        the entire item description should be enclosed in
+        quotation marks. This can also be done to increase
+        legibility when specifying multiple items.
+    examples:
+        -equip [ RING:CREATURE:DWARF:BONE:3 ]
+            3 dwarf bone rings
+        -equip [ ITEM_WEAPON_PICK:INORGANIC:IRON ]
+            1 iron pick
+        -equip [ &quot;ITEM_SHIELD_BUCKLER:PLANT:OAK:WOOD&quot; &quot;AMULET:AMBER&quot; ]
+            1 oaken buckler and 1 amber amulet
+
+-skills [ SKILL:LEVEL ... ]
+    This can be included to add skills to the created unit.
+    Specify a skill token followed by a skill level value.
+    Look up &quot;Skill Token&quot; and &quot;Skill&quot; on the DF Wiki for a list
+        of valid tokens and levels respectively.
+    Note that the skill level provided must be a number greater than 0.
+    If the unit possesses a matching natural skill, this is added to it.
+    Quotation marks can be added for legibility as explained above.
+    example:
+        -skill [ SNEAK:1 EXTRACT_STRAND:15 ]
+            novice ambusher, legendary strand extractor
+
+-profession token
+    This can be included to set the unit&#39;s profession.
+    Replace &quot;token&quot; with a Unit Type Token (check the DF Wiki for a list).
+    For skill-based professions, it is recommended to give the unit
+        the appropriate skill set via -skills.
+    This can also be used to make animals trained for war/hunting.
+    Note that this will be overridden if the unit has been given the age
+        of a baby or child, as these have a special &quot;profession&quot; set.
+    Using this for setting baby/child status is not recommended;
+        this should be done via -age instead.
+    examples:
+        STRAND_EXTRACTOR
+        MASTER_SWORDSMAN
+        TRAINED_WAR
+
+-customProfession name
+    This can be included to give the unit a custom profession name.
+    Enclose the name in quotation marks if it includes spaces.
+    example:
+        -customProfession &quot;Destroyer of Worlds&quot;
+
+-duration ticks
+    If this is included, the unit will vanish in a puff of smoke
+        once the specified number of ticks has elapsed.
+    Replace &quot;ticks&quot; with an integer greater than 0.
+    Note that the unit&#39;s equipment will not vanish.
+
+-quantity howMany
+    This can be included to create multiple creatures simultaneously.
+    Replace &quot;howMany&quot; with the desired number of creatures.
+    Quantity defaults to 1 if this is omitted.
+
+-location [ x y z ]
+    (obligatory)
+    Specify the coordinates where you want the unit to appear.
+
+-locationRange [ x_offset y_offset z_offset ]
+    If included, the unit will be spawned at a random location
+        within the specified range relative to the target -location.
+    z_offset defaults to 0 if omitted.
+    When creating multiple units, the location is randomised each time.
+    example:
+        -locationRange [ 4 3 1 ]
+            attempts to place the unit anywhere within
+            -4 to +4 tiles on the x-axis
+            -3 to +3 tiles on the y-axis
+            -1 to +1 tiles on the z-axis
+            from the specified -location coordinates
+
+-locationType type
+    May be used with -locationRange
+        to specify what counts as a valid tile for unit spawning.
+    Unit creation will not occur if no valid tiles are available.
+    Replace &quot;type&quot; with one of the following:
+        Walkable
+            units will only be placed on walkable ground tiles
+            this is the default used if -locationType is omitted
+        Open
+            open spaces are also valid spawn points
+            this is intended for flying units
+        Any
+            all tiles, including solid walls, are valid
+            this is only recommended for ghosts not carrying items
+
+-flagSet [ flag1 flag2 ... ]
+    This can be used to set the specified unit flags to true.
+    Flags may be selected from:
+        df.unit_flags1
+        df.unit_flags2
+        df.unit_flags3
+        df.unit_flags4
+    example:
+        flagSet [ announce_titan ]
+            causes an announcement describing the unit to appear
+            when it is discovered (&quot;[Unit] has come! ...&quot;)
+
+-flagClear [ flag1 flag2 ... ]
+    As above, but sets the specified unit flags to false.
+</pre></div>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

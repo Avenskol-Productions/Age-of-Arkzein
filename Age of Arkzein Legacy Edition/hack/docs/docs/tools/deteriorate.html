@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>deteriorate &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="die" href="die.html" />
+    <link rel="prev" title="deramp" href="deramp.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="deramp.html" title="previous chapter">deramp</a></li>
+      <li>Next: <a href="die.html" title="next chapter">die</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">deteriorate</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#types">Types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="deteriorate">
+<span id="id1"></span><h1>deteriorate<a class="headerlink" href="#deteriorate" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../auto-tag-index.html"><span class="std std-ref">auto</span></a><span> | </span><a class="reference internal" href="../../fps-tag-index.html"><span class="std std-ref">fps</span></a><span> | </span><a class="reference internal" href="../../gameplay-tag-index.html"><span class="std std-ref">gameplay</span></a><span> | </span><a class="reference internal" href="../../items-tag-index.html"><span class="std std-ref">items</span></a><span> | </span><a class="reference internal" href="../../plants-tag-index.html"><span class="std std-ref">plants</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">deteriorate</span></code></p>
+<p><span>Cause corpses, clothes, and/or food to rot away over time.</span></p>
+</aside>
+<p>When enabled, this script will cause the specified item types to slowly rot
+away. By default, items disappear after a few months, but you can choose to slow
+this down or even make things rot away instantly!</p>
+<p>Now all those slightly worn wool shoes that dwarves scatter all over the place
+or the toes, teeth, fingers, and limbs from the last undead siege will
+deteriorate at a greatly increased rate, and eventually just crumble into
+nothing. As warm and fuzzy as a dining room full of used socks makes your
+dwarves feel, your FPS does not like it!</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">deteriorate</span> <span class="pre">start</span> <span class="pre">--types</span> <span class="pre">&lt;types&gt;</span> <span class="pre">[--freq</span> <span class="pre">&lt;frequency&gt;]</span> <span class="pre">[--quiet]</span></code></dt><dd><p>Starts deteriorating the specified item types while you play.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">deteriorate</span> <span class="pre">stop</span> <span class="pre">--types</span> <span class="pre">&lt;types&gt;</span></code></dt><dd><p>Stops deteriorating the specified item types.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">deteriorate</span> <span class="pre">status</span></code></dt><dd><p>Shows the item types that are currently being monitored and their
+deterioration frequencies.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">deteriorate</span> <span class="pre">now</span> <span class="pre">--types</span> <span class="pre">&lt;types&gt;</span> <span class="pre">[--quiet]</span></code></dt><dd><p>Causes all items (of the specified item types) to rot away within a few
+ticks.</p>
+</dd>
+</dl>
+<p>You can have different types of items rotting away at different rates by running
+<code class="docutils literal notranslate"><span class="pre">deteriorate</span> <span class="pre">start</span></code> multiple times with different options.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<p>Start deteriorating corpses and body parts:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>deteriorate start --types corpses
+</pre></div>
+</div>
+<p>Start deteriorating corpses and food and do it at twice the default rate:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>deteriorate start --types corpses,food --freq 0.5,days
+</pre></div>
+</div>
+<p>Deteriorate corpses quickly but clothes slowly:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>deteriorate start -tcorpses -f0.1
+deteriorate start -tclothes -f3,months
+</pre></div>
+</div>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">-f</span></code>, <code class="docutils literal notranslate"><span class="pre">--freq</span></code>, <code class="docutils literal notranslate"><span class="pre">--frequency</span> <span class="pre">&lt;number&gt;[,&lt;timeunits&gt;]</span></code></dt><dd><p>How often to increment the wear counters. <code class="docutils literal notranslate"><span class="pre">&lt;timeunits&gt;</span></code> can be one of
+<code class="docutils literal notranslate"><span class="pre">days</span></code>, <code class="docutils literal notranslate"><span class="pre">months</span></code>, or <code class="docutils literal notranslate"><span class="pre">years</span></code> and defaults to <code class="docutils literal notranslate"><span class="pre">days</span></code> if not
+specified. The default frequency of 1 day will result in items disappearing
+after several months. The number does not need to be a whole number. E.g.
+<code class="docutils literal notranslate"><span class="pre">--freq=0.5,days</span></code> is perfectly valid.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-q</span></code>, <code class="docutils literal notranslate"><span class="pre">--quiet</span></code></dt><dd><p>Silence non-error output.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-t</span></code>, <code class="docutils literal notranslate"><span class="pre">--types</span> <span class="pre">&lt;types&gt;</span></code></dt><dd><p>The comma-separated list of item types to affect. This option is required
+for <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code>, and <code class="docutils literal notranslate"><span class="pre">now</span></code> commands.</p>
+</dd>
+</dl>
+</section>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this heading">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">clothes<span class="colon">:</span></dt>
+<dd class="field-odd"><p>All clothing pieces that have an armor rating of 0 and are lying on
+the ground.</p>
+</dd>
+<dt class="field-even">corpses<span class="colon">:</span></dt>
+<dd class="field-even"><p>All non-dwarf corpses and body parts. This includes potentially
+useful remains such as hair, wool, hooves, bones, and skulls. Use
+them before you lose them!</p>
+</dd>
+<dt class="field-odd">food<span class="colon">:</span></dt>
+<dd class="field-odd"><p>All food and plants, regardless of whether they are in barrels or
+stockpiles. Seeds are left untouched.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

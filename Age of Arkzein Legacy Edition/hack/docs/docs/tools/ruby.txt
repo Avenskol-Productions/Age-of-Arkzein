@@ -1,0 +1,30 @@
+ruby
+====
+
+Tags: dev
+
+  Allow Ruby scripts to be executed as DFHack commands.
+
+Command: "rb"
+
+  Eval() a ruby string.
+
+Command: "rb_eval"
+
+  Eval() a ruby string.
+
+
+Usage
+-----
+
+   enable ruby
+   rb "ruby expression"
+   rb_eval "ruby expression"
+   :rb ruby expression
+
+
+Example
+-------
+
+":rb puts df.unit_find(:selected).name"
+   Print the name of the selected unit.

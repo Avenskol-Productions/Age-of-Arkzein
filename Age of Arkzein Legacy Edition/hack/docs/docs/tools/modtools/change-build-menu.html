@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>modtools/change-build-menu &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="modtools/create-item" href="create-item.html" />
+    <link rel="prev" title="modtools/anonymous-script" href="anonymous-script.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="anonymous-script.html" title="previous chapter">modtools/anonymous-script</a></li>
+      <li>Next: <a href="create-item.html" title="next chapter">modtools/create-item</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="modtools-change-build-menu">
+<span id="id1"></span><h1>modtools/change-build-menu<a class="headerlink" href="#modtools-change-build-menu" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dev-tag-index.html"><span class="std std-ref">dev</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">modtools/change-build-menu</span></code></p>
+<p><span>Add or remove items from the build sidebar menus.</span></p>
+</aside>
+<p>Change the build sidebar menus.</p>
+<p>This script provides a flexible and comprehensive system for adding and removing
+items from the build sidebar menus. You can add or remove workshops/furnaces by
+text ID, or you can add/remove ANY building via a numeric building ID triplet.</p>
+<p>Changes made with this script do not survive a save/load. You will need to redo
+your changes each time the world loads.</p>
+<p>Just to be clear: You CANNOT use this script AT ALL if there is no world
+loaded!</p>
+<p><strong>Usage:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">modtools/change-build-menu</span></code>:</p>
+<blockquote>
+<div><p>Start the ticker. This needs to be done before any changes will take
+effect. Note that you can make changes before or after starting the
+ticker.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">disable</span> <span class="pre">modtools/change-build-menu</span></code>:</p>
+<blockquote>
+<div><p>Stop the ticker. Does not clear stored changes. The ticker will
+automatically stop when the current world is unloaded.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">modtools/change-build-menu</span> <span class="pre">add</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;CATEGORY&gt;</span> <span class="pre">[&lt;KEY&gt;]</span></code>:</p>
+<blockquote>
+<div><p>Add the workshop or furnace with the ID <code class="docutils literal notranslate"><span class="pre">&lt;ID&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;CATEGORY&gt;</span></code>.
+<code class="docutils literal notranslate"><span class="pre">&lt;KEY&gt;</span></code> is an optional DF hotkey ID.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&lt;CATEGORY&gt;</span></code> may be one of:</dt><dd><ul class="simple">
+<li><p>MAIN_PAGE</p></li>
+<li><p>SIEGE_ENGINES</p></li>
+<li><p>TRAPS</p></li>
+<li><p>WORKSHOPS</p></li>
+<li><p>FURNACES</p></li>
+<li><p>CONSTRUCTIONS</p></li>
+<li><p>MACHINES</p></li>
+<li><p>CONSTRUCTIONS_TRACK</p></li>
+</ul>
+</dd>
+<dt>Valid <code class="docutils literal notranslate"><span class="pre">&lt;ID&gt;</span></code> values for hardcoded buildings are as follows:</dt><dd><ul class="simple">
+<li><p>CARPENTERS</p></li>
+<li><p>FARMERS</p></li>
+<li><p>MASONS</p></li>
+<li><p>CRAFTSDWARFS</p></li>
+<li><p>JEWELERS</p></li>
+<li><p>METALSMITHSFORGE</p></li>
+<li><p>MAGMAFORGE</p></li>
+<li><p>BOWYERS</p></li>
+<li><p>MECHANICS</p></li>
+<li><p>SIEGE</p></li>
+<li><p>BUTCHERS</p></li>
+<li><p>LEATHERWORKS</p></li>
+<li><p>TANNERS</p></li>
+<li><p>CLOTHIERS</p></li>
+<li><p>FISHERY</p></li>
+<li><p>STILL</p></li>
+<li><p>LOOM</p></li>
+<li><p>QUERN</p></li>
+<li><p>KENNELS</p></li>
+<li><p>ASHERY</p></li>
+<li><p>KITCHEN</p></li>
+<li><p>DYERS</p></li>
+<li><p>TOOL</p></li>
+<li><p>MILLSTONE</p></li>
+<li><p>WOOD_FURNACE</p></li>
+<li><p>SMELTER</p></li>
+<li><p>GLASS_FURNACE</p></li>
+<li><p>MAGMA_SMELTER</p></li>
+<li><p>MAGMA_GLASS_FURNACE</p></li>
+<li><p>MAGMA_KILN</p></li>
+<li><p>KILN</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">modtools/change-build-menu</span> <span class="pre">remove</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;CATEGORY&gt;</span></code>:</p>
+<blockquote>
+<div><p>Remove the workshop or furnace with the ID <code class="docutils literal notranslate"><span class="pre">&lt;ID&gt;</span></code> from <code class="docutils literal notranslate"><span class="pre">&lt;CATEGORY&gt;</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;CATEGORY&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;ID&gt;</span></code> may have the same values as for the “add”
+option.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">modtools/change-build-menu</span> <span class="pre">revert</span> <span class="pre">&lt;ID&gt;</span> <span class="pre">&lt;CATEGORY&gt;</span></code>:</p>
+<blockquote>
+<div><p>Revert an earlier remove or add operation. It is NOT safe to “remove”
+an “add”ed building or vice versa, use this option to reverse any
+changes you no longer want/need.</p>
+</div></blockquote>
+<p><strong>Module Usage:</strong></p>
+<p>To use this script as a module put the following somewhere in your own script:</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">buildmenu</span> <span class="o">=</span> <span class="n">reqscript</span> <span class="s2">&quot;change-build-menu&quot;</span>
+</pre></div>
+</div>
+<p>Then you can call the functions documented here like so:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Example: Remove the carpenters workshop:</p></li>
+</ul>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">buildmenu</span><span class="p">.</span><span class="n">ChangeBuilding</span><span class="p">(</span><span class="s2">&quot;CARPENTERS&quot;</span><span class="p">,</span> <span class="s2">&quot;WORKSHOPS&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Example: Make it impossible to build walls (not recommended!):</p></li>
+</ul>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span> <span class="n">typ</span><span class="p">,</span> <span class="n">styp</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">building_type</span><span class="p">.</span><span class="n">Construction</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">construction_type</span><span class="p">.</span><span class="n">Wall</span>
+<span class="n">buildmenu</span><span class="p">.</span><span class="n">ChangeBuildingAdv</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">styp</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;CONSTRUCTIONS&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Note that to allow any of your changes to take effect you need to start the
+ticker. See the “Command Usage” section.</p>
+<p><strong>Global Functions:</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">GetWShopID(btype,</span> <span class="pre">bsubtype,</span> <span class="pre">bcustom)</span></code>:</dt><dd><p>GetWShopID returns a workshop’s or furnace’s string ID based on its
+numeric ID triplet. This string ID <em>should</em> match what is expected
+by eventful for hardcoded buildings.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">GetWShopType(id)</span></code>:</dt><dd><p>GetWShopIDs returns a workshop or furnace’s ID numbers as a table.
+The passed in ID should be the building’s string identifier, it makes
+no difference if it is a custom building or a hardcoded one.
+The return table is structured like so: <code class="docutils literal notranslate"><span class="pre">{type,</span> <span class="pre">subtype,</span> <span class="pre">custom}</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IsEntityPermitted(id)</span></code>:</dt><dd><p>IsEntityPermitted returns true if DF would normally allow you to build
+a workshop or furnace. Use this if you want to change a building, but
+only if it is permitted in the current entity. You do not need to
+specify an entity, the current fortress race is used.</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">ChangeBuilding(id,</span> <span class="pre">category,</span> <span class="pre">[add,</span> <span class="pre">[key]])</span></code>:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">ChangeBuildingAdv(typ,</span> <span class="pre">subtyp,</span> <span class="pre">custom,</span> <span class="pre">category,</span> <span class="pre">[add,</span> <span class="pre">[key]]):</span></code></dt><dd><p>These two functions apply changes to the build sidebar menus. If “add”
+is true then the building is added to the specified category, else it
+is removed. When adding you may specify “key”, a string DF hotkey ID.</p>
+<p>The first version of this function takes a workshop or furnace ID as a
+string, the second takes a numeric ID triplet (which can specify any
+building, not just workshops or furnaces).</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">RevertBuildingChanges(id,</span> <span class="pre">category)</span></code>:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">RevertBuildingChangesAdv(typ,</span> <span class="pre">subtyp,</span> <span class="pre">custom,</span> <span class="pre">category)</span></code>:</dt><dd><p>These two functions revert changes made by “ChangeBuilding” and
+“ChangeBuildingAdv”. Like those two functions there are two versions,
+a simple one that takes a string ID and one that takes a numeric ID
+triplet.</p>
+</dd>
+</dl>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

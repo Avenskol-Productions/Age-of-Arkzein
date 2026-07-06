@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>assign-preferences &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="assign-profile" href="assign-profile.html" />
+    <link rel="prev" title="assign-minecarts" href="assign-minecarts.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="assign-minecarts.html" title="previous chapter">assign-minecarts</a></li>
+      <li>Next: <a href="assign-profile.html" title="next chapter">assign-profile</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">assign-preferences</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="assign-preferences">
+<span id="id1"></span><h1>assign-preferences<a class="headerlink" href="#assign-preferences" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../units-tag-index.html"><span class="std std-ref">units</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">assign-preferences</span></code></p>
+<p><span>Adjust a unit’s preferences.</span></p>
+</aside>
+<p>You will need to know the token of the object you want your dwarf to like.
+You can find them in the wiki, otherwise in the folder “/raw/objects/” under
+the main DF directory you will find all the raws defined in the game.</p>
+<p>For more information, please see the <a class="reference external" href="https://dwarffortresswiki.org/Preferences">wiki</a>.</p>
+<p>Note the last three types of preferences (“like poetic form”, “like musical
+form”, and “like dance form”) are not supported by this script.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-goals [--unit &lt;id&gt;] &lt;options&gt;
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<ul>
+<li><p>“likes alabaster and willow wood”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --likematerial [ INORGANIC:ALABASTER PLANT:WILLOW:WOOD ]
+</pre></div>
+</div>
+</li>
+<li><p>“likes sparrows for their …”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --likecreature SPARROW
+</pre></div>
+</div>
+</li>
+<li><p>“prefers to consume dwarven wine and olives”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --likefood [ PLANT:MUSHROOM_HELMET_PLUMP:DRINK PLANT:OLIVE:FRUIT ]
+</pre></div>
+</div>
+</li>
+<li><p>“absolutely detests jumping spiders:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --hatecreature SPIDER_JUMPING
+</pre></div>
+</div>
+</li>
+<li><p>“likes logs and battle axes”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --likeitem [ WOOD ITEM_WEAPON:ITEM_WEAPON_AXE_BATTLE ]
+</pre></div>
+</div>
+</li>
+<li><p>“likes strawberry plants for their …”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --likeplant BERRIES_STRAW
+</pre></div>
+</div>
+</li>
+<li><p>“likes oaks for their …”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --liketree OAK
+</pre></div>
+</div>
+</li>
+<li><p>“likes the color aqua”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --likecolor AQUA
+</pre></div>
+</div>
+</li>
+<li><p>“likes stars”:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>assign-preferences --reset --likeshape STAR
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<p>For each of the parameters that take lists of tokens, if there is a space in the
+token name, please replace it with an underscore. Also, there must be a space
+before and after each square bracket. If only one value is provided, the square
+brackets can be omitted.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--unit</span> <span class="pre">&lt;id&gt;</span></code></dt><dd><p>The target unit ID. If not present, the currently selected unit will be the
+target.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--likematerial</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>This is usually set to three tokens: a type of stone, a type of metal, and a
+type of gem. It can also be a type of wood, glass, leather, horn, pearl,
+ivory, a decoration material - coral or amber, bone, shell, silk, yarn, or
+cloth. Please include the full tokens, not just a part.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--likecreature</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>For this preference, you can just list the species as the token. For
+example, a creature token can be something like <code class="docutils literal notranslate"><span class="pre">CREATURE:SPARROW:SKIN</span></code>.
+Here, you can just say <code class="docutils literal notranslate"><span class="pre">SPARROW</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--likefood</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>This usually contains at least a type of alcohol. It can also be a type of
+meat, fish, cheese, edible plant, cookable plant/creature extract, cookable
+mill powder, cookable plant seed, or cookable plant leaf. Please write the
+full tokens.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--hatecreature</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>As in <code class="docutils literal notranslate"><span class="pre">--likecreature</span></code> above, you can just list the species in the token.
+The creature should be a type of <code class="docutils literal notranslate"><span class="pre">HATEABLE</span></code> vermin which isn’t already
+explicitly liked, but no check is performed to enforce this.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--likeitem</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>This can be a kind of weapon, a kind of ammo, a piece of armor, a piece of
+clothing (including backpacks or quivers), a type of furniture (doors,
+floodgates, beds, chairs, windows, cages, barrels, tables, coffins, statues,
+boxes, armor stands, weapon racks, cabinets, bins, hatch covers, grates,
+querns, millstones, traction benches, or slabs), a kind of craft (figurines,
+amulets, scepters, crowns, rings, earrings, bracelets, or large gems), or a
+kind of miscellaneous item (catapult parts, ballista parts, a type of siege
+ammo, a trap component, coins, anvils, totems, chains, flasks, goblets,
+buckets, animal traps, an instrument, a toy, splints, crutches, or a tool).
+The item tokens can be found here:
+<a class="reference external" href="https://dwarffortresswiki.org/index.php/DF2014:Item_token">https://dwarffortresswiki.org/index.php/DF2014:Item_token</a>
+If you want to specify an item subtype, look into the files listed under the
+column “Subtype” of the wiki page (they are in the “/raw/objects/” folder),
+then specify the items using the full tokens found in those files (see
+examples in this help).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--likeplant</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>As in <code class="docutils literal notranslate"><span class="pre">--likecreature</span></code> above, you can just list the tree or plant species
+in the token.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--likecolor</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>You can find the color tokens here:
+<a class="reference external" href="https://dwarffortresswiki.org/index.php/DF2014:Color#Color_tokens">https://dwarffortresswiki.org/index.php/DF2014:Color#Color_tokens</a>
+or inside the “descriptor_color_standard.txt” file (in the “/raw/objects/”
+folder). You can use the full token or just the color name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--likeshape</span> <span class="pre">[</span> <span class="pre">&lt;token&gt;</span> <span class="pre">[&lt;token&gt;</span> <span class="pre">...]</span> <span class="pre">]</span></code></dt><dd><p>I couldn’t find a list of shape tokens in the wiki, but you can find them
+inside the “descriptor_shape_standard.txt” file (in the “/raw/objects/”
+folder). You can use the full token or just the shape name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--reset</span></code></dt><dd><p>Clear all preferences. If the script is called with both this option and one
+or more preferences, first all the unit preferences will be cleared and then
+the listed preferences will be added.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

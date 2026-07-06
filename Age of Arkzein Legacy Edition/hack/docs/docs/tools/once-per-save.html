@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>once-per-save &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="open-legends" href="open-legends.html" />
+    <link rel="prev" title="on-new-fortress" href="on-new-fortress.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="on-new-fortress.html" title="previous chapter">on-new-fortress</a></li>
+      <li>Next: <a href="open-legends.html" title="next chapter">open-legends</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">once-per-save</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="once-per-save">
+<span id="id1"></span><h1>once-per-save<a class="headerlink" href="#once-per-save" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../dfhack-tag-index.html"><span class="std std-ref">dfhack</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">once-per-save</span></code></p>
+<p><span>Run commands only if they haven’t been run before in this world.</span></p>
+</aside>
+<p>If you are looking for a way to run commands once when you start a new fortress,
+you probably want <a class="reference internal" href="on-new-fortress.html#on-new-fortress"><span class="std std-ref">on-new-fortress</span></a>.</p>
+<p>This tool is better for commands that you want to run once per world.</p>
+<p>You can specify multiple commands to run, separated with <kbd class="kbd docutils literal notranslate">;</kbd>, similar to
+<a class="reference internal" href="multicmd.html#multicmd"><span class="std std-ref">multicmd</span></a>. However, if the command has been run (successfully) before with
+<code class="docutils literal notranslate"><span class="pre">once-per-save</span></code> in the context of the current savegame, the commands will not
+actually run.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">once-per-save</span> <span class="pre">[--rerun]</span> <span class="pre">&lt;command&gt;[;</span> <span class="pre">&lt;command&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Run the specified commands if they haven’t been run before. If <code class="docutils literal notranslate"><span class="pre">--rerun</span></code>
+is specified, run the commands regardless of whether they have been run
+before.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">once-per-save</span> <span class="pre">--reset</span></code></dt><dd><p>Forget which commands have been run before.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

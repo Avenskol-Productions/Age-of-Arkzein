@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>buildingplan &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="burial" href="burial.html" />
+    <link rel="prev" title="building-hacks" href="building-hacks.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="building-hacks.html" title="previous chapter">building-hacks</a></li>
+      <li>Next: <a href="burial.html" title="next chapter">burial</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">buildingplan</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#global-settings">Global settings</a></li>
+<li><a class="reference internal" href="#item-filtering">Item filtering</a></li>
+<li><a class="reference internal" href="#quickfort-mode">Quickfort mode</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="buildingplan">
+<span id="id1"></span><h1>buildingplan<a class="headerlink" href="#buildingplan" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../design-tag-index.html"><span class="std std-ref">design</span></a><span> | </span><a class="reference internal" href="../../buildings-tag-index.html"><span class="std std-ref">buildings</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">buildingplan</span></code></p>
+<p><span>Plan building construction before you have materials.</span></p>
+</aside>
+<p>This plugin adds a planning mode for building placement. You can then place
+furniture, constructions, and other buildings before the required materials are
+available, and they will be created in a suspended state. Buildingplan will
+periodically scan for appropriate items, and the jobs will be unsuspended when
+the items are available.</p>
+<p>This is very useful when combined with manager work orders or <a class="reference internal" href="workflow.html#workflow"><span class="std std-ref">workflow</span></a> – you
+can set a constraint to always have one or two doors/beds/tables/chairs/etc.
+available, and place as many as you like. Materials are used to build the
+planned buildings as they are produced, with minimal space dedicated to
+stockpiles.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>enable buildingplan
+buildingplan set
+buildingplan set &lt;setting&gt; true|false
+</pre></div>
+</div>
+<p>Running <code class="docutils literal notranslate"><span class="pre">buildingplan</span> <span class="pre">set</span></code> without parameters displays the current settings.</p>
+</section>
+<section id="global-settings">
+<span id="buildingplan-settings"></span><h2>Global settings<a class="headerlink" href="#global-settings" title="Permalink to this heading">¶</a></h2>
+<p>The buildingplan plugin has global settings that can be set from the UI
+(<kbd class="kbd docutils literal notranslate">G</kbd> from any building placement screen, for example:
+<kbd class="kbd docutils literal notranslate">b</kbd><kbd class="kbd docutils literal notranslate">a</kbd><kbd class="kbd docutils literal notranslate">G</kbd>). These settings can also be set via the
+<code class="docutils literal notranslate"><span class="pre">buildingplan</span> <span class="pre">set</span></code> command. The available settings are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">all_enabled</span></code> (default: false)</dt><dd><p>Enable planning mode for all building types.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">blocks</span></code>, <code class="docutils literal notranslate"><span class="pre">boulders</span></code>, <code class="docutils literal notranslate"><span class="pre">logs</span></code>, <code class="docutils literal notranslate"><span class="pre">bars</span></code> (defaults: true, true, true, false)</dt><dd><p>Allow blocks, boulders, logs, or bars to be matched for generic “building
+material” items.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">quickfort_mode</span></code> (default: false)</dt><dd><p>Enable compatibility mode for the legacy Python Quickfort (this setting is
+not required for DFHack <a class="reference internal" href="quickfort.html#quickfort"><span class="std std-ref">quickfort</span></a>)</p>
+</dd>
+</dl>
+<p>The settings for <code class="docutils literal notranslate"><span class="pre">blocks</span></code>, <code class="docutils literal notranslate"><span class="pre">boulders</span></code>, <code class="docutils literal notranslate"><span class="pre">logs</span></code>, and <code class="docutils literal notranslate"><span class="pre">bars</span></code> are saved with
+your fort, so you only have to set them once and they will be persisted in your
+save.</p>
+<p>If you normally embark with some blocks on hand for early workshops, you might
+want to add this line to your <code class="docutils literal notranslate"><span class="pre">dfhack-config/init/onMapLoad.init</span></code> file to
+always configure buildingplan to just use blocks for buildings and
+constructions:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>on-new-fortress buildingplan set boulders false; buildingplan set logs false
+</pre></div>
+</div>
+</section>
+<section id="item-filtering">
+<span id="buildingplan-filters"></span><h2>Item filtering<a class="headerlink" href="#item-filtering" title="Permalink to this heading">¶</a></h2>
+<p>While placing a building, you can set filters for what materials you want the
+building made out of, what quality you want the component items to be, and
+whether you want the items to be decorated.</p>
+<p>If a building type takes more than one item to construct, use
+<kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">Left</kbd> and <kbd class="kbd docutils literal notranslate">Ctrl</kbd><kbd class="kbd docutils literal notranslate">Right</kbd> to select the item that you
+want to set filters for. Any filters that you set will be used for all buildings
+of the selected type placed from that point onward (until you set a new filter
+or clear the current one). Buildings placed before the filters were changed will
+keep the filter values that were set when the building was placed.</p>
+<p>For example, you can be sure that all your constructed walls are the same color
+by setting a filter to accept only certain types of stone.</p>
+</section>
+<section id="quickfort-mode">
+<h2>Quickfort mode<a class="headerlink" href="#quickfort-mode" title="Permalink to this heading">¶</a></h2>
+<p>If you use the external Python Quickfort to apply building blueprints instead of
+the native DFHack <a class="reference internal" href="quickfort.html#quickfort"><span class="std std-ref">quickfort</span></a> script, you must enable Quickfort mode. This
+temporarily enables buildingplan for all building types and adds an extra blank
+screen after every building placement. This “dummy” screen is needed for Python
+Quickfort to interact successfully with Dwarf Fortress.</p>
+<p>Note that Quickfort mode is only for compatibility with the legacy Python
+Quickfort. The DFHack <a class="reference internal" href="quickfort.html#quickfort"><span class="std std-ref">quickfort</span></a> script does not need this Quickfort mode to be
+enabled. The <a class="reference internal" href="quickfort.html#quickfort"><span class="std std-ref">quickfort</span></a> script will successfully integrate with buildingplan as
+long as the buildingplan plugin itself is enabled.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

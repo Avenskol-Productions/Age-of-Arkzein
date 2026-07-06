@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>steam-engine &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="stockflow" href="stockflow.html" />
+    <link rel="prev" title="starvingdead" href="starvingdead.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="starvingdead.html" title="previous chapter">starvingdead</a></li>
+      <li>Next: <a href="stockflow.html" title="next chapter">stockflow</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">steam-engine</a><ul>
+<li><a class="reference internal" href="#rationale">Rationale</a></li>
+<li><a class="reference internal" href="#construction">Construction</a></li>
+<li><a class="reference internal" href="#operation">Operation</a></li>
+<li><a class="reference internal" href="#explosions">Explosions</a></li>
+<li><a class="reference internal" href="#save-files">Save files</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="steam-engine">
+<span id="id1"></span><h1>steam-engine<a class="headerlink" href="#steam-engine" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../gameplay-tag-index.html"><span class="std std-ref">gameplay</span></a><span> | </span><a class="reference internal" href="../../buildings-tag-index.html"><span class="std std-ref">buildings</span></a></p>
+<p><span>Allow modded steam engine buildings to function.</span></p>
+</aside>
+<p>The steam-engine plugin detects custom workshops with the string
+<code class="docutils literal notranslate"><span class="pre">STEAM_ENGINE</span></code> in their token, and turns them into real steam engines!</p>
+<p>The plugin auto-enables itself when it detects the relevant tags in the world
+raws. It does not need to be enabled with the <a class="reference internal" href="enable.html#enable"><span class="std std-ref">enable</span></a> command.</p>
+<section id="rationale">
+<h2>Rationale<a class="headerlink" href="#rationale" title="Permalink to this heading">¶</a></h2>
+<p>The vanilla game contains only water wheels and windmills as sources of power,
+but windmills give relatively little power, and water wheels require flowing
+water, which must either be a real river and thus immovable and
+limited in supply, or actually flowing and thus laggy.</p>
+<p>Compared to the
+<a class="reference external" href="https://dwarffortresswiki.org/Water_wheel#Dwarven_Water_Reactor">dwarven water reactor</a> exploit,
+steam engines make a lot of sense!</p>
+</section>
+<section id="construction">
+<h2>Construction<a class="headerlink" href="#construction" title="Permalink to this heading">¶</a></h2>
+<p>The workshop needs water as its input, which it takes via a passable floor tile
+below it, like usual magma workshops do. The magma version also needs magma.</p>
+<p>Due to DF game limits, the workshop will collapse over true open space. However,
+down stairs are passable but support machines, so you can use them.</p>
+<p>After constructing the building itself, machines can be connected to the edge
+tiles that look like gear boxes. Their exact position is extracted from the
+workshop raws.</p>
+<p>Like with collapse above, due to DF game limits the workshop can only
+immediately connect to machine components built AFTER it.  This also means that
+engines cannot be chained without intermediate axles built after both engines.</p>
+</section>
+<section id="operation">
+<h2>Operation<a class="headerlink" href="#operation" title="Permalink to this heading">¶</a></h2>
+<p>In order to operate the engine, queue the Stoke Boiler job (optionally on
+repeat). A furnace operator will come, possibly bringing a bar of fuel, and
+perform it. As a result, a “boiling water” item will appear in the <kbd class="kbd docutils literal notranslate">t</kbd>
+view of the workshop.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The completion of the job will actually consume one unit
+of the appropriate liquids from below the workshop. This means
+that you cannot just raise 7 units of magma with a piston and
+have infinite power. However, liquid consumption should be slow
+enough that water can be supplied by a pond zone bucket chain.</p>
+</div>
+<p>Every such item gives 100 power, up to a limit of 300 for coal, or 500 for a
+magma engine. The building can host twice that amount of items to provide longer
+autonomous running. When the boiler gets filled to capacity, all queued jobs are
+suspended. Once it drops back to 3+1 or 5+1 items, they are re-enabled.</p>
+<p>While the engine is providing power, steam is being consumed. The consumption
+speed includes a fixed 10% waste rate, and the remaining 90% is applied
+proportionally to the actual load in the machine. With the engine at nominal 300
+power with 150 load in the system, it will consume steam for actual
+300*(10% + 90%*150/300) = 165 power.</p>
+<p>A masterpiece mechanism and chain will decrease the mechanical power drawn by
+the engine itself from 10 to 5. A masterpiece barrel decreases waste rate by 4%.
+A masterpiece piston and pipe decrease it by further 4%, and also decrease the
+whole steam use rate by 10%.</p>
+</section>
+<section id="explosions">
+<h2>Explosions<a class="headerlink" href="#explosions" title="Permalink to this heading">¶</a></h2>
+<p>The engine must be constructed using barrel, pipe, and piston from fire-safe,
+or, in the magma version, magma-safe metals.</p>
+<p>During operation, weak parts gradually wear out, and eventually the engine
+explodes. It should also explode if toppled during operation by a building
+destroyer or a tantruming dwarf.</p>
+</section>
+<section id="save-files">
+<h2>Save files<a class="headerlink" href="#save-files" title="Permalink to this heading">¶</a></h2>
+<p>It should be safe to load and view engine-using fortresses from a DF version
+without DFHack installed, except that in such case the engines, of course, won’t
+work. However actually making modifications to them or machines they connect to
+(including by pulling levers) can easily result in inconsistent state once this
+plugin is available again. The effects may be as weird as negative power being
+generated.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

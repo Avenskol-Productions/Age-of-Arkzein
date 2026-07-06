@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>autolabor &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="autolabor-artisans" href="autolabor-artisans.html" />
+    <link rel="prev" title="autohauler" href="autohauler.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="autohauler.html" title="previous chapter">autohauler</a></li>
+      <li>Next: <a href="autolabor-artisans.html" title="next chapter">autolabor-artisans</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">autolabor</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#advanced-usage">Advanced usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="autolabor">
+<span id="id1"></span><h1>autolabor<a class="headerlink" href="#autolabor" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../auto-tag-index.html"><span class="std std-ref">auto</span></a><span> | </span><a class="reference internal" href="../../labors-tag-index.html"><span class="std std-ref">labors</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">autolabor</span></code></p>
+<p><span>Automatically manage dwarf labors.</span></p>
+</aside>
+<p>Autolabor attempts to keep as many dwarves as possible busy while allowing
+dwarves to specialize in specific skills.</p>
+<p>Autolabor frequently checks how many jobs of each type are available and sets
+labors proportionally in order to get them all done quickly. Labors with
+equipment – mining, hunting, and woodcutting – which are abandoned if labors
+change mid-job, are handled slightly differently to minimize churn.</p>
+<p>Dwarves on active military duty or dwarves assigned to burrows are left
+untouched by autolabor.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>autolabor will override any manual changes you make to labors while it is
+enabled, including through other tools such as Dwarf Therapist.</p>
+</div>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>enable autolabor
+</pre></div>
+</div>
+<p>Anything beyond this is optional - autolabor works well with the default
+settings. Once you have enabled it in a fortress, it stays enabled until you
+explicitly disable it, even if you save and reload your game.</p>
+<p>By default, each labor is assigned to between 1 and 200 dwarves (2-200 for
+mining). 33% of the workforce become haulers, who handle all hauling jobs as
+well as cleaning, pulling levers, recovering wounded, removing constructions,
+and filling ponds. Other jobs are automatically assigned as described above.
+Each of these settings can be adjusted.</p>
+<p>Jobs are rarely assigned to nobles with responsibilities for meeting diplomats
+or merchants, never to the chief medical dwarf, and less often to the bookkeeper
+and manager.</p>
+<p>Hunting is never assigned without a butchery, and fishing is never assigned
+without a fishery.</p>
+<p>For each labor, a preference order is calculated based on skill, excluding those
+who can’t do the job. Dwarves who are masters of a skill are deprioritized for
+other skills. The labor is then added to the best &lt;minimum&gt; dwarves for that
+labor, then to additional dwarfs that meet any of these conditions:</p>
+<ul class="simple">
+<li><p>The dwarf is idle and there are no idle dwarves assigned to this labor</p></li>
+<li><p>The dwarf has non-zero skill associated with the labor</p></li>
+<li><p>The labor is mining, hunting, or woodcutting and the dwarf currently has it enabled.</p></li>
+</ul>
+<p>We stop assigning dwarves when we reach the maximum allowed.</p>
+<p>Autolabor uses DFHack’s <a class="reference internal" href="debug.html#debug"><span class="std std-ref">debug</span></a> functionality to display information about the changes it makes. The amount of
+information displayed can be controlled through appropriate use of the <code class="docutils literal notranslate"><span class="pre">debugfilter</span></code> command.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">MINE</span> <span class="pre">5</span></code></dt><dd><p>Keep at least 5 dwarves with mining enabled.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">CUT_GEM</span> <span class="pre">1</span> <span class="pre">1</span></code></dt><dd><p>Keep exactly 1 dwarf with gem cutting enabled.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">COOK</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">3</span></code></dt><dd><p>Keep 1 dwarf with cooking enabled, selected only from the top 3.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">FEED_WATER_CIVILIANS</span> <span class="pre">haulers</span></code></dt><dd><p>Have haulers feed and water wounded dwarves.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">CUTWOOD</span> <span class="pre">disable</span></code></dt><dd><p>Turn off autolabor for wood cutting.</p>
+</dd>
+</dl>
+</section>
+<section id="advanced-usage">
+<h2>Advanced usage<a class="headerlink" href="#advanced-usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">list</span></code></dt><dd><p>List current status of all labors. Use this command to see the IDs for all
+labors.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">status</span></code></dt><dd><p>Show basic status information.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">&lt;labor&gt;</span> <span class="pre">&lt;minimum&gt;</span> <span class="pre">[&lt;maximum&gt;]</span> <span class="pre">[&lt;talent</span> <span class="pre">pool&gt;]</span></code></dt><dd><p>Set range of dwarves assigned to a labor, optionally specifying the size of
+the pool of most skilled dwarves that will ever be considered for this
+labor.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">&lt;labor&gt;</span> <span class="pre">haulers</span></code></dt><dd><p>Set a labor to be handled by hauler dwarves.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">&lt;labor&gt;</span> <span class="pre">disable</span></code></dt><dd><p>Turn off autolabor for a specific labor.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">autolabor</span> <span class="pre">reset-all|&lt;labor&gt;</span> <span class="pre">reset</span></code></dt><dd><p>Return a labor (or all labors) to the default handling.</p>
+</dd>
+</dl>
+<p>See <a class="reference internal" href="autolabor-artisans.html#autolabor-artisans"><span class="std std-ref">autolabor-artisans</span></a> for a differently-tuned setup.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

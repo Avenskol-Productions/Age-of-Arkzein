@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>forceequip &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="forget-dead-body" href="forget-dead-body.html" />
+    <link rel="prev" title="force" href="force.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="force.html" title="previous chapter">force</a></li>
+      <li>Next: <a href="forget-dead-body.html" title="next chapter">forget-dead-body</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">forceequip</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="forceequip">
+<span id="id1"></span><h1>forceequip<a class="headerlink" href="#forceequip" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../adventure-tag-index.html"><span class="std std-ref">adventure</span></a><span> | </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../animals-tag-index.html"><span class="std std-ref">animals</span></a><span> | </span><a class="reference internal" href="../../items-tag-index.html"><span class="std std-ref">items</span></a><span> | </span><a class="reference internal" href="../../military-tag-index.html"><span class="std std-ref">military</span></a><span> | </span><a class="reference internal" href="../../units-tag-index.html"><span class="std std-ref">units</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">forceequip</span></code></p>
+<p><span>Move items into a unit’s inventory.</span></p>
+</aside>
+<p>This tool is typically used to equip specific clothing/armor items onto a dwarf,
+but can also be used to put armor onto a war animal or to add unusual items
+(such as crowns) to any unit. Make sure the unit you want to equip is standing
+on the target items, which must be on the ground and be unforbidden. If multiple
+units are standing on the same tile, the first one will be equipped.</p>
+<p>The most reliable way to set up the environment for this command is to pile
+target items on a tile of floor with a garbage dump activity zone or the
+<a class="reference internal" href="autodump.html#autodump"><span class="std std-ref">autodump</span></a> command, then walk/pasture a unit (or use <a class="reference internal" href="gui/teleport.html#gui-teleport"><span class="std std-ref">gui/teleport</span></a>) on top of
+the items. Be sure to unforbid the items that you want to work with!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Weapons are not currently supported.</p>
+</div>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>forceequip [&lt;options&gt;]
+</pre></div>
+</div>
+<p>As mentioned above, this plugin can be used to equip items onto units (such as
+animals) who cannot normally equip gear. There’s an important caveat here: such
+creatures will automatically drop inappropriate gear almost immediately (within
+10 game ticks). If you want them to retain their equipment, you must forbid it
+AFTER using forceequip to get it into their inventory. This technique can also
+be used to clothe dwarven infants, but only if you’re able to separate them from
+their mothers.</p>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">forceequip</span></code> command will attempt to abide by game rules as
+closely as possible. For instance, it will skip any item which is flagged for
+use in a job, and will not equip more than one piece of clothing/armor onto any
+given body part. These restrictions can be overridden via options, but doing so
+puts you at greater risk of unexpected consequences. For instance, a dwarf who
+is wearing three breastplates will not be able to move very quickly.</p>
+<p>Items equipped by this plugin DO NOT become owned by the recipient. Adult
+dwarves are free to adjust their own wardrobe, and may promptly decide to doff
+your gear in favour of their owned items. Animals, as described above, will tend
+to discard ALL clothing immediately unless it is manually forbidden. Armor items
+seem to be an exception: an animal will tend to retain an equipped suit of mail
+even if you neglect to forbid it.</p>
+<p>Please note that armored animals are quite vulnerable to ranged attacks. Unlike
+dwarves, animals cannot block, dodge, or deflect arrows, and they are slowed by
+the weight of their armor.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">forceequip</span></code></dt><dd><p>Attempts to equip all of the clothing and armor under the cursor onto the
+unit under the cursor, following game rules regarding which item can be
+equipped on which body part and only equipping 1 item onto each body part.
+Items owned by other dwarves are ignored.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">forceequip</span> <span class="pre">v</span> <span class="pre">bp</span> <span class="pre">QQQ</span></code></dt><dd><p>List the bodyparts of the selected unit.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">forceequip</span> <span class="pre">bp</span> <span class="pre">LH</span></code></dt><dd><p>Equips an appropriate item onto the unit’s left hand.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">forceequip</span> <span class="pre">m</span> <span class="pre">bp</span> <span class="pre">LH</span></code></dt><dd><p>Equips ALL appropriate items onto the unit’s left hand. The unit may end up
+wearing a dozen left-handed mittens. Use with caution, and remember that
+dwarves tend to drop extra items ASAP.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">forceequip</span> <span class="pre">i</span> <span class="pre">bp</span> <span class="pre">NECK</span></code></dt><dd><p>Equips an item around the unit’s neck, ignoring appropriateness
+restrictions. If there’s a millstone or an albatross carcass sitting on the
+same square as the targeted unit, then there’s a good chance that it will
+end up around his neck. For precise control, remember that you can
+selectively forbid some of the items that are piled on the ground.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">forceequip</span> <span class="pre">s</span></code></dt><dd><p>Equips the item currently selected in the k menu, if possible.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">forceequip</span> <span class="pre">s</span> <span class="pre">m</span> <span class="pre">i</span> <span class="pre">bp</span> <span class="pre">HD</span></code></dt><dd><p>Equips the selected item onto the unit’s head. Ignores all restrictions and
+conflicts. If you know exactly what you want to equip, and exactly where you
+want it to go, then this is the most straightforward and reliable option.</p>
+</dd>
+</dl>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">ignore</span></code></dt><dd><p>Bypasses the usual item eligibility checks (such as “Never equip gear
+belonging to another dwarf” and “Nobody is allowed to equip a Hive”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">multi</span></code></dt><dd><p>Bypasses the 1-item-per-bodypart limit. Useful for equipping both a mitten
+and a gauntlet on the same hand (or twelve breastplates on the upper body).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">m2</span></code>, <code class="docutils literal notranslate"><span class="pre">m3</span></code>, <code class="docutils literal notranslate"><span class="pre">m4</span></code></dt><dd><p>Modifies the 1-item-per-bodypart limit, allowing each part to receive 2, 3,
+or 4 pieces of gear.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">selected</span></code></dt><dd><p>Equip only the item currently selected in the k menu and ignore all other
+items in the tile.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">bp</span></code>, <code class="docutils literal notranslate"><span class="pre">bodypart</span> <span class="pre">&lt;body</span> <span class="pre">part</span> <span class="pre">code&gt;</span></code></dt><dd><p>Specify which body part should be equipped.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">v</span></code>, <code class="docutils literal notranslate"><span class="pre">verbose</span></code></dt><dd><p>Provide detailed narration and error messages, including listing available
+body parts when an invalid <code class="docutils literal notranslate"><span class="pre">bodypart</span></code> code is specified.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>do-job-now &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="drain-aquifer" href="drain-aquifer.html" />
+    <link rel="prev" title="disable" href="disable.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="disable.html" title="previous chapter">disable</a></li>
+      <li>Next: <a href="drain-aquifer.html" title="next chapter">drain-aquifer</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">do-job-now</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="do-job-now">
+<span id="id1"></span><h1>do-job-now<a class="headerlink" href="#do-job-now" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../jobs-tag-index.html"><span class="std std-ref">jobs</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">do-job-now</span></code></p>
+<p><span>Mark the job related to what you’re looking at as high priority.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">N</span><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode|job|joblist|unit|unitlist|joblist|dungeon_monsterstatus|layer_unit_relationship|item|layer_noblelist|locations|pets|layer_overall_health|textviewer|reportlist|announcelist|layer_military|layer_unit_health|customize_unit|buildinglist|textviewer|item|layer_assigntrade|tradegoods|store|assign_display_item|treasurelist</span></code></p>
+</aside>
+<p>The script will try its best to find a job related to the selected entity (which
+can be a job, dwarf, animal, item, building, plant or work order) and then mark
+the job as high priority.</p>
+<p>Apart from jobs that are queued from buildings, there is normally no visual
+indicator that the job is now high priority. If you use <code class="docutils literal notranslate"><span class="pre">do-job-now</span></code> from the
+keybinding, you have to check the dfhack console for output to see if the
+command succeeded.</p>
+<p>If a work order is selected, every job currently active from this work order is
+adjusted, but not the future ones.</p>
+<p>Also see the <code class="docutils literal notranslate"><span class="pre">do-job-now</span></code> <a class="reference internal" href="tweak.html#tweak"><span class="std std-ref">tweak</span></a>, which allows you to adjust job priorities
+from the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">j`obs</kbd> <kbd class="kbd docutils literal notranslate">screen,</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">`prioritize</kbd></kbd>, which can automatically adjust
+priorities based on the type of job.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>do-job-now
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>tweak &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="type" href="type.html" />
+    <link rel="prev" title="twaterlvl" href="twaterlvl.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="twaterlvl.html" title="previous chapter">twaterlvl</a></li>
+      <li>Next: <a href="type.html" title="next chapter">type</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tweak</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tweak">
+<span id="id1"></span><h1>tweak<a class="headerlink" href="#tweak" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../adventure-tag-index.html"><span class="std std-ref">adventure</span></a><span> | </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../bugfix-tag-index.html"><span class="std std-ref">bugfix</span></a><span> | </span><a class="reference internal" href="../../fps-tag-index.html"><span class="std std-ref">fps</span></a><span> | </span><a class="reference internal" href="../../interface-tag-index.html"><span class="std std-ref">interface</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">tweak</span></code></p>
+<p><span>A collection of tweaks and bugfixes.</span></p>
+</aside>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>tweak &lt;command&gt; [disable]
+</pre></div>
+</div>
+<p>Run the <code class="docutils literal notranslate"><span class="pre">tweak</span></code> command to run the tweak or enable its effects. For tweaks
+that have persistent effects, append the <code class="docutils literal notranslate"><span class="pre">disable</span></code> keyword to disable them.</p>
+<p>One-shot commands:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">clear-missing</span></code></dt><dd><p>Remove the missing status from the selected unit. This allows engraving
+slabs for ghostly, but not yet found, creatures.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">clear-ghostly</span></code></dt><dd><p>Remove the ghostly status from the selected unit and mark it as dead. This
+allows getting rid of bugged ghosts which do not show up in the engraving
+slab menu at all, even after using <code class="docutils literal notranslate"><span class="pre">clear-missing</span></code>. It works, but is
+potentially very dangerous - so use with care. Probably (almost certainly)
+it does not have the same effects like a proper burial. You’ve been warned.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fixmigrant</span></code></dt><dd><p>Remove the resident/merchant flag from the selected unit. Intended to fix
+bugged migrants/traders who stay at the map edge and don’t enter your fort.
+Only works for dwarves (or generally the player’s race in modded games).
+Do NOT abuse this for ‘real’ caravan merchants (if you really want to kidnap
+them, use <code class="docutils literal notranslate"><span class="pre">tweak</span> <span class="pre">makeown</span></code> instead, otherwise they will have their clothes
+set to forbidden).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">makeown</span></code></dt><dd><p>Force selected unit to become a member of your fort. Can be abused to grab
+caravan merchants and escorts, even if they don’t belong to the player’s
+race. Foreign sentients (humans, elves) can be put to work, but you can’t
+assign rooms to them and they don’t show up in labor management programs
+(like <a class="reference internal" href="manipulator.html#manipulator"><span class="std std-ref">manipulator</span></a> or Dwarf Therapist) because the game treats them like
+pets. Grabbing draft animals from a caravan can result in weirdness
+(animals go insane or berserk and are not flagged as tame), but you are
+allowed to mark them for slaughter. Grabbing wagons results in some funny
+spam, then they are scuttled.</p>
+</dd>
+</dl>
+<p>Commands that persist until disabled or DF quits:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">adamantine-cloth-wear</span></code></dt><dd><p>Prevents adamantine clothing from wearing out while being worn
+(<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=6481">Bug 6481</a>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">advmode-contained</span></code></dt><dd><p>Fixes custom reactions with container inputs in advmode
+(<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=6202">Bug 6202</a>) in advmode. The issue is that the screen tries to force you to
+select the contents separately from the container. This forcefully skips
+child reagents.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">block-labors</span></code></dt><dd><p>Prevents labors that can’t be used from being toggled.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">burrow-name-cancel</span></code></dt><dd><p>Implements the “back” option when renaming a burrow, which currently does
+nothing in vanilla DF (<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=1518">Bug 1518</a>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">cage-butcher</span></code></dt><dd><p>Adds an option to butcher units when viewing cages with <kbd class="kbd docutils literal notranslate">q</kbd>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">civ-view-agreement</span></code></dt><dd><p>Fixes overlapping text on the “view agreement” screen.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">condition-material</span></code></dt><dd><p>Fixes a crash in the work order condition material list (<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=9905">Bug 9905</a>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">craft-age-wear</span></code></dt><dd><p>Fixes crafted items not wearing out over time (<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=6003">Bug 6003</a>). With this
+tweak, items made from cloth and leather will gain a level of wear every 20
+years.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">do-job-now</span></code></dt><dd><p>Adds a job priority toggle to the jobs list.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">embark-profile-name</span></code></dt><dd><p>Allows the use of lowercase letters when saving embark profiles.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">eggs-fertile</span></code></dt><dd><p>Displays a fertility indicator on nestboxes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">farm-plot-select</span></code></dt><dd><p>Adds “Select all” and “Deselect all” options to farm plot menus.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fast-heat</span></code></dt><dd><p>Improves temperature update performance by ensuring that 1 degree of item
+temperature is crossed in no more than specified number of frames when
+updating from the environment temperature. This reduces the time it takes
+for <code class="docutils literal notranslate"><span class="pre">tweak</span> <span class="pre">stable-temp</span></code> to stop updates again when equilibrium is
+disturbed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fast-trade</span></code></dt><dd><p>Makes Shift-Down in the Move Goods to Depot and Trade screens toggle the
+current item (fully, in case of a stack), and scroll down one line. Shift-Up
+undoes the last Shift-Down by scrolling up one line and then toggle the item.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fps-min</span></code></dt><dd><p>Fixes the in-game minimum FPS setting (<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=6277">Bug 6277</a>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hide-priority</span></code></dt><dd><p>Adds an option to hide designation priority indicators.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">hotkey-clear</span></code></dt><dd><p>Adds an option to clear currently-bound hotkeys (in the <kbd class="kbd docutils literal notranslate">H</kbd> menu).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">import-priority-category</span></code></dt><dd><p>When meeting with a liaison, makes Shift+Left/Right arrow adjust all items
+in category when discussing an import agreement with the liaison.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">kitchen-prefs-all</span></code></dt><dd><p>Adds an option to toggle cook/brew for all visible items in kitchen
+preferences.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">kitchen-prefs-color</span></code></dt><dd><p>Changes color of enabled items to green in kitchen preferences.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">kitchen-prefs-empty</span></code></dt><dd><p>Fixes a layout issue with empty kitchen tabs (<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=9000">Bug 9000</a>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">max-wheelbarrow</span></code></dt><dd><p>Allows assigning more than 3 wheelbarrows to a stockpile.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">military-color-assigned</span></code></dt><dd><p>Color squad candidates already assigned to other squads in yellow/green to
+make them stand out more in the list.</p>
+<blockquote>
+<div></div></blockquote>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">military-stable-assign</span></code></dt><dd><p>Preserve list order and cursor position when assigning to squad, i.e. stop
+the rightmost list of the Positions page of the military screen from
+constantly resetting to the top.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">nestbox-color</span></code></dt><dd><p>Makes built nestboxes use the color of their material.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">partial-items</span></code></dt><dd><p>Displays percentages on partially-consumed items such as hospital cloth.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pausing-fps-counter</span></code></dt><dd><p>Replace fortress mode FPS counter with one that stops counting when paused.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">reaction-gloves</span></code></dt><dd><p>Fixes reactions to produce gloves in sets with correct handedness
+(<a class="reference external" href="https://www.bay12games.com/dwarves/mantisbt/view.php?id=6273">Bug 6273</a>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">shift-8-scroll</span></code></dt><dd><p>Gives Shift-8 (or <kbd class="kbd docutils literal notranslate">*</kbd>) priority when scrolling menus, instead of
+scrolling the map.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stable-cursor</span></code></dt><dd><p>Saves the exact cursor position between t/q/k/d/b/etc menus of fortress
+mode, if the map view is near enough to its previous position.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stone-status-all</span></code></dt><dd><p>Adds an option to toggle the economic status of all stones.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">title-start-rename</span></code></dt><dd><p>Adds a safe rename option to the title screen “Start Playing” menu.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tradereq-pet-gender</span></code></dt><dd><p>Displays pet genders on the trade request screen.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

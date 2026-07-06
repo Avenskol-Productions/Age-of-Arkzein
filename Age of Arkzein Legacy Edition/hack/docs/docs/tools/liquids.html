@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>liquids &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="list-agreements" href="list-agreements.html" />
+    <link rel="prev" title="linger" href="linger.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="linger.html" title="previous chapter">linger</a></li>
+      <li>Next: <a href="list-agreements.html" title="next chapter">list-agreements</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">liquids</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#interactive-interpreter">Interactive interpreter</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="liquids-here">
+<span id="liquids"></span><span id="id1"></span><h1>liquids<a class="headerlink" href="#liquids-here" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../adventure-tag-index.html"><span class="std std-ref">adventure</span></a><span> | </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../map-tag-index.html"><span class="std std-ref">map</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">liquids</span></code></p>
+<p><span>Place magma, water or obsidian.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">liquids-here</span></code></p>
+<p><span>Spawn liquids on the selected tile.</span></p>
+</aside>
+<p>Place magma, water or obsidian.  See <a class="reference internal" href="gui/liquids.html#gui-liquids"><span class="std std-ref">gui/liquids</span></a> for an in-game interface for
+this functionality.</p>
+<p>Also, if you only want to add or remove water or magma from a single tile, the
+<a class="reference internal" href="source.html#source"><span class="std std-ref">source</span></a> script may be easier to use.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">liquids</span></code></dt><dd><p>Start the interactive terminal settings interpreter. This command must be
+called from the DFHack terminal and not from any in-game interface.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">liquids-here</span></code></dt><dd><p>Run the liquid spawner with the current/last settings made in <code class="docutils literal notranslate"><span class="pre">liquids</span></code>
+(if no settings in <code class="docutils literal notranslate"><span class="pre">liquids</span></code> were made, then it paints a point of 7/7
+magma by default). This command is intended to be used as keybinding, and it
+requires an active in-game cursor.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Spawning and deleting liquids can mess up pathing data and temperatures
+(creating heat traps). You’ve been warned.</p>
+</div>
+</section>
+<section id="interactive-interpreter">
+<h2>Interactive interpreter<a class="headerlink" href="#interactive-interpreter" title="Permalink to this heading">¶</a></h2>
+<p>The interpreter replaces the normal dfhack command line and can’t be used from a
+hotkey. Settings will be remembered as long as dfhack runs. It is intended for
+use in combination with the command <code class="docutils literal notranslate"><span class="pre">liquids-here</span></code> (which <em>can</em> be bound to a
+hotkey).</p>
+<p>You can enter the following commands at the prompt.</p>
+<p>Misc commands:</p>
+<dl class="field-list simple">
+<dt class="field-odd">q<span class="colon">:</span></dt>
+<dd class="field-odd"><p>quit</p>
+</dd>
+<dt class="field-even">help, ?<span class="colon">:</span></dt>
+<dd class="field-even"><p>print this list of commands</p>
+</dd>
+<dt class="field-odd">&lt;empty line&gt;<span class="colon">:</span></dt>
+<dd class="field-odd"><p>put liquid</p>
+</dd>
+</dl>
+<p>Modes:</p>
+<dl class="field-list simple">
+<dt class="field-odd">m<span class="colon">:</span></dt>
+<dd class="field-odd"><p>switch to magma</p>
+</dd>
+<dt class="field-even">w<span class="colon">:</span></dt>
+<dd class="field-even"><p>switch to water</p>
+</dd>
+<dt class="field-odd">o<span class="colon">:</span></dt>
+<dd class="field-odd"><p>make obsidian wall instead</p>
+</dd>
+<dt class="field-even">of<span class="colon">:</span></dt>
+<dd class="field-even"><p>make obsidian floors</p>
+</dd>
+<dt class="field-odd">rs<span class="colon">:</span></dt>
+<dd class="field-odd"><p>make a river source</p>
+</dd>
+<dt class="field-even">f<span class="colon">:</span></dt>
+<dd class="field-even"><p>flow bits only</p>
+</dd>
+<dt class="field-odd">wclean<span class="colon">:</span></dt>
+<dd class="field-odd"><p>remove salt and stagnant flags from tiles</p>
+</dd>
+</dl>
+<p>Set-Modes and flow properties (only for magma/water):</p>
+<dl class="field-list simple">
+<dt class="field-odd">s+<span class="colon">:</span></dt>
+<dd class="field-odd"><p>only add mode</p>
+</dd>
+<dt class="field-even">s.<span class="colon">:</span></dt>
+<dd class="field-even"><p>set mode</p>
+</dd>
+<dt class="field-odd">s-<span class="colon">:</span></dt>
+<dd class="field-odd"><p>only remove mode</p>
+</dd>
+<dt class="field-even">f+<span class="colon">:</span></dt>
+<dd class="field-even"><p>make the spawned liquid flow</p>
+</dd>
+<dt class="field-odd">f.<span class="colon">:</span></dt>
+<dd class="field-odd"><p>don’t change flow state (read state in flow mode)</p>
+</dd>
+<dt class="field-even">f-<span class="colon">:</span></dt>
+<dd class="field-even"><p>make the spawned liquid static</p>
+</dd>
+</dl>
+<p>Permaflow (only for water):</p>
+<dl class="field-list simple">
+<dt class="field-odd">pf.<span class="colon">:</span></dt>
+<dd class="field-odd"><p>don’t change permaflow state</p>
+</dd>
+<dt class="field-even">pf-<span class="colon">:</span></dt>
+<dd class="field-even"><p>make the spawned liquid static</p>
+</dd>
+<dt class="field-odd">pf[NS][EW]<span class="colon">:</span></dt>
+<dd class="field-odd"><p>make the spawned liquid permanently flow</p>
+</dd>
+<dt class="field-even">0-7<span class="colon">:</span></dt>
+<dd class="field-even"><p>set liquid amount</p>
+</dd>
+</dl>
+<p>Brush size and shape:</p>
+<dl class="field-list simple">
+<dt class="field-odd">p, point<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Single tile</p>
+</dd>
+<dt class="field-even">r, range<span class="colon">:</span></dt>
+<dd class="field-even"><p>Block with cursor at bottom north-west (any place, any size)</p>
+</dd>
+<dt class="field-odd">block<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DF map block with cursor in it (regular spaced 16x16x1 blocks)</p>
+</dd>
+<dt class="field-even">column<span class="colon">:</span></dt>
+<dd class="field-even"><p>Column from cursor, up through free space</p>
+</dd>
+<dt class="field-odd">flood<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Flood-fill water tiles from cursor (only makes sense with wclean)</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

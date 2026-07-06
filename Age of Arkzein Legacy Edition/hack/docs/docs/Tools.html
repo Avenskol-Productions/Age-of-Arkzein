@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DFHack tools &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx5.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3dveins" href="tools/3dveins.html" />
+    <link rel="prev" title="DFHack Core" href="Core.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Core.html" title="previous chapter">DFHack Core</a></li>
+      <li>Next: <a href="tools/3dveins.html" title="next chapter">3dveins</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">DFHack tools</a><ul>
+<li><a class="reference internal" href="#what-tools-are-and-how-they-work">What tools are and how they work</a></li>
+<li><a class="reference internal" href="#finding-the-tool-you-need">Finding the tool you need</a></li>
+<li><a class="reference internal" href="#dfhack-tools-by-game-mode">DFHack tools by game mode</a></li>
+<li><a class="reference internal" href="#dfhack-tools-by-theme">DFHack tools by theme</a></li>
+<li><a class="reference internal" href="#dfhack-tools-by-what-they-affect">DFHack tools by what they affect</a></li>
+<li><a class="reference internal" href="#all-dfhack-tools-alphabetically">All DFHack tools alphabetically</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dfhack-tools">
+<span id="tools"></span><h1>DFHack tools<a class="headerlink" href="#dfhack-tools" title="Permalink to this heading">¶</a></h1>
+<p>DFHack has <strong>a lot</strong> of tools. This page attempts to make it clearer what they
+are, how they work, and how to find the ones you want.</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-tools-are-and-how-they-work" id="id1">What tools are and how they work</a></p></li>
+<li><p><a class="reference internal" href="#finding-the-tool-you-need" id="id2">Finding the tool you need</a></p></li>
+<li><p><a class="reference internal" href="#dfhack-tools-by-game-mode" id="id3">DFHack tools by game mode</a></p></li>
+<li><p><a class="reference internal" href="#dfhack-tools-by-theme" id="id4">DFHack tools by theme</a></p></li>
+<li><p><a class="reference internal" href="#dfhack-tools-by-what-they-affect" id="id5">DFHack tools by what they affect</a></p></li>
+<li><p><a class="reference internal" href="#all-dfhack-tools-alphabetically" id="id6">All DFHack tools alphabetically</a></p></li>
+</ul>
+</nav>
+<section id="what-tools-are-and-how-they-work">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">What tools are and how they work</a><a class="headerlink" href="#what-tools-are-and-how-they-work" title="Permalink to this heading">¶</a></h2>
+<p>DFHack is a Dwarf Fortress memory access and modification framework, so DFHack
+tools normally access Dwarf Fortress internals and make some specific changes.</p>
+<p>Some tools just make a targeted change when you run them, like <a class="reference internal" href="tools/unforbid.html#unforbid"><span class="std std-ref">unforbid</span></a>, which
+scans through all your items and removes the <code class="docutils literal notranslate"><span class="pre">forbidden</span></code> flag from each of
+them.</p>
+<p>Some tools need to be enabled, and then they run in the background and make
+changes to the game on your behalf, like <a class="reference internal" href="tools/autobutcher.html#autobutcher"><span class="std std-ref">autobutcher</span></a>, which monitors your
+livestock population and automatically marks excess animals for butchering.</p>
+<p>And some tools just exist to give you information that is otherwise hard to
+come by, like <a class="reference internal" href="tools/gui/petitions.html#gui-petitions"><span class="std std-ref">gui/petitions</span></a>, which shows you the active petitions for
+guildhalls and temples that you have agreed to.</p>
+</section>
+<section id="finding-the-tool-you-need">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Finding the tool you need</a><a class="headerlink" href="#finding-the-tool-you-need" title="Permalink to this heading">¶</a></h2>
+<p>DFHack tools are tagged with categories to make them easier to find. These
+categories are listed in the next few sections. Note that a tool can belong to
+more than one category. If you already know what you’re looking for, try the
+<a class="reference internal" href="../search.html"><span class="std std-ref">Search Page</span></a> or Ctrl-F on this page. If you’d like to see the full list of tools in
+one flat list, please refer to the <a class="reference internal" href="../all-tag-index.html"><span class="std std-ref">annotated index</span></a>.</p>
+</section>
+<section id="dfhack-tools-by-game-mode">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">DFHack tools by game mode</a><a class="headerlink" href="#dfhack-tools-by-game-mode" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="../adventure-tag-index.html"><span class="std std-ref">adventure</span></a></dt><dd><p>Tools that are useful while in adventure mode. Note that some tools only tagged with “fort” might also work in adventure mode, but not always in expected ways. Feel free to experiment, though!</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../dfhack-tag-index.html"><span class="std std-ref">dfhack</span></a></dt><dd><p>Tools that you use to run DFHack commands or interact with the DFHack library. This tag also includes tools that help you manage the DF game itself (e.g. settings, saving, etc.)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../embark-tag-index.html"><span class="std std-ref">embark</span></a></dt><dd><p>Tools that are useful while on the fort embark screen or while creating an adventurer.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../fort-tag-index.html"><span class="std std-ref">fort</span></a></dt><dd><p>Tools that are useful while in fort mode.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../legends-tag-index.html"><span class="std std-ref">legends</span></a></dt><dd><p>Tools that are useful while in legends mode.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="dfhack-tools-by-theme">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">DFHack tools by theme</a><a class="headerlink" href="#dfhack-tools-by-theme" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="../armok-tag-index.html"><span class="std std-ref">armok</span></a></dt><dd><p>Tools that give you complete control over an aspect of the game or provide access to information that the game intentionally keeps hidden.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../auto-tag-index.html"><span class="std std-ref">auto</span></a></dt><dd><p>Tools that run in the background and automatically manage routine, toilsome aspects of your fortress.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../bugfix-tag-index.html"><span class="std std-ref">bugfix</span></a></dt><dd><p>Tools that fix specific bugs, either permanently or on-demand.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../design-tag-index.html"><span class="std std-ref">design</span></a></dt><dd><p>Tools that help you design your fort.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../dev-tag-index.html"><span class="std std-ref">dev</span></a></dt><dd><p>Tools that are useful when developing scripts or mods.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../fps-tag-index.html"><span class="std std-ref">fps</span></a></dt><dd><p>Tools that help you manage FPS drop.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../gameplay-tag-index.html"><span class="std std-ref">gameplay</span></a></dt><dd><p>Tools that introduce new gameplay elements.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../inspection-tag-index.html"><span class="std std-ref">inspection</span></a></dt><dd><p>Tools that let you view information that is otherwise difficult to find.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../productivity-tag-index.html"><span class="std std-ref">productivity</span></a></dt><dd><p>Tools that help you do things that you could do manually, but using the tool is better and faster.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="dfhack-tools-by-what-they-affect">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">DFHack tools by what they affect</a><a class="headerlink" href="#dfhack-tools-by-what-they-affect" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="../animals-tag-index.html"><span class="std std-ref">animals</span></a></dt><dd><p>Tools that interact with animals.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../buildings-tag-index.html"><span class="std std-ref">buildings</span></a></dt><dd><p>Tools that interact with buildings and furniture.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../graphics-tag-index.html"><span class="std std-ref">graphics</span></a></dt><dd><p>Tools that interact with game graphics.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../interface-tag-index.html"><span class="std std-ref">interface</span></a></dt><dd><p>Tools that interact with or extend the DF user interface.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../items-tag-index.html"><span class="std std-ref">items</span></a></dt><dd><p>Tools that interact with in-game items.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../jobs-tag-index.html"><span class="std std-ref">jobs</span></a></dt><dd><p>Tools that interact with jobs.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../labors-tag-index.html"><span class="std std-ref">labors</span></a></dt><dd><p>Tools that deal with labor assignment.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../map-tag-index.html"><span class="std std-ref">map</span></a></dt><dd><p>Tools  that interact with the game map.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../military-tag-index.html"><span class="std std-ref">military</span></a></dt><dd><p>Tools that interact with the military.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../plants-tag-index.html"><span class="std std-ref">plants</span></a></dt><dd><p>Tools that interact with trees, shrubs, and crops.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../stockpiles-tag-index.html"><span class="std std-ref">stockpiles</span></a></dt><dd><p>Tools that interact with stockpiles.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../units-tag-index.html"><span class="std std-ref">units</span></a></dt><dd><p>Tools that interact with units.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../workorders-tag-index.html"><span class="std std-ref">workorders</span></a></dt><dd><p>Tools that interact with workorders.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="all-dfhack-tools-alphabetically">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">All DFHack tools alphabetically</a><a class="headerlink" href="#all-dfhack-tools-alphabetically" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tools/3dveins.html">3dveins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/RemoteFortressReader.html">RemoteFortressReader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/adaptation.html">adaptation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/add-recipe.html">add-recipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/add-spatter.html">add-spatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/add-thought.html">add-thought</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/adv-fix-sleepers.html">adv-fix-sleepers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/adv-max-skills.html">adv-max-skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/adv-rumors.html">adv-rumors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/alias.html">alias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/animal-control.html">animal-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/armoks-blessing.html">armoks-blessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-attributes.html">assign-attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-beliefs.html">assign-beliefs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-facets.html">assign-facets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-goals.html">assign-goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-minecarts.html">assign-minecarts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-preferences.html">assign-preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-profile.html">assign-profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/assign-skills.html">assign-skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autobutcher.html">autobutcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autochop.html">autochop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autoclothing.html">autoclothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autodump.html">autodump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autofarm.html">autofarm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autogems.html">autogems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autohauler.html">autohauler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autolabor.html">autolabor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autolabor-artisans.html">autolabor-artisans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/automaterial.html">automaterial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/automelt.html">automelt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autonestbox.html">autonestbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autonick.html">autonick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autotrade.html">autotrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/autounsuspend.html">autounsuspend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/ban-cooking.html">ban-cooking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/binpatch.html">binpatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/blueprint.html">blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/bodyswap.html">bodyswap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/brainwash.html">brainwash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/break-dance.html">break-dance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/build-now.html">build-now</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/building-hacks.html">building-hacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/buildingplan.html">buildingplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/burial.html">burial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/burrows.html">burrows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/cannibalism.html">cannibalism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/caravan.html">caravan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/catsplosion.html">catsplosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/changeitem.html">changeitem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/changelayer.html">changelayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/changevein.html">changevein</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/channel-safely.html">channel-safely</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/cleanconst.html">cleanconst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/cleaners.html">cleaners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/cleanowned.html">cleanowned</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/clear-smoke.html">clear-smoke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/clear-webs.html">clear-webs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/cls.html">cls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/colonies.html">colonies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/color-schemes.html">color-schemes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/combat-harden.html">combat-harden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/combine-drinks.html">combine-drinks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/combine-plants.html">combine-plants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/command-prompt.html">command-prompt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/confirm.html">confirm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/create-items.html">create-items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/createitem.html">createitem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/cursecheck.html">cursecheck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/cxxrandom.html">cxxrandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/deathcause.html">deathcause</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/debug.html">debug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/deep-embark.html">deep-embark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/deramp.html">deramp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/deteriorate.html">deteriorate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/die.html">die</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/dig.html">dig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/dig-now.html">dig-now</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/digFlood.html">digFlood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/diggingInvaders.html">diggingInvaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/disable.html">disable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/do-job-now.html">do-job-now</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/drain-aquifer.html">drain-aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/dwarf-op.html">dwarf-op</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/dwarfmonitor.html">dwarfmonitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/dwarfvet.html">dwarfvet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/elevate-mental.html">elevate-mental</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/elevate-physical.html">elevate-physical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/embark-assistant.html">embark-assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/embark-skills.html">embark-skills</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/embark-tools.html">embark-tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/emigration.html">emigration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/empty-bin.html">empty-bin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/enable.html">enable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/eventful.html">eventful</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/exportlegends.html">exportlegends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/exterminate.html">exterminate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/extinguish.html">extinguish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fastdwarf.html">fastdwarf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/feature.html">feature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fillneeds.html">fillneeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/filltraffic.html">filltraffic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/firestarter.html">firestarter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix-ster.html">fix-ster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix-unit-occupancy.html">fix-unit-occupancy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fixnaked.html">fixnaked</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fixveins.html">fixveins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/flashstep.html">flashstep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/flows.html">flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/follow.html">follow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/force.html">force</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/forceequip.html">forceequip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/forget-dead-body.html">forget-dead-body</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/forum-dwarves.html">forum-dwarves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fpause.html">fpause</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/full-heal.html">full-heal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gaydar.html">gaydar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/geld.html">geld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/generated-creature-renamer.html">generated-creature-renamer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/getplants.html">getplants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/ghostly.html">ghostly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/growcrops.html">growcrops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/help.html">help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/hermit.html">hermit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/hfs-pit.html">hfs-pit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/hide.html">hide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/hotkey-notes.html">hotkey-notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/hotkeys.html">hotkeys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/infiniteSky.html">infiniteSky</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/install-info.html">install-info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/isoworldremote.html">isoworldremote</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/jobutils.html">jobutils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/keybinding.html">keybinding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/kill-lua.html">kill-lua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/labormanager.html">labormanager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/lair.html">lair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/launch.html">launch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/lever.html">lever</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/light-aquifers-only.html">light-aquifers-only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/linger.html">linger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/liquids.html">liquids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/list-agreements.html">list-agreements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/list-waves.html">list-waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/load.html">load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/load-save.html">load-save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/locate-ore.html">locate-ore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/ls.html">ls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/lua.html">lua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/luasocket.html">luasocket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/make-legendary.html">make-legendary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/make-monarch.html">make-monarch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/manipulator.html">manipulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/map-render.html">map-render</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/markdown.html">markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/masspit.html">masspit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/max-wave.html">max-wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/migrants-now.html">migrants-now</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/misery.html">misery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/mode.html">mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/mousequery.html">mousequery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/multicmd.html">multicmd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/names.html">names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/nestboxes.html">nestboxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/on-new-fortress.html">on-new-fortress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/once-per-save.html">once-per-save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/open-legends.html">open-legends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/orders.html">orders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/overlay.html">overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/pathable.html">pathable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/petcapRemover.html">petcapRemover</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/plants.html">plants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/plug.html">plug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/points.html">points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/pop-control.html">pop-control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/position.html">position</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/power-meter.html">power-meter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/pref-adjust.html">pref-adjust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/prefchange.html">prefchange</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/prioritize.html">prioritize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/probe.html">probe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/prospector.html">prospector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/putontable.html">putontable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/questport.html">questport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/quickfort.html">quickfort</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/quicksave.html">quicksave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/region-pops.html">region-pops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/regrass.html">regrass</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/rejuvenate.html">rejuvenate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/reload.html">reload</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/remove-stress.html">remove-stress</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/remove-wear.html">remove-wear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/rename.html">rename</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/rendermax.html">rendermax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/repeat.html">repeat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/resurrect-adv.html">resurrect-adv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/reveal.html">reveal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/reveal-adv-map.html">reveal-adv-map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/reveal-hidden-sites.html">reveal-hidden-sites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/reveal-hidden-units.html">reveal-hidden-units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/ruby.html">ruby</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/sc-script.html">sc-script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/script.html">script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/search.html">search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/season-palette.html">season-palette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/seedwatch.html">seedwatch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/set-orientation.html">set-orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/set-timeskip-duration.html">set-timeskip-duration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/setfps.html">setfps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/show.html">show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/show-unit-syndromes.html">show-unit-syndromes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/showmood.html">showmood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/siege-engine.html">siege-engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/siren.html">siren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/sort.html">sort</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/source.html">source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/spawnunit.html">spawnunit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/spectate.html">spectate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/startdwarf.html">startdwarf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/starvingdead.html">starvingdead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/steam-engine.html">steam-engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/stockflow.html">stockflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/stockpiles.html">stockpiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/stocks.html">stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/stonesense.html">stonesense</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/strangemood.html">strangemood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/stripcaged.html">stripcaged</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/superdwarf.html">superdwarf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tags.html">tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tailor.html">tailor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tame.html">tame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/teleport.html">teleport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tidlers.html">tidlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tiletypes.html">tiletypes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/timestream.html">timestream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/title-folder.html">title-folder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/title-version.html">title-version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/trackstop.html">trackstop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/troubleshoot-item.html">troubleshoot-item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tubefill.html">tubefill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/twaterlvl.html">twaterlvl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/tweak.html">tweak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/type.html">type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/undump-buildings.html">undump-buildings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/unforbid.html">unforbid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/ungeld.html">ungeld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/uniform-unstick.html">uniform-unstick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/unload.html">unload</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/unretire-anyone.html">unretire-anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/unsuspend.html">unsuspend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/view-item-info.html">view-item-info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/view-unit-reports.html">view-unit-reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/warn-starving.html">warn-starving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/warn-stealers.html">warn-stealers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/weather.html">weather</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/workNow.html">workNow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/workflow.html">workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/workorder.html">workorder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/workorder-recheck.html">workorder-recheck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/xlsxreader.html">xlsxreader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/zone.html">zone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/all-bob.html">devel/all-bob</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/annc-monitor.html">devel/annc-monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/block-borders.html">devel/block-borders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/check-other-ids.html">devel/check-other-ids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/check-release.html">devel/check-release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/clear-script-env.html">devel/clear-script-env</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/click-monitor.html">devel/click-monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/cmptiles.html">devel/cmptiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/dump-offsets.html">devel/dump-offsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/dump-rpc.html">devel/dump-rpc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/eventful-client.html">devel/eventful-client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/export-dt-ini.html">devel/export-dt-ini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/find-offsets.html">devel/find-offsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/find-primitive.html">devel/find-primitive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/find-twbt.html">devel/find-twbt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/hello-world.html">devel/hello-world</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/inject-raws.html">devel/inject-raws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/inspect-screen.html">devel/inspect-screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/kill-hf.html">devel/kill-hf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/light.html">devel/light</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/list-filters.html">devel/list-filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/lsmem.html">devel/lsmem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/lua-example.html">devel/lua-example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/luacov.html">devel/luacov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/modstate-monitor.html">devel/modstate-monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/nuke-items.html">devel/nuke-items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/pop-screen.html">devel/pop-screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/prepare-save.html">devel/prepare-save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/print-args.html">devel/print-args</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/print-args2.html">devel/print-args2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/print-event.html">devel/print-event</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/query.html">devel/query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/save-version.html">devel/save-version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/sc.html">devel/sc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/scanitemother.html">devel/scanitemother</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/send-key.html">devel/send-key</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/spawn-unit-helper.html">devel/spawn-unit-helper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/test-perlin.html">devel/test-perlin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/unit-path.html">devel/unit-path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/visualize-structure.html">devel/visualize-structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/devel/watch-minecarts.html">devel/watch-minecarts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/blood-del.html">fix/blood-del</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/corrupt-equipment.html">fix/corrupt-equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/dead-units.html">fix/dead-units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/drop-webs.html">fix/drop-webs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/dry-buckets.html">fix/dry-buckets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/item-occupancy.html">fix/item-occupancy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/loyaltycascade.html">fix/loyaltycascade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/population-cap.html">fix/population-cap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/retrieve-units.html">fix/retrieve-units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/stable-temp.html">fix/stable-temp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/stuck-merchants.html">fix/stuck-merchants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/stuckdoors.html">fix/stuckdoors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/fix/tile-occupancy.html">fix/tile-occupancy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/advfort.html">gui/advfort</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/autobutcher.html">gui/autobutcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/autogems.html">gui/autogems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/blueprint.html">gui/blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/choose-weapons.html">gui/choose-weapons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/clone-uniform.html">gui/clone-uniform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/color-schemes.html">gui/color-schemes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/companion-order.html">gui/companion-order</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/confirm-opts.html">gui/confirm-opts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/cp437-table.html">gui/cp437-table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/create-item.html">gui/create-item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/create-tree.html">gui/create-tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/dfstatus.html">gui/dfstatus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/extended-status.html">gui/extended-status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/family-affairs.html">gui/family-affairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/gm-editor.html">gui/gm-editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/gm-unit.html">gui/gm-unit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/guide-path.html">gui/guide-path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/kitchen-info.html">gui/kitchen-info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/launcher.html">gui/launcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/liquids.html">gui/liquids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/load-screen.html">gui/load-screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/manager-quantity.html">gui/manager-quantity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/mass-remove.html">gui/mass-remove</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/mechanisms.html">gui/mechanisms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/mod-manager.html">gui/mod-manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/overlay.html">gui/overlay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/pathable.html">gui/pathable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/petitions.html">gui/petitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/power-meter.html">gui/power-meter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/prerelease-warning.html">gui/prerelease-warning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/quantum.html">gui/quantum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/quickcmd.html">gui/quickcmd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/quickfort.html">gui/quickfort</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/rename.html">gui/rename</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/room-list.html">gui/room-list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/settings-manager.html">gui/settings-manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/siege-engine.html">gui/siege-engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/stamper.html">gui/stamper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/stockpiles.html">gui/stockpiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/teleport.html">gui/teleport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/unit-info-viewer.html">gui/unit-info-viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/workflow.html">gui/workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/workorder-details.html">gui/workorder-details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/gui/workshop-job.html">gui/workshop-job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/add-syndrome.html">modtools/add-syndrome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/anonymous-script.html">modtools/anonymous-script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/change-build-menu.html">modtools/change-build-menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/create-item.html">modtools/create-item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/create-tree.html">modtools/create-tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/create-unit.html">modtools/create-unit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/equip-item.html">modtools/equip-item</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/extra-gamelog.html">modtools/extra-gamelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/fire-rate.html">modtools/fire-rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/force.html">modtools/force</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/if-entity.html">modtools/if-entity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/interaction-trigger.html">modtools/interaction-trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/invader-item-destroyer.html">modtools/invader-item-destroyer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/item-trigger.html">modtools/item-trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/moddable-gods.html">modtools/moddable-gods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/outside-only.html">modtools/outside-only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/pref-edit.html">modtools/pref-edit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/projectile-trigger.html">modtools/projectile-trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/random-trigger.html">modtools/random-trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/raw-lint.html">modtools/raw-lint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/reaction-product-trigger.html">modtools/reaction-product-trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/reaction-trigger.html">modtools/reaction-trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/reaction-trigger-transition.html">modtools/reaction-trigger-transition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/set-belief.html">modtools/set-belief</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/set-need.html">modtools/set-need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/set-personality.html">modtools/set-personality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/skill-change.html">modtools/skill-change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/spawn-flow.html">modtools/spawn-flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/spawn-liquid.html">modtools/spawn-liquid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/syndrome-trigger.html">modtools/syndrome-trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools/modtools/transform-unit.html">modtools/transform-unit</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

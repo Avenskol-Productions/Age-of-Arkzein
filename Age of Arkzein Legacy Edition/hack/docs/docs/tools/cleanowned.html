@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>cleanowned &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="clear-smoke" href="clear-smoke.html" />
+    <link rel="prev" title="cleaners" href="cleaners.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="cleaners.html" title="previous chapter">cleaners</a></li>
+      <li>Next: <a href="clear-smoke.html" title="next chapter">clear-smoke</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">cleanowned</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="cleanowned">
+<span id="id1"></span><h1>cleanowned<a class="headerlink" href="#cleanowned" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../items-tag-index.html"><span class="std std-ref">items</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">cleanowned</span></code></p>
+<p><span>Confiscates and dumps garbage owned by dwarves.</span></p>
+</aside>
+<p>This tool gets dwarves to give up ownership of scattered items and items with
+heavy wear and then marks those items for dumping. Now you can finally get your
+dwarves to give up their rotten food and tattered loincloths and go get new
+ones!</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>cleanowned [&lt;types&gt;] [dryrun]
+</pre></div>
+</div>
+<p>When run without parameters, <code class="docutils literal notranslate"><span class="pre">cleanowned</span></code> will confiscate and dump rotten
+items and owned food that is left behind on the floor. Specify the <code class="docutils literal notranslate"><span class="pre">dryrun</span></code>
+parameter to just print out what would be done, but don’t actually confiscate
+anything.</p>
+<p>You can confiscate additional types of items by adding them to the commandline:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">scattered</span></code></dt><dd><p>Confiscate/dump all items scattered on the floor.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">x</span></code></dt><dd><p>Confiscate/dump items with wear level ‘x’ (lightly worn) and more.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">X</span></code></dt><dd><p>Confiscate/dump items with wear level ‘X’ (heavily worn) and more.</p>
+</dd>
+</dl>
+<p>Or you can confiscate all owned items by specifying <code class="docutils literal notranslate"><span class="pre">all</span></code>.</p>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">cleanowned</span> <span class="pre">scattered</span> <span class="pre">X</span></code></dt><dd><p>Confiscate and dump rotten and dropped food, garbage on the floors, and any
+worn items with ‘X’ damage and above.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

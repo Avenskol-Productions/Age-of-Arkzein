@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>tiletypes &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="timestream" href="timestream.html" />
+    <link rel="prev" title="tidlers" href="tidlers.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="tidlers.html" title="previous chapter">tidlers</a></li>
+      <li>Next: <a href="timestream.html" title="next chapter">timestream</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">tiletypes</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#commands">Commands</a><ul>
+<li><a class="reference internal" href="#brush-commands">Brush commands</a></li>
+<li><a class="reference internal" href="#filter-and-paint-commands">Filter and paint commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tiletypes-here-point">
+<span id="tiletypes-here"></span><span id="tiletypes"></span><span id="id1"></span><h1>tiletypes<a class="headerlink" href="#tiletypes-here-point" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../adventure-tag-index.html"><span class="std std-ref">adventure</span></a><span> | </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../armok-tag-index.html"><span class="std std-ref">armok</span></a><span> | </span><a class="reference internal" href="../../map-tag-index.html"><span class="std std-ref">map</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">tiletypes</span></code></p>
+<p><span>Paints tiles of specified types onto the map.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">tiletypes-command</span></code></p>
+<p><span>Run tiletypes commands.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">tiletypes-here</span></code></p>
+<p><span>Paint map tiles starting from the cursor.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">tiletypes-here-point</span></code></p>
+<p><span>Paint the map tile under the cursor.</span></p>
+</aside>
+<p>You can use the <a class="reference internal" href="probe.html#probe"><span class="std std-ref">probe</span></a> command to discover properties of existing tiles that
+you’d like to copy. If you accidentally paint over a vein that you want back,
+<a class="reference internal" href="fixveins.html#fixveins"><span class="std std-ref">fixveins</span></a> may help.</p>
+<p>The tool works with a brush, a filter, and a paint specification. The brush
+determines the shape of the area to affect, the filter selects which tiles to
+affect, and the paint specification determines how to affect those tiles.</p>
+<p>Both paint and filter can have many different properties, like general shape
+(WALL, FLOOR, etc.), general material (SOIL, STONE, MINERAL, etc.), specific
+materials (MICROCLINE, MARBLE, etc.), state of ‘designated’, ‘hidden’, and
+‘light’ flags, and many others.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes</span></code></dt><dd><p>Start the interactive terminal prompt where you can iteratively modify
+the brush, filter, and paint specification and get help on syntax
+elements. When in the interactive prompt, type <code class="docutils literal notranslate"><span class="pre">quit</span></code> to get out.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes-command</span> <span class="pre">&lt;command&gt;</span> <span class="pre">[;</span> <span class="pre">&lt;command&gt;</span> <span class="pre">...]</span></code></dt><dd><p>Run <code class="docutils literal notranslate"><span class="pre">tiletypes</span></code> commands from outside the interactive prompt. You can
+use this form from hotkeys or <a class="reference internal" href="../Core.html#dfhack-run"><span class="std std-ref">dfhack-run</span></a> to set specific tiletypes
+properties. You can run multiple commands on one line by separating them
+with <code class="docutils literal notranslate"> <span class="pre">;</span> </code> – that’s a semicolon with a space on either side.
+See the <a class="reference internal" href="#commands">Commands</a> section below for an overview of commands you can run.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes-here</span> <span class="pre">[&lt;options&gt;]</span></code></dt><dd><p>Apply the current options set in <code class="docutils literal notranslate"><span class="pre">tiletypes</span></code> and/or <code class="docutils literal notranslate"><span class="pre">tiletypes-command</span></code>
+at the in-game cursor position, including the brush.  Can be used from a
+hotkey.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes-here-point</span> <span class="pre">[&lt;options&gt;]</span></code></dt><dd><p>Apply the current options set in <code class="docutils literal notranslate"><span class="pre">tiletypes</span></code> and/or <code class="docutils literal notranslate"><span class="pre">tiletypes-command</span></code>
+at the in-game cursor position to a single tile (ignoring brush settings).
+Can be used from a hotkey.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes-command</span> <span class="pre">filter</span> <span class="pre">material</span> <span class="pre">STONE</span> <span class="pre">;</span> <span class="pre">f</span> <span class="pre">shape</span> <span class="pre">WALL</span> <span class="pre">;</span> <span class="pre">paint</span> <span class="pre">shape</span> <span class="pre">FLOOR</span></code></dt><dd><p>Turn all stone walls into floors, preserving the material.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes-command</span> <span class="pre">p</span> <span class="pre">any</span> <span class="pre">;</span> <span class="pre">p</span> <span class="pre">s</span> <span class="pre">wall</span> <span class="pre">;</span> <span class="pre">p</span> <span class="pre">sp</span> <span class="pre">normal</span></code></dt><dd><p>Clear the paint specification and set it to unsmoothed walls.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes-command</span> <span class="pre">f</span> <span class="pre">any</span> <span class="pre">;</span> <span class="pre">p</span> <span class="pre">stone</span> <span class="pre">marble</span> <span class="pre">;</span> <span class="pre">p</span> <span class="pre">sh</span> <span class="pre">wall</span> <span class="pre">;</span> <span class="pre">p</span> <span class="pre">sp</span> <span class="pre">normal</span> <span class="pre">;</span> <span class="pre">r</span> <span class="pre">10</span> <span class="pre">10</span></code></dt><dd><p>Prepare to paint a 10x10 area of marble walls, ready for harvesting for
+flux.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tiletypes-command</span> <span class="pre">f</span> <span class="pre">any</span> <span class="pre">;</span> <span class="pre">f</span> <span class="pre">designated</span> <span class="pre">1</span> <span class="pre">;</span> <span class="pre">p</span> <span class="pre">any</span> <span class="pre">;</span> <span class="pre">p</span> <span class="pre">hidden</span> <span class="pre">0</span> <span class="pre">;</span> <span class="pre">block</span> <span class="pre">;</span> <span class="pre">run</span></code></dt><dd><p>Set the filter to match designated tiles, the paint specification to unhide
+them, and the brush to cover all tiles in the current block. Then run itThis is useful
+for unhiding tiles you wish to dig out of an aquifer so the game doesn’t
+pause and undesignate adjacent tiles every time a new damp tile is
+“discovered”.</p>
+</dd>
+</dl>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">-c</span></code>, <code class="docutils literal notranslate"><span class="pre">--cursor</span> <span class="pre">&lt;x&gt;,&lt;y&gt;,&lt;z&gt;</span></code></dt><dd><p>Use the specified map coordinates instead of the current cursor position. If
+this option is specified, then an active game map cursor is not necessary.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-q</span></code>, <code class="docutils literal notranslate"><span class="pre">--quiet</span></code></dt><dd><p>Suppress non-error status output.</p>
+</dd>
+</dl>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
+<p>Commands can set the brush or modify the filter or paint options. When at the
+interactive <code class="docutils literal notranslate"><span class="pre">tiletypes&gt;</span></code> prompt, the command <code class="docutils literal notranslate"><span class="pre">run</span></code> (or hitting enter on an
+empty line) will apply the current filter and paint specification with the
+current brush at the current cursor position. The command <code class="docutils literal notranslate"><span class="pre">quit</span></code> will exit.</p>
+<section id="brush-commands">
+<h3>Brush commands<a class="headerlink" href="#brush-commands" title="Permalink to this heading">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">point</span></code></dt><dd><p>Use the point brush.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span> <span class="pre">&lt;width&gt;</span> <span class="pre">&lt;height&gt;</span> <span class="pre">[&lt;depth&gt;]</span></code></dt><dd><p>Use the range brush with the specified width, height, and depth. If not
+specified, depth is 1, meaning just the current z-level. The range starts at
+the position of the cursor and goes to the east, south and up (towards the
+sky).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">block</span></code></dt><dd><p>Use the block brush, which includes all tiles in the 16x16 block that
+includes the cursor.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">column</span></code></dt><dd><p>Use the column brush, which ranges from the current cursor position to the
+first solid tile above it. This is useful for filling the empty space in a
+cavern.</p>
+</dd>
+</dl>
+</section>
+<section id="filter-and-paint-commands">
+<h3>Filter and paint commands<a class="headerlink" href="#filter-and-paint-commands" title="Permalink to this heading">¶</a></h3>
+<p>The general forms for modifying the filter or paint specification are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span> <span class="pre">&lt;options&gt;</span></code></dt><dd><p>Modify the filter.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">paint</span> <span class="pre">&lt;options&gt;</span></code></dt><dd><p>Modify the paint specification.</p>
+</dd>
+</dl>
+<p>The options identify the property of the tile and the value of that property:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">any</span></code></dt><dd><p>Reset to default (no filter/paint).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">sh</span></code>, <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">&lt;shape&gt;</span></code></dt><dd><p>Tile shape information. Run <code class="docutils literal notranslate"><span class="pre">:lua</span> <span class="pre">&#64;df.tiletype_shape</span></code> to see valid shapes,
+or use a shape of <code class="docutils literal notranslate"><span class="pre">any</span></code> to clear the current setting.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">mat</span></code>, <code class="docutils literal notranslate"><span class="pre">material</span> <span class="pre">&lt;material&gt;</span></code></dt><dd><p>Tile material information. Run <code class="docutils literal notranslate"><span class="pre">:lua</span> <span class="pre">&#64;df.tiletype_material</span></code> to see valid
+materials, or use a material of <code class="docutils literal notranslate"><span class="pre">any</span></code> to clear the current setting.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sp</span></code>, <code class="docutils literal notranslate"><span class="pre">special</span> <span class="pre">&lt;special&gt;</span></code></dt><dd><p>Tile special information. Run <code class="docutils literal notranslate"><span class="pre">:lua</span> <span class="pre">&#64;df.tiletype_special</span></code> to see valid
+special values, or use a special value of <code class="docutils literal notranslate"><span class="pre">any</span></code> to clear the current
+setting.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">v</span></code>, <code class="docutils literal notranslate"><span class="pre">var</span></code>, <code class="docutils literal notranslate"><span class="pre">variant</span> <span class="pre">&lt;variant&gt;</span></code></dt><dd><p>Tile variant information. Run <code class="docutils literal notranslate"><span class="pre">:lua</span> <span class="pre">&#64;df.tiletype_variant</span></code> to see valid
+variant values, or use a variant value of <code class="docutils literal notranslate"><span class="pre">any</span></code> to clear the current
+setting.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">[&lt;shape&gt;]</span> <span class="pre">[&lt;material&gt;]</span> <span class="pre">[&lt;special&gt;]</span> <span class="pre">[&lt;variant&gt;]</span></code></dt><dd><p>Set values for any or all of shape, material, special, and/or variant, in
+any order.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">d</span></code>, <code class="docutils literal notranslate"><span class="pre">designated</span> <span class="pre">0|1</span></code></dt><dd><p>Only useful for the filter, since you can’t “paint” designations.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">hidden</span> <span class="pre">0|1</span></code></dt><dd><p>Whether a tile is hidden. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> means “revealed”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">light</span> <span class="pre">0|1</span></code></dt><dd><p>Whether a tile is marked as “Light”. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> means “dark”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">st</span></code>, <code class="docutils literal notranslate"><span class="pre">subterranean</span> <span class="pre">0|1</span></code></dt><dd><p>Whether a tile is marked as “Subterranean”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sv</span></code>, <code class="docutils literal notranslate"><span class="pre">skyview</span> <span class="pre">0|1</span></code></dt><dd><p>Whether a tile is marked as “Outside”. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> means “inside”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">aqua</span></code>, <code class="docutils literal notranslate"><span class="pre">aquifer</span> <span class="pre">0|1</span></code></dt><dd><p>Whether a tile is marked as an aquifer.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">stone</span> <span class="pre">&lt;stone</span> <span class="pre">type&gt;</span></code></dt><dd><p>Set a particular type of stone, creating veins as required. To see a list of
+valid stone types, run: <code class="docutils literal notranslate"><span class="pre">:lua</span> <span class="pre">for</span> <span class="pre">_,mat</span> <span class="pre">in</span> <span class="pre">ipairs(df.global.world.raws.inorganics)</span> <span class="pre">do</span> <span class="pre">if</span> <span class="pre">mat.material.flags.IS_STONE</span> <span class="pre">and</span> <span class="pre">not</span> <span class="pre">mat.material.flags.NO_STONE_STOCKPILE</span> <span class="pre">then</span> <span class="pre">print(mat.id)</span> <span class="pre">end</span> <span class="pre">end</span></code>
+Note that this command paints under ice and constructions, instead of
+overwriting them. Also note that specifying a specific <code class="docutils literal notranslate"><span class="pre">stone</span></code> will cancel
+out anything you have specified for <code class="docutils literal notranslate"><span class="pre">material</span></code>, and vice-versa.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">veintype</span> <span class="pre">&lt;vein</span> <span class="pre">type&gt;</span></code></dt><dd><p>Set a particular vein type for the <code class="docutils literal notranslate"><span class="pre">stone</span></code> option to take advantage of the
+different boulder drop rates. To see valid vein types, run
+<code class="docutils literal notranslate"><span class="pre">:lua</span> <span class="pre">&#64;df.inclusion_type</span></code>, or use vein type <code class="docutils literal notranslate"><span class="pre">CLUSTER</span></code> to reset to the
+default.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

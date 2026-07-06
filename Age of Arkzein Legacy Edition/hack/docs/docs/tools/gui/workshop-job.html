@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>gui/workshop-job &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="modtools/add-syndrome" href="../modtools/add-syndrome.html" />
+    <link rel="prev" title="gui/workorder-details" href="workorder-details.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="workorder-details.html" title="previous chapter">gui/workorder-details</a></li>
+      <li>Next: <a href="../modtools/add-syndrome.html" title="next chapter">modtools/add-syndrome</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">gui/workshop-job</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-workshop-job">
+<span id="id1"></span><h1>gui/workshop-job<a class="headerlink" href="#gui-workshop-job" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../../inspection-tag-index.html"><span class="std std-ref">inspection</span></a><span> | </span><a class="reference internal" href="../../../jobs-tag-index.html"><span class="std std-ref">jobs</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">gui/workshop-job</span></code></p>
+<p><span>Adjust the input materials used for a job at a workshop.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Alt</span><span class="kbd">A</span><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode/QueryBuilding/Some/Workshop/Job</span></code></p>
+</aside>
+<p>This tool allows you to inspect or change the input reagents for the selected
+workshop job (in <kbd class="kbd docutils literal notranslate">q</kbd> mode).</p>
+<img alt="../../../_images/workshop-job.png" src="../../../_images/workshop-job.png" />
+<p>Pressing <kbd class="kbd docutils literal notranslate">i</kbd> shows a dialog where you can select an item type from a list.</p>
+<img alt="../../../_images/workshop-job-item.png" src="../../../_images/workshop-job-item.png" />
+<p>Pressing <kbd class="kbd docutils literal notranslate">m</kbd> (unless the item type does not allow a material) lets you
+choose a material.</p>
+<img alt="../../../_images/workshop-job-material.png" src="../../../_images/workshop-job-material.png" />
+<p>Since there are a lot more materials than item types, this dialog is more
+complex and uses a hierarchy of sub-menus. List choices that open a sub-menu are
+marked with an arrow on the left.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to the way input reagent matching works in DF, you must select an item
+type if you select a material or the material may be matched incorrectly. If
+you press <kbd class="kbd docutils literal notranslate">m</kbd> without choosing an item type, the script will
+auto-choose if there is only one valid choice.</p>
+</div>
+<p>Note that the choices presented in the dialogs are constrained by the job input
+flags. For example, if you choose a <code class="docutils literal notranslate"><span class="pre">plant</span></code> input item type for your <code class="docutils literal notranslate"><span class="pre">prepare</span>
+<span class="pre">meal</span></code> job, it will only let you select cookable plants since the job reagent
+has the <code class="docutils literal notranslate"><span class="pre">cookable</span></code> trait.</p>
+<p>As another example, if you choose a <code class="docutils literal notranslate"><span class="pre">barrel</span></code> item for your <code class="docutils literal notranslate"><span class="pre">prepare</span> <span class="pre">meal</span></code>
+job (meaning things stored in barrels, like drink or milk), it will let you
+select any material that barrels can be made out of, since in this case the
+material is matched against the barrel itself. Then, if you select, say,
+<code class="docutils literal notranslate"><span class="pre">iron</span></code>, and then try to change the input item type, it won’t let you select
+<code class="docutils literal notranslate"><span class="pre">plant</span></code> because plants cannot be made of iron – you have to unset the
+material first.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>gui/workshop-job
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>dig &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx5.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="dig-now" href="dig-now.html" />
+    <link rel="prev" title="die" href="die.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="die.html" title="previous chapter">die</a></li>
+      <li>Next: <a href="dig-now.html" title="next chapter">dig-now</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">dig</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#digcircle">digcircle</a></li>
+<li><a class="reference internal" href="#id2">digtype</a></li>
+<li><a class="reference internal" href="#digexp">digexp</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="digtype">
+<span id="digv"></span><span id="dig"></span><span id="id1"></span><h1>dig<a class="headerlink" href="#digtype" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../fort-tag-index.html"><span class="std std-ref">fort</span></a><span> | </span><a class="reference internal" href="../../design-tag-index.html"><span class="std std-ref">design</span></a><span> | </span><a class="reference internal" href="../../productivity-tag-index.html"><span class="std std-ref">productivity</span></a><span> | </span><a class="reference internal" href="../../map-tag-index.html"><span class="std std-ref">map</span></a></p>
+<p><span>Provides commands for designating tiles for digging.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">digv</span></code></p>
+<p><span>Designate all of the selected vein for digging.</span></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Ctrl</span><span class="kbd">V</span><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode</span></code></p>
+<p><strong>Keybinding:</strong><span> </span><span class="kbd">Ctrl</span><span class="kbd">Shift</span><span class="kbd">V</span><span> -&gt; </span><code class="guilabel docutils literal notranslate"><span class="pre">&quot;digv</span> <span class="pre">x&quot;</span></code><span> in </span><code class="docutils literal notranslate"><span class="pre">dwarfmode</span></code></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">digvx</span></code></p>
+<p><span>Dig a vein across z-levels, digging stairs as needed.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">digl</span></code></p>
+<p><span>Dig all of the selected layer stone.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">diglx</span></code></p>
+<p><span>Dig layer stone across z-levels, digging stairs as needed.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">digcircle</span></code></p>
+<p><span>Designate circles.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">digtype</span></code></p>
+<p><span>Designate all vein tiles of the same type as the selected tile.</span></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">digexp</span></code></p>
+<p><span>Designate dig patterns for exploratory mining.</span></p>
+</aside>
+<p>This plugin provides commands to make complicated dig patterns easy.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">digv</span> <span class="pre">[x]</span> <span class="pre">[-p&lt;number&gt;]</span></code></dt><dd><p>Designate all of the selected vein for digging.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">digvx</span> <span class="pre">[-p&lt;number&gt;]</span></code></dt><dd><p>Dig a vein across z-levels, digging stairs as needed. This is an alias for
+<code class="docutils literal notranslate"><span class="pre">digv</span> <span class="pre">x</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">digl</span> <span class="pre">[x]</span> <span class="pre">[undo]</span> <span class="pre">[-p&lt;number&gt;]</span></code></dt><dd><p>Dig all of the selected layer stone. If <code class="docutils literal notranslate"><span class="pre">undo</span></code> is specified, removes the
+designation instead (for if you accidentally set 50 levels at once).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diglx</span> <span class="pre">[-p&lt;number&gt;]</span></code></dt><dd><p>Dig layer stone across z-levels, digging stairs as needed. This is an alias
+for <code class="docutils literal notranslate"><span class="pre">digl</span> <span class="pre">x</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">digcircle</span> <span class="pre">[&lt;diameter&gt;]</span> <span class="pre">[&lt;solidity&gt;]</span> <span class="pre">[&lt;action&gt;]</span> <span class="pre">[&lt;designation&gt;]</span> <span class="pre">[-p&lt;number&gt;]</span></code></dt><dd><p>Designate circles. The diameter is the number of tiles across the center of
+the circle that you want to dig. See the <a class="reference internal" href="#digcircle">digcircle</a> section below for
+options.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">digtype</span> <span class="pre">[&lt;designation&gt;]</span> <span class="pre">[-p&lt;number&gt;]</span> <span class="pre">[-z]</span></code></dt><dd><p>Designate all vein tiles of the same type as the selected tile. See the
+<a class="reference internal" href="#digtype">digtype</a> section below for options.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">digexp</span> <span class="pre">[&lt;pattern&gt;]</span> <span class="pre">[&lt;filter&gt;]</span> <span class="pre">[-p&lt;number&gt;]</span></code></dt><dd><p>Designate dig patterns for exploratory mining. See the <a class="reference internal" href="#digexp">digexp</a> section
+below for options.</p>
+</dd>
+</dl>
+<p>All commands support specifying the priority of the dig designations with
+<code class="docutils literal notranslate"><span class="pre">-p&lt;number&gt;</span></code>, where the number is from 1 to 7. If a priority is not specified,
+the priority selected in-game is used as the default.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">digcircle</span> <span class="pre">filled</span> <span class="pre">3</span> <span class="pre">-p2</span></code></dt><dd><p>Dig a filled circle with a diameter of 3 tiles at dig priority 2.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">digcircle</span></code></dt><dd><p>Do it again (previous parameters are reused).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">expdig</span> <span class="pre">diag5</span> <span class="pre">hidden</span></code></dt><dd><p>Designate the diagonal 5 pattern over all hidden tiles on the current
+z-level.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">expdig</span> <span class="pre">ladder</span> <span class="pre">designated</span></code></dt><dd><p>Take existing designations on the current z-level and replace them with the
+ladder pattern.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">expdig</span></code></dt><dd><p>Do it again (previous parameters are reused).</p>
+</dd>
+</dl>
+</section>
+<section id="digcircle">
+<h2>digcircle<a class="headerlink" href="#digcircle" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">digcircle</span></code> command can accept up to one option of each type below.</p>
+<p>Solidity options:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">hollow</span></code></dt><dd><p>Designates hollow circles (default).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">filled</span></code></dt><dd><p>Designates filled circles.</p>
+</dd>
+</dl>
+<p>Action options:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">set</span></code></dt><dd><p>Set designation (default).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">unset</span></code></dt><dd><p>Unset current designation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">invert</span></code></dt><dd><p>Invert designations already present.</p>
+</dd>
+</dl>
+<p>Designation options:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dig</span></code></dt><dd><p>Normal digging designation (default).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ramp</span></code></dt><dd><p>Dig ramps.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ustair</span></code></dt><dd><p>Dig up staircases.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dstair</span></code></dt><dd><p>Dig down staircases.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xstair</span></code></dt><dd><p>Dig up/down staircases.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">chan</span></code></dt><dd><p>Dig channels.</p>
+</dd>
+</dl>
+<p>After you have set the options, the command called with no options repeats with
+the last selected parameters.</p>
+</section>
+<section id="id2">
+<h2>digtype<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<p>For every tile on the map of the same vein type as the selected tile, this
+command designates it to have the same designation as the selected tile. If the
+selected tile has no designation, they will be dig designated.</p>
+<p>If an argument is given, the designation of the selected tile is ignored, and
+all appropriate tiles are set to the specified designation.</p>
+<p>Designation options:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dig</span></code></dt><dd><p>Normal digging designation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">channel</span></code></dt><dd><p>Dig channels.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ramp</span></code></dt><dd><p>Dig ramps.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">updown</span></code></dt><dd><p>Dig up/down staircases.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">up</span></code></dt><dd><p>Dig up staircases.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">down</span></code></dt><dd><p>Dig down staircases.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">clear</span></code></dt><dd><p>Clear any designations.</p>
+</dd>
+</dl>
+<p>You can also pass a <code class="docutils literal notranslate"><span class="pre">-z</span></code> option, which restricts designations to the current
+z-level and down. This is useful when you don’t want to designate tiles on the
+same z-levels as your carefully dug fort above.</p>
+</section>
+<section id="digexp">
+<h2>digexp<a class="headerlink" href="#digexp" title="Permalink to this heading">¶</a></h2>
+<p>This command is for <a class="reference external" href="https://dwarffortresswiki.org/Exploratory_mining">exploratory mining</a>.</p>
+<p>There are two variables that can be set: pattern and filter.</p>
+<p>Patterns:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">diag5</span></code></dt><dd><p>Diagonals separated by 5 tiles.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">diag5r</span></code></dt><dd><p>The diag5 pattern rotated 90 degrees.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ladder</span></code></dt><dd><p>A ‘ladder’ pattern.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ladderr</span></code></dt><dd><p>The ladder pattern rotated 90 degrees.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">cross</span></code></dt><dd><p>A cross, exactly in the middle of the map.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">clear</span></code></dt><dd><p>Just remove all dig designations.</p>
+</dd>
+</dl>
+<p>Filters:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">hidden</span></code></dt><dd><p>Designate only hidden tiles of z-level (default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">all</span></code></dt><dd><p>Designate the whole z-level.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">designated</span></code></dt><dd><p>Take current designation and apply the selected pattern to it.</p>
+</dd>
+</dl>
+<p>After you have a pattern set, you can use <code class="docutils literal notranslate"><span class="pre">expdig</span></code> to apply it again.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>modtools/random-trigger &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="modtools/raw-lint" href="raw-lint.html" />
+    <link rel="prev" title="modtools/projectile-trigger" href="projectile-trigger.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="projectile-trigger.html" title="previous chapter">modtools/projectile-trigger</a></li>
+      <li>Next: <a href="raw-lint.html" title="next chapter">modtools/raw-lint</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="modtools-random-trigger">
+<span id="id1"></span><h1>modtools/random-trigger<a class="headerlink" href="#modtools-random-trigger" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dev-tag-index.html"><span class="std std-ref">dev</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">modtools/random-trigger</span></code></p>
+<p><span>Randomly select DFHack scripts to run.</span></p>
+</aside>
+<p>Trigger random dfhack commands with specified probabilities.
+Register a few scripts, then tell it to “go” and it will pick one
+based on the probability weights you specified.</p>
+<p>Events are mutually-exclusive - register a list of scripts along with
+relative weights, then tell the script to select and run one with the
+specified probabilities.  The weights must be positive integers, but
+they do NOT have to sum to any particular number.</p>
+<p>The outcomes are mutually exclusive: only one will be triggered.  If you
+want multiple independent random events, call the script multiple times.</p>
+<p>99% of the time, you won’t need to worry about this, but just in case,
+you can specify a name of a list of outcomes to prevent interference from
+other scripts that call this one.  That also permits situations where you
+don’t know until runtime what outcomes you want.  For example, you could
+make a <a class="reference internal" href="reaction-trigger.html#modtools-reaction-trigger"><span class="std std-ref">modtools/reaction-trigger</span></a> that registers the worker as a mayor
+candidate, then run this script to choose a random mayor from the list of
+units that did the mayor reaction.</p>
+<p>Arguments:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>-outcomeListName name
+    specify the name of this list of outcomes to prevent interference
+    if two scripts are registering outcomes at the same time.  If none
+    is specified, the default outcome list is selected automatically.
+-command [ commandStrs ]
+    specify the command to be run if this outcome is selected
+    must be specified unless the -trigger argument is given
+-weight n
+    the relative probability weight of this outcome
+    n must be a non-negative integer
+    if not specified, n=1 is used by default
+-trigger
+    selects a random script based on the specified outcomeList
+    (or the default one if none is specified)
+-preserveList
+    when combined with trigger, preserves the list of outcomes so you
+    don&#39;t have to register them again.
+-withProbability p
+    p is a real number between 0 and 1 inclusive
+    triggers the command immediately with this probability
+-seed s
+    sets the random seed for debugging purposes
+    (guarantees the same sequence of random numbers will be produced)
+    use
+-listOutcomes
+    lists the currently registered list of outcomes of the outcomeList
+    along with their probability weights, for debugging purposes
+-clear
+    unregister everything
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">-preserveList</span></code> is something of a beta feature, which should be
+avoided by users without a specific reason to use it.</p>
+<p>It is highly recommended that you always specify <code class="docutils literal notranslate"><span class="pre">-outcomeListName</span></code>
+when you give this command to prevent almost certain interference.
+If you want to trigger one of 5 outcomes three times, you might want
+this option even without <code class="docutils literal notranslate"><span class="pre">-outcomeListName</span></code>.</p>
+<p>The list is NOT retained across game save/load, as nobody has yet had
+a use for this feature.  Contact expwnent if you would use it; it’s
+not that hard but if nobody wants it he won’t bother.</p>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

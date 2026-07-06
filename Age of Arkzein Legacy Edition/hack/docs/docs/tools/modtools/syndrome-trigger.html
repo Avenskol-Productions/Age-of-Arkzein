@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>modtools/syndrome-trigger &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx5.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="modtools/transform-unit" href="transform-unit.html" />
+    <link rel="prev" title="modtools/spawn-liquid" href="spawn-liquid.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../../index.html">
+    <img class="logo" src="../../../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Tools.html">DFHack tools</a><ul>
+      <li>Previous: <a href="spawn-liquid.html" title="previous chapter">modtools/spawn-liquid</a></li>
+      <li>Next: <a href="transform-unit.html" title="next chapter">modtools/transform-unit</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">modtools/syndrome-trigger</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="modtools-syndrome-trigger">
+<span id="id1"></span><h1>modtools/syndrome-trigger<a class="headerlink" href="#modtools-syndrome-trigger" title="Permalink to this heading">¶</a></h1>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Tags:</strong><span> </span><a class="reference internal" href="../../../dev-tag-index.html"><span class="std std-ref">dev</span></a></p>
+</aside>
+<aside class="topic dfhack-tool-summary">
+<p><strong>Command:</strong><span> </span><code class="docutils literal notranslate"><span class="pre">modtools/syndrome-trigger</span></code></p>
+<p><span>Trigger DFHack commands when units acquire syndromes.</span></p>
+</aside>
+<p>This script helps you set up commands that trigger when syndromes are applied to
+units.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>modutils/syndrome-trigger --clear
+modutils/syndrome-trigger --syndrome &lt;name&gt; --command [ &lt;command&gt; ]
+modutils/syndrome-trigger --synclass &lt;class&gt; --command [ &lt;command&gt; ]
+</pre></div>
+</div>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--clear</span></code></dt><dd><p>Clear any previously registered syndrome triggers.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--syndrome</span> <span class="pre">&lt;name&gt;</span></code></dt><dd><p>Specify a syndrome by its name. Enclose the name in quotation marks if it
+includes spaces (e.g. <code class="docutils literal notranslate"><span class="pre">--syndrome</span> <span class="pre">&quot;gila</span> <span class="pre">monster</span> <span class="pre">bite&quot;</span></code>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--synclass</span> <span class="pre">&lt;class&gt;</span></code></dt><dd><p>Any syndrome with the specified SYN_CLASS will act as a trigger. Enclose in
+quotation marks if it includes spaces.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--command</span> <span class="pre">[</span> <span class="pre">&lt;command&gt;</span> <span class="pre">]</span></code></dt><dd><p>Specify the command to be executed after infection. Remember to include a
+space before and after the square brackets! The following tokens may be
+added to appropriate commands where relevant:
+:<code class="docutils literal notranslate"><span class="pre">\\UNIT_ID</span></code>: Inserts the ID of the infected unit.
+:<code class="docutils literal notranslate"><span class="pre">\\LOCATION</span></code>: Inserts the x, y, z coordinates of the infected unit.
+:<code class="docutils literal notranslate"><span class="pre">\\SYNDROME_ID</span></code>: Inserts the ID of the syndrome.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>modutils/syndrome-trigger --synclass VAMPCURSE --command [ modtools/spawn-flow -flowType Dragonfire -location [ \\LOCATION ] ]
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

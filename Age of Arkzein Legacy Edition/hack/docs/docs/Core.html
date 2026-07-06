@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DFHack Core &#8212; DFHack 0.47.05-r8 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/dfhack.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx5.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/dfhack-icon.ico"/>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DFHack tools" href="Tools.html" />
+    <link rel="prev" title="Installing DFHack" href="Installing.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/dfhack-logo.png" alt="Logo"/>
+    <h3 class="logo logo-name">Home</h3>
+  </a>
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Installing.html" title="previous chapter">Installing DFHack</a></li>
+      <li>Next: <a href="Tools.html" title="next chapter">DFHack tools</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">DFHack Core</a><ul>
+<li><a class="reference internal" href="#command-implementation">Command implementation</a></li>
+<li><a class="reference internal" href="#using-dfhack-commands">Using DFHack commands</a><ul>
+<li><a class="reference internal" href="#the-dfhack-console">The DFHack console</a></li>
+<li><a class="reference internal" href="#using-an-os-terminal">Using an OS terminal</a><ul>
+<li><a class="reference internal" href="#dfhack-run">dfhack-run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration-files">Configuration files</a><ul>
+<li><a class="reference internal" href="#init-files">Init files</a><ul>
+<li><a class="reference internal" href="#dfhack-init">dfhack*.init</a></li>
+<li><a class="reference internal" href="#onload-init">onLoad*.init</a></li>
+<li><a class="reference internal" href="#onmapload-init">onMapLoad*.init</a></li>
+<li><a class="reference internal" href="#onmapunload-init-and-onunload-init">onMapUnload*.init and onUnload*.init</a></li>
+<li><a class="reference internal" href="#raw-init-d-lua">raw/init.d/*.lua</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#script-paths">Script paths</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#environment-variables">Environment variables</a></li>
+<li><a class="reference internal" href="#miscellaneous-notes">Miscellaneous notes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dfhack-core">
+<span id="id1"></span><h1>DFHack Core<a class="headerlink" href="#dfhack-core" title="Permalink to this heading">¶</a></h1>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#command-implementation" id="id9">Command implementation</a></p></li>
+<li><p><a class="reference internal" href="#using-dfhack-commands" id="id10">Using DFHack commands</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-dfhack-console" id="id11">The DFHack console</a></p></li>
+<li><p><a class="reference internal" href="#using-an-os-terminal" id="id12">Using an OS terminal</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#configuration-files" id="id13">Configuration files</a></p>
+<ul>
+<li><p><a class="reference internal" href="#init-files" id="id14">Init files</a></p></li>
+<li><p><a class="reference internal" href="#script-paths" id="id15">Script paths</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#environment-variables" id="id16">Environment variables</a></p></li>
+<li><p><a class="reference internal" href="#miscellaneous-notes" id="id17">Miscellaneous notes</a></p></li>
+</ul>
+</nav>
+<section id="command-implementation">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Command implementation</a><a class="headerlink" href="#command-implementation" title="Permalink to this heading">¶</a></h2>
+<p>DFHack commands can be implemented in any of three ways:</p>
+<dl class="field-list simple">
+<dt class="field-odd">builtin<span class="colon">:</span></dt>
+<dd class="field-odd"><p>commands are implemented by the core of DFHack. They manage
+other DFHack tools, interpret commands, and control basic
+aspects of DF (force pause or quit).</p>
+</dd>
+<dt class="field-even">plugins<span class="colon">:</span></dt>
+<dd class="field-even"><p>are stored in <code class="docutils literal notranslate"><span class="pre">hack/plugins/</span></code> and must be compiled with the
+same version of DFHack.  They are less flexible than scripts,
+but used for complex or ongoing tasks because they run faster.</p>
+</dd>
+<dt class="field-odd">scripts<span class="colon">:</span></dt>
+<dd class="field-odd"><p>are Ruby or Lua scripts stored in <code class="docutils literal notranslate"><span class="pre">hack/scripts/</span></code>.
+Because they don’t need to be compiled, scripts are
+more flexible about versions, and easier to distribute.
+Most third-party DFHack addons are scripts.</p>
+</dd>
+</dl>
+<p>All tools distributed with DFHack are documented <a class="reference internal" href="../genindex.html"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="using-dfhack-commands">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Using DFHack commands</a><a class="headerlink" href="#using-dfhack-commands" title="Permalink to this heading">¶</a></h2>
+<p>DFHack commands can be executed in a number of ways:</p>
+<ol class="arabic simple">
+<li><p>Typing the command into the DFHack console (see below)</p></li>
+<li><p>From the OS terminal (see below)</p></li>
+<li><p>Pressing a key combination set up with <a class="reference internal" href="tools/keybinding.html#keybinding"><span class="std std-ref">keybinding</span></a></p></li>
+<li><p>From one of several <a class="reference internal" href="#init-files"><span class="std std-ref">Init files</span></a>, automatically</p></li>
+<li><p>Using <a class="reference internal" href="tools/script.html#script"><span class="std std-ref">script</span></a> to run a batch of commands from a file</p></li>
+</ol>
+<section id="the-dfhack-console">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">The DFHack console</a><a class="headerlink" href="#the-dfhack-console" title="Permalink to this heading">¶</a></h3>
+<p>The command line has some nice line editing capabilities, including history
+that’s preserved between different runs of DF - use <kbd class="kbd docutils literal notranslate">↑</kbd> and <kbd class="kbd docutils literal notranslate">↓</kbd>
+to go through the history.</p>
+<p>To include whitespace in the argument/s to some command, quote it in
+double quotes.  To include a double quote character, use <code class="docutils literal notranslate"><span class="pre">\&quot;</span></code>.</p>
+<p>If the first non-whitespace character is <code class="docutils literal notranslate"><span class="pre">:</span></code>, the command is parsed in
+an alternative mode.  The non-whitespace characters following the <code class="docutils literal notranslate"><span class="pre">:</span></code> are
+the command name, and the remaining part of the line is used verbatim as
+the first argument.  This is very useful for the <a class="reference internal" href="tools/lua.html#lua"><span class="std std-ref">lua</span></a> and <a class="reference internal" href="tools/ruby.html#rb"><span class="std std-ref">ruby</span></a> commands.
+As an example, the following two command lines are exactly equivalent:</p>
+<div class="highlight-dfhack notranslate"><div class="highlight"><pre><span></span>:foo a b &quot;c d&quot; e f
+foo &quot;a b \&quot;c d\&quot; e f&quot;
+</pre></div>
+</div>
+</section>
+<section id="using-an-os-terminal">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Using an OS terminal</a><a class="headerlink" href="#using-an-os-terminal" title="Permalink to this heading">¶</a></h3>
+<p>DFHack commands can be run from an OS terminal at startup, using ‘+ args’,
+or at any other time using the <code class="docutils literal notranslate"><span class="pre">dfhack-run</span></code> executable.</p>
+<p>If DF/DFHack is started with arguments beginning with <code class="docutils literal notranslate"><span class="pre">+</span></code>, the remaining
+text is treated as a command in the DFHack console.  It is possible to use
+multiple such commands, which are split on <code class="docutils literal notranslate"><span class="pre">+</span></code>.  For example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./dfhack +load-save region1
+<span class="s2">&quot;Dwarf Fortress.exe&quot;</span> +devel/print-args Hello! +enable workflow
+</pre></div>
+</div>
+<p>The first example (*nix), <a class="reference internal" href="tools/load-save.html#load-save"><span class="std std-ref">load-save</span></a>, skips the main menu and loads
+<code class="docutils literal notranslate"><span class="pre">region1</span></code> immediately.  The second (Windows) example prints
+<span class="guilabel">Hello!</span> in the DFHack console, and <a class="reference internal" href="tools/enable.html#enable"><span class="std std-ref">enables</span></a> <a class="reference internal" href="tools/workflow.html#workflow"><span class="std std-ref">workflow</span></a>.
+Note that the <code class="docutils literal notranslate"><span class="pre">:foo</span></code> syntax for whitespace in arguments is not compatible with ‘+ args’.</p>
+<section id="dfhack-run">
+<span id="id2"></span><h4>dfhack-run<a class="headerlink" href="#dfhack-run" title="Permalink to this heading">¶</a></h4>
+<p>If DF and DFHack are already running, calling <code class="docutils literal notranslate"><span class="pre">dfhack-run</span> <span class="pre">my</span> <span class="pre">command</span></code>
+in an external terminal is equivalent to calling <code class="docutils literal notranslate"><span class="pre">my</span> <span class="pre">command</span></code> in the
+DFHack console.  Direct use of the DFHack console is generally easier,
+but <code class="docutils literal notranslate"><span class="pre">dfhack-run</span></code> can be useful in a variety of circumstances:</p>
+<ul class="simple">
+<li><p>if the console is unavailable</p>
+<ul>
+<li><p>with the init setting <code class="docutils literal notranslate"><span class="pre">PRINT_MODE:TEXT</span></code></p></li>
+<li><p>while running an interactive command (e.g. <a class="reference internal" href="tools/liquids.html#liquids"><span class="std std-ref">liquids</span></a> or <a class="reference internal" href="tools/tiletypes.html#tiletypes"><span class="std std-ref">tiletypes</span></a>)</p></li>
+</ul>
+</li>
+<li><p>from external programs or scripts</p></li>
+<li><p>if DF or DFHack are not responding</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./dfhack-run cursecheck
+dfhack-run kill-lua
+</pre></div>
+</div>
+<p>The first (*nix) example <a class="reference internal" href="tools/cursecheck.html#cursecheck"><span class="std std-ref">checks for vampires</span></a>; the
+second (Windows) example uses <a class="reference internal" href="tools/kill-lua.html#kill-lua"><span class="std std-ref">kill-lua</span></a> to stop a Lua script.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">dfhack-run</span></code> attempts to connect to a server on TCP port 5000. If DFHack
+was unable to start this server, <code class="docutils literal notranslate"><span class="pre">dfhack-run</span></code> will not be able to connect.
+This could happen if you have other software listening on port 5000, or if
+you have multiple copies of DF running simultaneously. To assign a different
+port, see <a class="reference internal" href="dev/Remote.html#remote-server-config"><span class="std std-ref">Server configuration</span></a>.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="configuration-files">
+<span id="dfhack-config"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">Configuration files</a><a class="headerlink" href="#configuration-files" title="Permalink to this heading">¶</a></h2>
+<p>Most DFHack settings can be changed by modifying files in the <code class="docutils literal notranslate"><span class="pre">dfhack-config</span></code>
+folder (which is in the DF folder). The default versions of these files, if they
+exist, are in <code class="docutils literal notranslate"><span class="pre">dfhack-config/default</span></code> and are installed when DFHack starts if
+necessary.</p>
+<section id="init-files">
+<span id="id3"></span><h3><a class="toc-backref" href="#id14" role="doc-backlink">Init files</a><a class="headerlink" href="#init-files" title="Permalink to this heading">¶</a></h3>
+<nav class="contents local" id="id4">
+<ul class="simple">
+<li><p><a class="reference internal" href="#dfhack-init" id="id18">dfhack*.init</a></p></li>
+<li><p><a class="reference internal" href="#onload-init" id="id19">onLoad*.init</a></p></li>
+<li><p><a class="reference internal" href="#onmapload-init" id="id20">onMapLoad*.init</a></p></li>
+<li><p><a class="reference internal" href="#onmapunload-init-and-onunload-init" id="id21">onMapUnload*.init and onUnload*.init</a></p></li>
+<li><p><a class="reference internal" href="#raw-init-d-lua" id="id22">raw/init.d/*.lua</a></p></li>
+</ul>
+</nav>
+<p>DFHack allows users to automatically run commonly-used DFHack commands
+when DF is first loaded, when a world is loaded, when a map is loaded, when a
+map is unloaded, and when a world is unloaded.</p>
+<p>Init scripts function the same way they would if the user manually typed
+in their contents, but are much more convenient.  In order to facilitate
+savegave portability, mod merging, and general organization of init files,
+DFHack supports multiple init files both in the main DF directory and
+save-specific init files in the save folders.</p>
+<p>DFHack looks for init files in three places each time they could be run:</p>
+<ol class="arabic simple">
+<li><p>The <code class="file docutils literal notranslate"><span class="pre">dfhack-config/init</span></code> subdirectory in the main DF directory</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">data/save/</span><em><span class="pre">world</span></em><span class="pre">/raw</span></code>, where <code class="docutils literal notranslate"><span class="pre">world</span></code> is the current save, and</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">data/save/</span><em><span class="pre">world</span></em><span class="pre">/raw/objects</span></code></p></li>
+</ol>
+<p>For each of those directories, all matching init files will be executed in
+alphabetical order.</p>
+<p>Before running matched init scripts in any of those locations, the
+<code class="file docutils literal notranslate"><span class="pre">dfhack-config/init/default.*</span></code> file that matches the event will be run to
+load DFHack defaults. Only the <code class="file docutils literal notranslate"><span class="pre">dfhack-config/init</span></code> directory is checked
+for this file, not any <code class="file docutils literal notranslate"><span class="pre">raw</span></code> directories. If you want DFHack to load
+without running any of its default configuration commands, edit the
+<code class="file docutils literal notranslate"><span class="pre">dfhack-config/init/default.*</span></code> files and comment out the commands you see
+there.</p>
+<p>When reading commands from the init files or with the <a class="reference internal" href="tools/script.html#script"><span class="std std-ref">script</span></a> command, if the
+final character on a line is a backslash then the next uncommented line is
+considered a continuation of that line, with the backslash deleted.  Commented
+lines are skipped, so it is possible to comment out parts of a command with the
+<code class="docutils literal notranslate"><span class="pre">#</span></code> character.</p>
+<section id="dfhack-init">
+<span id="id5"></span><h4><a class="toc-backref" href="#id18" role="doc-backlink">dfhack*.init</a><a class="headerlink" href="#dfhack-init" title="Permalink to this heading">¶</a></h4>
+<p>On startup, DFHack looks for files of the form <code class="docutils literal notranslate"><span class="pre">dfhack*.init</span></code> (where <code class="docutils literal notranslate"><span class="pre">*</span></code> is
+a placeholder for any string, including the empty string).</p>
+<p>These files are best used for keybindings and enabling persistent plugins
+which do not require a world to be loaded.</p>
+</section>
+<section id="onload-init">
+<span id="id6"></span><h4><a class="toc-backref" href="#id19" role="doc-backlink">onLoad*.init</a><a class="headerlink" href="#onload-init" title="Permalink to this heading">¶</a></h4>
+<p>When a world is loaded, DFHack looks for files of the form <code class="docutils literal notranslate"><span class="pre">onLoad*.init</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">*</span></code> can be any string, including the empty string.</p>
+<p>A world being loaded can mean a fortress, an adventurer, or legends mode.</p>
+<p>These files are best used for non-persistent commands, such as setting
+a <a class="reference internal" href="../bugfix-tag-index.html"><span class="std std-ref">Tools that fix specific bugs, either permanently or on-demand.</span></a> script to run on <a class="reference internal" href="tools/repeat.html#repeat"><span class="std std-ref">repeat</span></a>.</p>
+</section>
+<section id="onmapload-init">
+<span id="id7"></span><h4><a class="toc-backref" href="#id20" role="doc-backlink">onMapLoad*.init</a><a class="headerlink" href="#onmapload-init" title="Permalink to this heading">¶</a></h4>
+<p>When a map is loaded, either in adventure or fort mode, DFHack looks for files
+of the form <code class="docutils literal notranslate"><span class="pre">onMapLoad*.init</span></code>, where <code class="docutils literal notranslate"><span class="pre">*</span></code> can be any string, including the
+empty string.</p>
+<p>These files are best used for commands that are only relevant once there is a
+game map loaded.</p>
+</section>
+<section id="onmapunload-init-and-onunload-init">
+<span id="onunload-init"></span><span id="onmapunload-init"></span><h4><a class="toc-backref" href="#id21" role="doc-backlink">onMapUnload*.init and onUnload*.init</a><a class="headerlink" href="#onmapunload-init-and-onunload-init" title="Permalink to this heading">¶</a></h4>
+<p>When a map or world is unloaded, DFHack looks for files of the form
+<code class="docutils literal notranslate"><span class="pre">onMapUnload*.init</span></code> or <code class="docutils literal notranslate"><span class="pre">onUnload*.init</span></code>, respectively.</p>
+<p>Modders often use unload init scripts to disable tools which should not run
+after a modded save is unloaded.</p>
+</section>
+<section id="raw-init-d-lua">
+<span id="other-init-files"></span><h4><a class="toc-backref" href="#id22" role="doc-backlink">raw/init.d/*.lua</a><a class="headerlink" href="#raw-init-d-lua" title="Permalink to this heading">¶</a></h4>
+<p>Any lua script named <code class="docutils literal notranslate"><span class="pre">raw/init.d/*.lua</span></code>, in the save or main DF directory,
+will be run when any world or that save is loaded.</p>
+</section>
+</section>
+<section id="script-paths">
+<span id="id8"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink">Script paths</a><a class="headerlink" href="#script-paths" title="Permalink to this heading">¶</a></h3>
+<p>Script paths are folders that DFHack searches to find a script when a command is
+run. By default, the following folders are searched, in order (relative to the
+root DF folder):</p>
+<ol class="arabic simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">data/save/</span><em><span class="pre">&lt;region</span> <span class="pre">folder&gt;</span></em><span class="pre">/raw/scripts</span></code> (only if a save is loaded)</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">raw/scripts</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">hack/scripts</span></code></p></li>
+</ol>
+<p>For example, if <code class="docutils literal notranslate"><span class="pre">teleport</span></code> is run, these folders are searched in order for
+<code class="docutils literal notranslate"><span class="pre">teleport.lua</span></code> or <code class="docutils literal notranslate"><span class="pre">teleport.rb</span></code>, and the first matching file is run.</p>
+<p>Script paths can be added by modifying <code class="file docutils literal notranslate"><span class="pre">dfhack-config/script-paths.txt</span></code>.
+Each line should start with one of these characters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>: adds a script path that is searched <em>before</em> the default paths (above)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code>: adds a script path that is searched <em>after</em> the default paths</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code>: a comment (the line is ignored)</p></li>
+</ul>
+<p>Paths can be absolute or relative - relative paths are interpreted relative to
+the root DF folder.</p>
+<div class="admonition-tip admonition">
+<p class="admonition-title">Tip</p>
+<p>When developing scripts in the <a class="reference external" href="https://github.com/DFHack/scripts/tree/master/">dfhack/scripts repo</a>,
+it may be useful to add the path to your local copy of the repo with <code class="docutils literal notranslate"><span class="pre">+</span></code>.
+This will allow you to make changes in the repo and have them take effect
+immediately, without needing to re-install or copy scripts over manually.</p>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">script-paths.txt</span></code> is only read at startup, but the paths can also be
+modified programmatically at any time through the <a class="reference internal" href="dev/Lua%20API.html#lua-api-internal"><span class="std std-ref">Lua API</span></a>.</p>
+</section>
+</section>
+<section id="environment-variables">
+<span id="env-vars"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">Environment variables</a><a class="headerlink" href="#environment-variables" title="Permalink to this heading">¶</a></h2>
+<p>DFHack’s behavior can be adjusted with some environment variables. For example,
+on UNIX-like systems:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">DFHACK_SOME_VAR</span><span class="o">=</span><span class="m">1</span> ./dfhack
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DFHACK_PORT</span></code>: the port to use for the RPC server (used by <code class="docutils literal notranslate"><span class="pre">dfhack-run</span></code>
+and <a class="reference internal" href="tools/RemoteFortressReader.html#remotefortressreader"><span class="std std-ref">RemoteFortressReader</span></a> among others) instead of the default <code class="docutils literal notranslate"><span class="pre">5000</span></code>. As
+with the default, if this port cannot be used, the server is not started.
+See <a class="reference internal" href="dev/Remote.html#remote"><span class="std std-ref">DFHack remote interface</span></a> for more details.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DFHACK_DISABLE_CONSOLE</span></code>: if set, the DFHack console is not set up. This is
+the default behavior if <code class="docutils literal notranslate"><span class="pre">PRINT_MODE:TEXT</span></code> is set in <code class="docutils literal notranslate"><span class="pre">data/init/init.txt</span></code>.
+Intended for situations where DFHack cannot run in a terminal window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DFHACK_HEADLESS</span></code>: if set, and <code class="docutils literal notranslate"><span class="pre">PRINT_MODE:TEXT</span></code> is set, DF’s display will
+be hidden, and the console will be started unless <code class="docutils literal notranslate"><span class="pre">DFHACK_DISABLE_CONSOLE</span></code>
+is also set. Intended for non-interactive gameplay only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DFHACK_NO_GLOBALS</span></code>, <code class="docutils literal notranslate"><span class="pre">DFHACK_NO_VTABLES</span></code>: ignores all global or vtable
+addresses in <code class="docutils literal notranslate"><span class="pre">symbols.xml</span></code>, respectively. Intended for development use -
+e.g. to make sure tools do not crash when these addresses are missing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DFHACK_NO_DEV_PLUGINS</span></code>: if set, any plugins from the plugins/devel folder
+that are built and installed will not be loaded on startup.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DFHACK_LOG_MEM_RANGES</span></code> (macOS only): if set, logs memory ranges to
+<code class="docutils literal notranslate"><span class="pre">stderr.log</span></code>. Note that <a class="reference internal" href="tools/devel/lsmem.html#devel-lsmem"><span class="std std-ref">devel/lsmem</span></a> can also do this.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DFHACK_ENABLE_LUACOV</span></code>: if set, enables coverage analysis of Lua scripts.
+Use the <a class="reference internal" href="tools/devel/luacov.html#devel-luacov"><span class="std std-ref">devel/luacov</span></a> script to generate coverage reports from the collected
+metrics.</p></li>
+</ul>
+<p>Other (non-DFHack-specific) variables that affect DFHack:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TERM</span></code>: if this is set to <code class="docutils literal notranslate"><span class="pre">dumb</span></code> or <code class="docutils literal notranslate"><span class="pre">cons25</span></code> on *nix, the console will
+not support any escape sequences (arrow keys, etc.).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LANG</span></code>, <code class="docutils literal notranslate"><span class="pre">LC_CTYPE</span></code>: if either of these contain “UTF8” or “UTF-8” (not case
+sensitive), <code class="docutils literal notranslate"><span class="pre">DF2CONSOLE()</span></code> will produce UTF-8-encoded text. Note that this
+should be the case in most UTF-8-capable *nix terminal emulators already.</p></li>
+</ul>
+</section>
+<section id="miscellaneous-notes">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Miscellaneous notes</a><a class="headerlink" href="#miscellaneous-notes" title="Permalink to this heading">¶</a></h2>
+<p>This section is for odd but important notes that don’t fit anywhere else.</p>
+<ul class="simple">
+<li><p>If a DF <kbd class="kbd docutils literal notranslate">H</kbd> hotkey is named with a DFHack command, pressing
+the corresponding <kbd class="kbd docutils literal notranslate">Fx</kbd> button will run that command, instead of
+zooming to the set location.
+<em>This feature will be removed in a future version.</em>  (see <a class="reference external" href="https://github.com/DFHack/dfhack/issues/731">Issue 731</a>)</p></li>
+<li><p>The binaries for 0.40.15-r1 to 0.34.11-r4 are on <a class="reference external" href="https://dffd.bay12games.com/search.php?string=DFHack&amp;id=15&amp;limit=1000">DFFD</a>.
+Older versions are available <a class="reference external" href="https://dethware.org/dfhack/download">here</a>.
+<em>These files will eventually be migrated to GitHub.</em>  (see <a class="reference external" href="https://github.com/DFHack/dfhack/issues/473">Issue 473</a>)</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2015-2022, The DFHack Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
