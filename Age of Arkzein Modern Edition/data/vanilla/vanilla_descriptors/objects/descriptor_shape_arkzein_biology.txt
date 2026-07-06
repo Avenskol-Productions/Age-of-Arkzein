@@ -1,0 +1,13 @@
+descriptor_shape_arkzein_biology
+
+[OBJECT:DESCRIPTOR_SHAPE]
+
+[SHAPE:BIOLOGY_PHALLIC]
+	[NAME:phallus:phalluses]
+	[TILE:'b']
+	[CATEGORY:SIMPLE]
+
+[SHAPE:BIOLOGY_BALL]
+	[NAME:ball:balls]
+	[TILE:'o']
+	[CATEGORY:SIMPLE]
