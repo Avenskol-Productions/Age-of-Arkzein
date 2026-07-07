@@ -4,4 +4,4 @@ text_greet_reply_diff_language
 
 [TEXT_SET:GREET_REPLY_DIFF_LANGUAGE]
 
-Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME].
+Greetings, [AUDIENCE:RACE]. You may call me [SPEAKER:TRANS_NAME].
