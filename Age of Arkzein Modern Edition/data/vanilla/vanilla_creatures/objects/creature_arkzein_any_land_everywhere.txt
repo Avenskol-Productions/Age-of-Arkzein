@@ -1,3 +1,67 @@
 creature_arkzein_any_land_everywhere
-
+FREQUENCY:40
 [OBJECT:CREATURE]
+
+--Evil
+
+-Avian
+
+-Beast
+
+-Curious Beast Food
+
+-Curious Beast Guzzler
+
+-Curious Beast Wealth
+
+-Pack Animal
+
+-Predator
+
+--Good
+
+-Avian
+
+-Beast
+
+-Curious Beast Food
+
+-Curious Beast Guzzler
+
+-Curious Beast Wealth
+
+-Pack Animal
+
+-Predator
+
+--Mundane
+
+-Avian
+
+-Beast
+
+-Curious Beast Food
+
+-Curious Beast Guzzler
+
+-Curious Beast Wealth
+
+-Pack Animal
+
+-Predator
+
+--Savage
+
+-Avian
+
+-Beast
+
+-Curious Beast Food
+
+-Curious Beast Guzzler
+
+-Curious Beast Wealth
+
+-Pack Animal
+
+-Predator

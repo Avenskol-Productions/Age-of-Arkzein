@@ -1,17 +1,7 @@
-*Created By
+*Dwarf Fortress Created By
 Tarn and Zach Adams
-*Artwork
-Jacob Bowman
-Carolyn Jong
-Michal Madej
-Neoriceisgood
-Patrick Schroeder
 *Audio/Music Lead
 Omar Dabbous
-*Composers
-Dabu
-Simon Swerwer
-Agueda Macias
 *Programmer
 Ana "Putnam"
 -
@@ -69,3 +59,10 @@ Thank you to all of our supporters over the years,
 and everybody who has helped out on the forum and
 elsewhere to keep the project afloat these two
 decades.
+*Artwork (Arkzein)
+Avenkyr Pakacit
+*Composers (Arkzein)
+Avenkyr Pakacit
+*Included Credits (Arkzein)
+Pisskop's Frequencies
+DPH Kraken's The Way Words Work

@@ -3,7 +3,7 @@ creature_arkzein_troll
 [OBJECT:CREATURE]
 
 [CREATURE:ARKZEIN_CAVE_BEASTMAN]
-	[DESCRIPTION:A huge humanoid beast with coarse fur, large tusks and horns. They are naturally adapted to living in caves]
+	[DESCRIPTION:A huge humanoid beast with coarse fur, large tusks and horns. They are naturally adapted to living in caves.]
 	[NAME:zhnoszblxeknot:zhnoszblxeknoti:zhnoszblxeknotian]
 	[CASTE_NAME:cave beastman:cave beastman:cave beastman]
 	[CREATURE_TILE:'B'][COLOR:0:0:1]
@@ -201,7 +201,7 @@ creature_arkzein_troll
 				[TLCM_NOUN:eyes:PLURAL]
 
 [CREATURE:ARKZEIN_SLY_BEASTMAN]
-	[DESCRIPTION:A huge humanoid beast with coarse fur, large tusks and horns. They are naturally adapted to living in caves]
+	[DESCRIPTION:A huge humanoid beast with coarse fur, large tusks and horns. They are known to cause trouble.]
 	[NAME:zbntuzblxeknot:zbntuzblxeknoti:zbntuzblxeknotian]
 	[CASTE_NAME:sly beastman:sly beastman:sly beastman]
 	[CREATURE_TILE:'B'][COLOR:0:0:1]
@@ -399,7 +399,7 @@ creature_arkzein_troll
 				[TLCM_NOUN:eyes:PLURAL]
 
 [CREATURE:ARKZEIN_TAINTED_BEASTMAN]
-	[DESCRIPTION:A huge humanoid beast with coarse fur, large tusks and horns. They are naturally adapted to living in caves]
+	[DESCRIPTION:A huge humanoid beast with coarse fur, large tusks and horns. They are tainted by demonic magic!]
 	[NAME:xbelmuzblxeknot:xbelmuzblxeknoti:xbelmuzblxeknotian]
 	[CASTE_NAME:tainted beastman:tainted beastman:tainted beastman]
 	[CREATURE_TILE:'B'][COLOR:0:0:1]
