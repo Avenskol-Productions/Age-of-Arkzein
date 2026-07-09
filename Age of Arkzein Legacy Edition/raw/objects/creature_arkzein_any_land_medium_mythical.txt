@@ -1,0 +1,59 @@
+creature_arkzein_any_land_medium_mythical
+FREQUENCY:30
+[OBJECT:CREATURE]
+
+--Evil
+
+-Apex Carnivore
+
+-Carnivore
+
+-Apex Omnivore
+
+-Omnivore
+
+-Apex Herbivore
+
+-Herbivore
+
+--Good
+
+-Apex Carnivore
+
+-Carnivore
+
+-Apex Omnivore
+
+-Omnivore
+
+-Apex Herbivore
+
+-Herbivore
+
+--Mundane
+
+-Apex Carnivore
+
+-Carnivore
+
+-Apex Omnivore
+
+-Omnivore
+
+-Apex Herbivore
+
+-Herbivore
+
+--Savage
+
+-Apex Carnivore
+
+-Carnivore
+
+-Apex Omnivore
+
+-Omnivore
+
+-Apex Herbivore
+
+-Herbivore
