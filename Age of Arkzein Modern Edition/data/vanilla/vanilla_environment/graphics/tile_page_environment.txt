@@ -2,6 +2,21 @@ tile_page_environment
 
 [OBJECT:TILE_PAGE]
 
+[TILE_PAGE:SHADOWS_WALL]
+	[FILE:images/shadows_wall.png]
+	[TILE_DIM:32:32]
+	[PAGE_DIM:5:5]
+
+[TILE_PAGE:TECHNICAL]
+	[FILE:images/technical.png]
+	[TILE_DIM:32:32]
+	[PAGE_DIM:8:8]
+
+[TILE_PAGE:SHADOWS_RAMP]
+	[FILE:images/shadows_ramp.png]
+	[TILE_DIM:32:32]
+	[PAGE_DIM:9:9]
+
 [TILE_PAGE:FLOOR_STONE_ENGRAVED_NON_PALETTE]
 	[FILE:images/floor_stone_engraved_non_palette.png]
 	[TILE_DIM:32:32]
@@ -14,5 +29,10 @@ tile_page_environment
 
 [TILE_PAGE:WALL_STONE_SMOOTHED]
 	[FILE:images/wall_stone_smoothed.png]
+	[TILE_DIM:32:32]
+	[PAGE_DIM:4:5]
+
+[TILE_PAGE:VISION_SHADOWS]
+	[FILE:images/vision_shadows.png]
 	[TILE_DIM:32:32]
 	[PAGE_DIM:4:5]
