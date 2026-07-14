@@ -67,7 +67,11 @@ Avenkyr Pakacit
 Pisskop's Frequencies
 DPH Kraken's The Way Words Work
 *Orc Notice
-This product is licensed under the ORC License located at the Library of Congress at TX 9-307-067 and available online at various locations including www azoralaw.com/orclicense, www.gencon.com/orclicense and others.
+This product is licensed under the ORC License located
+at the Library of Congress at TX 9-307-067 and available
+online at various locations including
+www azoralaw.com/orclicense
+www.gencon.com/orclicense and others.
 All warranties are disclaimed as set forth therein.
 *Attribution
 Pathfinder Monster Core © 2024 Paizo Inc. Authors:
@@ -75,8 +79,8 @@ Logan Bonner
 Jason Bulmahn
 Stephen Radney-MacFarland
 Mark Seifter
-
-Pathfinder Monster Core 2, Copyright 2026, Paizo Inc. Authors:
+Pathfinder Monster Core 2, Copyright 2026, Paizo Inc.
+Authors:
 Alexander Augunas
 Jesse Benner
 Joshua Birdsong
@@ -160,13 +164,17 @@ Ruvaid Virk
 Andrew White
 Landon Winkler
 Linda Zayas-Palmer
-
-If you use our Licensed Material in your own published works, please credit us as follows:
-
+If you use our Licensed Material in your
+own published works, please credit us as follows:
 Reserved Material
-
-Reserved Material elements in this product include, but may not be limited to: Tales of Arkzein, and all elements designated as Reserved Material under the ORC License.
-
+Reserved Material elements in this product include
+but may not be limited to: Tales of Arkzein
+and all elements designated as Reserved Material
+under the ORC License.
 Expressly Designated Licensed Material
-
-The following elements are owned by the Licensor and would otherwise constitute Reserved Material and are hereby designated as Licensed Material: Tales of Arkzein and associated characters, locations, and titles.
+The following elements are owned by the Licensor
+and would otherwise constitute Reserved Material
+and are hereby designated as Licensed Material:
+Tales of Arkzein and associated characters
+locations
+and titles.
